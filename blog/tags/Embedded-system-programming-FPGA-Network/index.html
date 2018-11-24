@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Tag: Embedded system programming - FPGA - Network | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xiongmin Lin">
+<meta property="og:url" content="http://yoursite.com/blog/tags/Embedded-system-programming-FPGA-Network/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xiongmin Lin">
+<meta name="twitter:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    <div class="container">
+  <div class="row">
+    <div class="col s12">
+
+      
+        <h2 class="header color-featured">Tag: Embedded system programming - FPGA - Network</h2>
+      
+
+      
+        
+
+      <article id="post-projects/fpga" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2014/07/20/projects/fpga/">基于FPGA的体感控制</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2014-07-21T06:20:00.000Z" itemprop="datePublished">Jul 20, 2014</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><blockquote>
+<p>本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SDRAM中的信息，将视频信息显示在VGA屏上。<br>本设计利用皮肤检测不断对视频信息中的皮肤进行追踪，从而实现手势追踪，并在左右屏中算出皮肤的中心点作为手部信息的坐标点，以此作为手势信息。根据上述手势信息，产生对小车的控制命令，通过Nrf24L01无线模块发送至小车。小车接受信息后，作出相应行走动作。<br>本系统提供按键便于用户进进行功能选择，如显示真实视频信息、皮肤信息、虚拟小人等。皮肤信息用于不同背景环境下手势动作的调整，减少了系统的误判。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>关键词: PGA，体感识别，皮肤检测</li>
+</ul>
+</blockquote>
+<h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><h2 id="系统方案"><a href="#系统方案" class="headerlink" title="系统方案"></a>系统方案</h2><p>该系统主要由FPGA体感识别系统和MSP430小车系统两个部分组成。<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufrcn6vncj20da07twet.jpg" alt="系统方案"><br>在FPGA体感识别系统中，首先通过D5M采集视频信息，因为该摄像头采集到的图像是RAW类型的图像，不便于VGA显示，所以必须把RAW图像转化为RGB模式的图像，存入SDRAM中，以便VGA显示时使用。在SDRAM控制时使用了FIFO的形式，实现了SDRAM的多接口写入和读出。从SDRAM中读出的RGB信息，一方面可以送至VGA控制模块中，当（SW[17]&amp;&amp;~SW[16]）==1时，显示视频信息；另一方面送至皮肤检测模块，将检测为皮肤的区域颜色设为白色，中心点为红色，非皮肤区域为黑色，当（~SW[17]&amp;&amp;~SW[16]）==1时，显示皮肤信息。皮肤检测获得的手势信息一方面送至虚拟小人显示模块，该模块利用Bresenham算法画出虚拟小人，存于SRAM中，当SW[16]==1时，显示虚拟小人；另外一方面送至小车控制模块，根据手势信息在屏幕上的位置信息，利用无线传感器给小车发送行走命令。</p>
+<p>MSP430小车系统由MSP430F499控制器，NRF24L01无线模块、L297+L298组合为小车驱动器和二项四拍步进电机组成。MCU不断读取NRf24L01接收端的信息，根据受到的指令，分别给驱动器不同频率的方波和方向信息。驱动器将不同频率的方波转换成不同频率的PWM波，从而实现了小车的前进、后退、加速、减速、转弯等动作。</p>
+<h2 id="皮肤检测模块"><a href="#皮肤检测模块" class="headerlink" title="皮肤检测模块"></a>皮肤检测模块</h2><p>在视频信息中，每帧中图像的像素点都有R、G和B三个分量的值，将R、G和B转换成YUV格式，公式如下：<br>           Y=（R+2G+B）/4，U=R-G，V=B-G<br>经过多次实验得出，当像素点符合100 &lt; U &lt; 500 时属于皮肤的颜色范围。当像素点符合100 &lt; U &lt; 500且R &gt; B时，我们则认为该像素点为皮肤。<br>利用上述思想，对视频信息处理后，可得出皮肤信息，算出左右区域皮肤像素点位置的平均值，视为左臂和右臂的位置信息。根据左臂和右臂在屏幕上的位置信息，产生小车控制信息，然后对小车进行无线控制。同时根据左臂和右臂的位置信息，利用Bresenham算法从设定好的图表中划出简化的人形。</p>
+<h1 id="系统测试与结果图示"><a href="#系统测试与结果图示" class="headerlink" title="系统测试与结果图示"></a>系统测试与结果图示</h1><p>当控制者双手摊开，水平朝外时，位于FPGA上的皮肤检测模块检测出双手的位置，绘制皮肤点集，如图4.1中图所示，图中白色标注点为皮肤点，红色标注点为皮肤中心点。同时，系统还会绘制模拟小人以显示控制者的动作，如图1右图所示，控制者并拢双手，动画小人也并拢双手，此外，系统还提供了硬件按键，使得控制者可以在皮肤点集图和模拟小人图之间流畅切换。经过反复测试，系统能成功快速识别出启动动作，识别率达90%，位于小车上的无线模块接收到FPGA发送过来的前进信息后，小车开始启动，实验表明，小车反映速度极快，能迅速对FPGA的控制指令做出反映。<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufrgnis9gj208q02474a.jpg" alt="图 1"></p>
+<p>小车前进动作的检测如图2所示，当控制者双手平放并保持向上托举的状态时，位于FPGA上的皮肤检测模块检测出双手的位置，绘制皮肤点集，如图4.2中图所示，图中白色标注点为皮肤点，聚集在屏幕上部分，系统成功检测出托举动作，经反复实验，该动作识别率达98%，无线模块接收到FPGA发送过来的前进信息后，做出前进动作命令，小车前进。<br>除了控制前进动作以外，系统还创新性的添加进了速度控制机制，控制者双手托举得越高，皮肤检测模块最终计算出的小车行进速度就越快，同时，为了防止小车速度过快带来的前进不稳定的问题，系统设置了最高运行速度阈值1m/s，当计算出的速度值高于阈值时，将按阈值替代处理。</p>
+<p><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufrimy44ej208q0270sq.jpg" alt="图 2"></p>
+<p>小车的后退动作检测原理类似前进动作，控制者双手摊开，向下平放，如图3所示，FPGA皮肤检测模块检测出皮肤点集，并绘制于屏幕下方，动画小人模拟相应的动作。经反复实验，该动作识别率达92%。<br><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufrjdx4w2j208q020jrd.jpg" alt="图 3"></p>
+<p>控制者双手摊开并且左手放置高于右手时，代表发出小车左转命令，如图4所示，FPGA皮肤检测模块检测出皮肤点集分别位于屏幕左下角和屏幕右上角，动画小人抬高左手，放低右手，成功模拟出控制者的手势。经实验，该动作识别率达95%。</p>
+<p><img src="http://ww2.sinaimg.cn/large/690aa174gw1eufrjt2vcuj208q023aa2.jpg" alt="图 4"></p>
+<p>小车右转实现方法类似左转，控制者双手摊开并且右手放置高于左手，代表发出小车右转命令，如图5所示，FPGA皮肤检测模块检测出皮肤点集分别位于屏幕左上角和屏幕右下角，动画小人抬高左手，放低右手，成功模拟出控制者的手势。经实验，该动作识别率达94%。<br><img src="http://ww4.sinaimg.cn/large/690aa174gw1eufrkch7hfj208q026aa1.jpg" alt="图 5"></p>
+<p>小车的刹车与前几个动作较为不同，控制者双手合拢，掌心水平朝外，如图6所示，皮肤检测模块检测出皮肤点集位于屏幕中下方，动画小人作停止状态.<br><img src="http://ww4.sinaimg.cn/large/690aa174gw1eufrkydf8kj208q02a74a.jpg" alt="图 6"></p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2014/07/20/projects/fpga/" data-id="cjow1or9j000vlsayl584penv" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Embedded-system-programming-FPGA-Network/">Embedded system programming - FPGA - Network</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

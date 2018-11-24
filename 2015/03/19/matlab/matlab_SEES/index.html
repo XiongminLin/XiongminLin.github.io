@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>How to use matlab and a few examples in SEES project | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="IntroductionThis article has shown how I use matlab in Image Processing of SEES project.">
+<meta name="keywords" content="matlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use matlab and a few examples in SEES project">
+<meta property="og:url" content="http://yoursite.com/2015/03/19/matlab/matlab_SEES/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="IntroductionThis article has shown how I use matlab in Image Processing of SEES project.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/690aa174jw1eqcv6x8850j21050j5gmz.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/690aa174jw1eqcv1q84dqj21050j576e.jpg">
+<meta property="og:updated_time" content="2015-03-20T20:43:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to use matlab and a few examples in SEES project">
+<meta name="twitter:description" content="IntroductionThis article has shown how I use matlab in Image Processing of SEES project.">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/690aa174jw1eqcv6x8850j21050j5gmz.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-matlab/matlab_SEES" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      How to use matlab and a few examples in SEES project
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2015-03-20T04:37:00.000Z" itemprop="datePublished">Mar 19, 2015</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>This article has shown how I use matlab in Image Processing of SEES project.</p>
+<a id="more"></a>
+<h1 id="Preparing-work"><a href="#Preparing-work" class="headerlink" title="Preparing work"></a>Preparing work</h1><h2 id="Install-matlab"><a href="#Install-matlab" class="headerlink" title="Install matlab"></a>Install matlab</h2><ol>
+<li>Download: [矩阵实验室].TLF-SOFT-Mathworks.Matlab.R2010b.UNIX.ISO-TBE.iso</li>
+<li><p>Mount</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir Matlab/</span><br><span class="line">$ sudo mount -o loop Matlab.R2010b.UNIX.ISO-TBE.iso ./Matlab/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Follow the installing steps in “Matlab/crack/install.txt”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lin@lin-K40IE:~/Matlab/crack$ ll</span><br><span class="line">total 27</span><br><span class="line">dr-xr-xr-x  2 root root  2048 sept.  3  2010 ./</span><br><span class="line">dr-xr-xr-x 10 root root  4096 sept.  3  2010 ../</span><br><span class="line">-r-xr-xr-x  1 root root   507 sept.  3  2010 install.txt*</span><br><span class="line">-r-xr-xr-x  1 root root  8864 sept.  3  2010 lic_server.dat*</span><br><span class="line">-r-xr-xr-x  1 root root 11535 sept.  3  2010 lic_standalone.dat*</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Umount</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo umount Matlab/</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Start-matlab"><a href="#Start-matlab" class="headerlink" title="Start matlab"></a>Start matlab</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd /usr/local/MATLAB/R2010b/bin</span><br><span class="line">$ ./matlab</span><br></pre></td></tr></table></figure>
+<h1 id="Analyze-the-distribution-of-selected-HSV-pixel-values"><a href="#Analyze-the-distribution-of-selected-HSV-pixel-values" class="headerlink" title="Analyze the distribution of selected HSV pixel values"></a>Analyze the distribution of selected HSV pixel values</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>For a given figure, I want to detect whether there is any door inside it. There was a training process that user selected an rectangle and all the HSV piexl values in this rectangle were stored in three files, color_H.txt, color_S.txt, color_V.txt. I want to know the distribution of those piexl values, which would help me find a good filter detecting the door.</p>
+<h2 id="Source-code"><a href="#Source-code" class="headerlink" title="Source code"></a>Source code</h2><p>see_hsv.m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">fileID_H = fopen(&apos;door/color_H.txt&apos;, &apos;r&apos;);  % open file</span><br><span class="line">fileID_S = fopen(&apos;door/color_S.txt&apos;, &apos;r&apos;);</span><br><span class="line">fileID_V = fopen(&apos;door/color_V.txt&apos;, &apos;r&apos;);</span><br><span class="line"></span><br><span class="line">H        = fscanf(fileID_H, &apos;%d&apos;);          % read file</span><br><span class="line">S        = fscanf(fileID_S, &apos;%d&apos;);</span><br><span class="line">V        = fscanf(fileID_V, &apos;%d&apos;);</span><br><span class="line"></span><br><span class="line">subplot(2,2,1);                             % 2 X 2, NO.1 figure</span><br><span class="line">histfit(H);</span><br><span class="line">title([date, &apos; color H&apos;]);                  % set title </span><br><span class="line">xlabel(&apos;piexl value &apos;);                     % set coordinate title</span><br><span class="line">ylabel(&apos;count&apos;);</span><br><span class="line"></span><br><span class="line">subplot(2,2,2);                             % 2 X 2, NO.2 figure</span><br><span class="line">histfit(V);</span><br><span class="line">title([date, &apos; color S&apos;]);</span><br><span class="line">xlabel(&apos;piexl value &apos;);</span><br><span class="line">ylabel(&apos;count&apos;);</span><br><span class="line"></span><br><span class="line">subplot(2,2,3);                             % 2 X 2, NO.3 figure</span><br><span class="line">histfit(V);</span><br><span class="line">title([date, &apos; color V&apos;]);</span><br><span class="line">xlabel(&apos;piexl value &apos;);</span><br><span class="line">ylabel(&apos;count&apos;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p><img src="http://ww2.sinaimg.cn/large/690aa174jw1eqcv6x8850j21050j5gmz.jpg" alt="matlab result for see_hsv.m"></p>
+<h1 id="Analyze-the-distribution-of-selected-HSV-pixel-values-Optimization"><a href="#Analyze-the-distribution-of-selected-HSV-pixel-values-Optimization" class="headerlink" title="Analyze the distribution of selected HSV pixel values (Optimization)"></a>Analyze the distribution of selected HSV pixel values (Optimization)</h1><p>If the HSV pixel values were stored in the same file and there are three pixel values (H, S, V) in one line, how to read and split the values?</p>
+<p>We can use textread instead of fopen. For more detail, please open matlab command window and type: help textread, you will see some helpful examples.</p>
+<h2 id="Source-code-1"><a href="#Source-code-1" class="headerlink" title="Source code"></a>Source code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">file&#123;1&#125;  = &apos;door/all_hsv.txt&apos;;</span><br><span class="line">file&#123;2&#125;  = &apos;door/selected_hsv.txt&apos;;</span><br><span class="line">file&#123;3&#125;  = &apos;door/filter_hsv.txt&apos;;</span><br><span class="line"></span><br><span class="line">for i = 1 : 3</span><br><span class="line">  [H,S,V]  = textread(file&#123;i&#125;, &apos;[%d,%d,%d]&apos;);</span><br><span class="line"></span><br><span class="line">  subplot(3, 3, (i-1) * 3 + 1);                        % 3 X 3, NO.1, 4, 7 figure</span><br><span class="line">  histfit(H);                                 </span><br><span class="line">  title([date, &apos; color H&apos;]);                           % set title </span><br><span class="line">  xlabel(&apos;piexl value &apos;);                              % set coordinate title</span><br><span class="line">  ylabel(&apos;count&apos;);</span><br><span class="line"></span><br><span class="line">  subplot(3, 3, (i-1) * 3 + 2);                        % 3 X 3, NO.2, 5, 8 figure</span><br><span class="line">  histfit(S);</span><br><span class="line">  title([date, &apos; color S&apos;]);</span><br><span class="line">  xlabel(&apos;piexl value &apos;);</span><br><span class="line">  ylabel(&apos;count&apos;);</span><br><span class="line"></span><br><span class="line">  subplot(3, 3, (i-1) * 3 + 3);                        % 3 X 3, NO.3, 6, 9 figure</span><br><span class="line">  histfit(V);</span><br><span class="line">  title([date, &apos; color V&apos;]);</span><br><span class="line">  xlabel(&apos;piexl value &apos;);</span><br><span class="line">  ylabel(&apos;count&apos;);</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>A part of ‘door/all_hsv.txt’ was shown below.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[12, 73, 123]</span><br><span class="line">[13, 73, 123]</span><br><span class="line">[13, 73, 123]</span><br><span class="line">[13, 74, 124]</span><br><span class="line">[14, 75, 125]</span><br><span class="line">[14, 78, 127]</span><br><span class="line">[14, 78, 127]</span><br><span class="line">[13, 77, 126]</span><br><span class="line">[13, 79, 126]</span><br><span class="line">[12, 79, 126]</span><br></pre></td></tr></table></figure></p>
+<h2 id="Result-1"><a href="#Result-1" class="headerlink" title="Result"></a>Result</h2><p><img src="http://ww2.sinaimg.cn/large/690aa174jw1eqcv1q84dqj21050j576e.jpg" alt="Optimization"></p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2015/03/19/matlab/matlab_SEES/" data-id="cjow1or9r0011lsay7a4w2h9v" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/matlab/">matlab</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2015/03/24/French_Learning/french_leanring/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">Français</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2015/03/17/plan/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">Learning list</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

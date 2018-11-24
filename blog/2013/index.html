@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Blog: 2013 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xiongmin Lin">
+<meta property="og:url" content="http://yoursite.com/blog/2013/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xiongmin Lin">
+<meta name="twitter:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    <div class="container">
+  <div class="row">
+    <div class="col s12">
+
+      
+
+      
+        
+
+      <article id="post-computer_system/computer_system_deep_understanding_01" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2013/08/09/computer_system/computer_system_deep_understanding_01/">深入理解计算机系统_数据储存之大小端法与补码</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-08-09T23:08:00.000Z" itemprop="datePublished">Aug 09, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">typedef unsigned char *byte_pointer;</span><br><span class="line"></span><br><span class="line">void show_byte(byte_pointer start,int len)</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	for(i=0;i&lt;len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%.2x&quot;,start[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void show_int(int x)</span><br><span class="line">&#123;</span><br><span class="line">	show_byte((byte_pointer)&amp;x,sizeof(int));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void show_float(float x)&#123;</span><br><span class="line">	show_byte((byte_pointer)&amp;x,sizeof(float));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void show_pointer(void *x)&#123;</span><br><span class="line">	show_byte((byte_pointer)&amp;x,sizeof(void *));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	/*show_type(byte_pointer start,int len);*/</span><br><span class="line">	short value = -0x12;</span><br><span class="line">	short value2 = 0x12;</span><br><span class="line">	byte_pointer valp = (byte_pointer)&amp;value;</span><br><span class="line">	byte_pointer valp2 = (byte_pointer)&amp;value2;</span><br><span class="line">	show_byte(valp,sizeof(short));</span><br><span class="line">	show_byte(valp2,sizeof(short));</span><br><span class="line">	/*show_int(value);</span><br><span class="line">	show_float(value2);*/</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="结果与分析"><a href="#结果与分析" class="headerlink" title="结果与分析"></a>结果与分析</h1><p>0x12储存为1200，是因为Intel的机器大部分使用小端法储存数据（如果是大端法，该是0012）<br>-0x12储存为eeff，是因为负数在机器中以补码的形式储存，0x12取反再加一，再按照小端法，即为eeff。</p>
+<p>如果将案例中的short改成int型，数据分别改为-12345和12345。如下代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	/*show_type(byte_pointer start,int len);*/</span><br><span class="line">	int value = -12345;</span><br><span class="line">	int value2 = 12345;</span><br><span class="line">	byte_pointer valp = (byte_pointer)&amp;value;</span><br><span class="line">	byte_pointer valp2 = (byte_pointer)&amp;value2;</span><br><span class="line">	show_byte(valp,sizeof(int));</span><br><span class="line">	show_byte(valp2,sizeof(int));</span><br><span class="line">	/*show_int(value);</span><br><span class="line">	show_float(value2);*/</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果为：<br><img src="http://ww3.sinaimg.cn/large/690aa174jw1eq72l4fftrj20jv02ydg9.jpg" alt=""><br>备注：12345的二进制表示为00000000000000000011000000111001，八进制为00003039。故按照小端法，储存为3930000</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/08/09/computer_system/computer_system_deep_understanding_01/" data-id="cjow1or8r000glsaym6qk3r9y" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="post-projects/duty_system" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2013/08/04/projects/duty_system/">基于CTI技术的防汛办公室值班系统的研究与设计</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-08-04T23:20:00.000Z" itemprop="datePublished">Aug 04, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><blockquote>
+<p>本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给出了功能实现的部分代码和系统界面构成。最后，对本系统各个功能模块进行了运行测试，测试结果表明该系统运行良好，完全符合武汉水务局防汛办公室值班的各项要求。     </p>
+</blockquote>
+<blockquote>
+<ul>
+<li>关键词：CTI，语音卡，值班系统，MFC，多线程</li>
+</ul>
+</blockquote>
+<h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><h2 id="系统功能模块"><a href="#系统功能模块" class="headerlink" title="系统功能模块"></a>系统功能模块</h2><ul>
+<li>用户管理：本系统可以对用户账号及其相关的信息进行管理。</li>
+<li>通信录管理：本系统可以在通信录界面增添、删除、编辑联系人信息，并且可以直接在联系人上点击右键进行打电话和发传真的操作。</li>
+<li>文件管理：系统产生的所有日志消息，包括电话、传真记录，值班人信息，时间等等，都会以日志文件的形式储存起来，方便日后查询。</li>
+<li>传真收发: 本系统可以发送各种传真文件，自动接收传真并保存，自动转发传真。可以实现传真群发，支持传真回执，收发传真数据统计。</li>
+<li>电话与录音：可以将来话和去话进行录音，有自动录音和手动录音两个选项，并将录音存储到本地。</li>
+<li>语音通知：本系统支持通过电话话筒录制一段语音通知，然后通过系统群发给所有值班室人员，并支持通知回执功能。</li>
+<li>值守排班：本系统可实现根据输入条件对汛期值守人员的自动安排。</li>
+</ul>
+<h2 id="系统硬件与结构设计"><a href="#系统硬件与结构设计" class="headerlink" title="系统硬件与结构设计"></a>系统硬件与结构设计</h2><p><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufq483je3j20ff0743yw.jpg" alt=""><br>图中方框中的部分即为值班系统，其中系统服务器对外通过电话线接到程控电话交换机上，从而实现与外部PSTN（公用电话交换网）的连接，对内连接打印机、扫描仪、显示器和电话机等设备。打印机通过RS232串行接口与服务器相连，扫描仪通过USB2.0接口与服务器相连，一部值班电话机通过电话线与服务器相连，另外还配备一个UPS后备支持电源，作为应急备用，以保证断电时系统的正常运行，通过RS232接口与服务器相连。此外还有鼠标键盘等外设，通过相应的接口连接在服务器上。</p>
+<h2 id="传真收发"><a href="#传真收发" class="headerlink" title="传真收发"></a>传真收发</h2><p>系统可以当做一个传真服务器来收发传真。本系统可发送经扫描仪扫描进工控机中的电子文档，支持传真群发，自动接收传真并保存，实现无纸化办公。并且可以自动转发传真，支持传真回执，对收发传真数据进行统计。<br>发送传真时，首先选择要发的文件，若文件已在服务器中，选择即可，若要发送的文件为纸质文件，则用扫描仪扫描到服务器当中。然后点击进入传真界面，找到要发送的文件，勾选要发送的联系人，若联系人不在系统通信录当中，则在发送传真地址栏中输入对方传真号码，不同号码之间用空格隔开，可以一次性给多个不同号码发送传真。通常，传真机能够发送和接收的文件格式为tiff格式，因为经扫描仪扫描进电脑里的文件格式是tiff格式，所以可以不经格式转换直接发送，若要发送的文件不是tiff格式，而是txt、pdf、word等格式，文档将会自动被系统转化成能被传真机发送的tiff格式，然后再发送。若对方成功收到传真，系统生成日志文件，记录下发送时间等信息，否则传真发送失败，在传真发送端会有发送失败提示，系统也会产生发送失败的日志文件，这样就间接实现了传真回执和传真数据统计功能。具体流程图如下：<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufq7woey5j20ct0ijwfi.jpg" alt="传真收发流程图"></p>
+<p>传真收发界面:<br><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufq96lg3ij20xc0kugry.jpg" alt="传真收发界面"><br>若部分联系人由于占线而导致传真发送失败，日志文件会记录下这些发送失败的号码，若想再次发送传真，只需进入日志界面，勾选这些联系人继续发送。<br>收传真时，首先由外线电话进行拨号，传真接收界面若勾选了“自动接收传真”，系统会自动向对方播放一段录音：“拨打电话请按一，发送传真请按二”，待对方选择发传真后，传真服务器可以自动进行传真的接收。若是手动接收传真，及没有勾选自动接收按钮，值班室内线电话先响铃，待手动摘机后，系统会自动播放一段录音：“拨打电话请按一，发送传真请按二”，对方选择发送传真后自动接收。接收完成后系统生成日志文件。此外，传真服务器可以实现自动转发功能，在传真界面点击转发设置，在界面上部选择一个曾联系传真人，在界面下部分编辑传真转发目的地的联系人信息，可以将一份传真同时转发给多个对象，实现方式就是在转发设计界面下部添加多个对象的信息，勾选出需要转发的对象后点击“确定”按钮即可。设置完成后，以后收到需要转发的传真便可自动转发而不需要人工操作。</p>
+<p><img src="http://ww4.sinaimg.cn/large/690aa174gw1eufqb4hif7j20qt0kjn24.jpg" alt="传真自动转发"></p>
+<h2 id="语音通知"><a href="#语音通知" class="headerlink" title="语音通知"></a>语音通知</h2><p>语音通知功能的实现就是先通过电话机话筒录制一段语音通知，然后通过系统群发给所有值班人员。<br>发送语音通知时，首先在系统主界面下点击“通知”按钮进入发布通知界面，界面下部分为联系人列表，联系人列表是与通信录共享的，若联系人不在列表内，可在右下角在手动添加联系人电话号码，不同号码间以空格键隔开。点击左上角录音按键，随后右边方框有一段文字提示“请拿起话筒录制通知，完成请挂机”，此时就可录制语音通知，录制完毕后挂机，系统会自动为这段录音加上一段话：“确认请按#号键，不参加请按0号键，重新收听请按*号键”，然后点击“发送”便可。还可试听已录语音，点击“试听”键即可。发送原理就是利用系统逐个拨打联系人手机，对方接通后自动播发语音通知，系统将对方反馈按键信息记录为日志文件。若某些联系人电话无法接通，系统则跳过此号码，继续拨打下一联系人号码。通知发送成功与否的信息都会被系统记录为日志文件，这样就可以很清楚的知道哪些人收到通知，哪些人没有收到。具体流程如下：<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufqdca7f9j207w0hgjrz.jpg" alt="语音通知程序流程图"></p>
+<p>语音通知程序界面</p>
+<p><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufqe57lkvj20uw0midm2.jpg" alt="语音通知程序界面"></p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/08/04/projects/duty_system/" data-id="cjow1or9i000ulsayerty7m8c" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/embedded-system-programming/">embedded system programming</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="post-windows_programming_CListCtrl" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2013/08/02/windows_programming_CListCtrl/">windows编程_CListCtrl的排序算法实现</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-08-02T16:48:00.000Z" itemprop="datePublished">Aug 02, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>值班系统，需要实现点击联系人列表实现对联系人信息的排序。</p>
+<h1 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h1><h2 id="Step1-添加控件"><a href="#Step1-添加控件" class="headerlink" title="Step1 添加控件"></a>Step1 添加控件</h2><p>选择List Control控件，拖动到对话框中，右键控件，选择Add Event Handler，在Message Type栏选择LVN_COLUMNCLICK消息，添加相应的消息响应函数（例如OnLvnColumnclickLiscontract）。</p>
+<h2 id="Step2-修改OnLvnColumnclickLiscontract函数"><a href="#Step2-修改OnLvnColumnclickLiscontract函数" class="headerlink" title="Step2 修改OnLvnColumnclickLiscontract函数"></a>Step2 修改OnLvnColumnclickLiscontract函数</h2><p>在OnLvnColumnclickLiscontract函数中添加代码，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">void Cwhu_ContractDlg::OnLvnColumnclickLiscontract(NMHDR *pNMHDR, LRESULT *pResult)</span><br><span class="line">&#123;</span><br><span class="line">	LPNMLISTVIEW pNMLV = reinterpret_cast&lt;LPNMLISTVIEW&gt;(pNMHDR);</span><br><span class="line">	// TODO: Add your control notification handler code here</span><br><span class="line">	int colum = pNMLV-&gt;iSubItem;</span><br><span class="line">	static int mode = 0;</span><br><span class="line">	whu_SortContactList(m_List,colum,mode);</span><br><span class="line">	if (mode == 0)</span><br><span class="line">	&#123;</span><br><span class="line">		mode = 1;</span><br><span class="line">	&#125;</span><br><span class="line">	else&#123;</span><br><span class="line">		mode = 0;</span><br><span class="line">	&#125;</span><br><span class="line">	*pResult = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Step3-排序函数的实现"><a href="#Step3-排序函数的实现" class="headerlink" title="Step3 排序函数的实现"></a>Step3 排序函数的实现</h2><p>排序函数whu_SortContactList(m_List,colum,mode)的实现。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">void Cwhu_ContractDlg::whu_SortContactList(CListCtrl &amp;m_List,int colum,int mode)</span><br><span class="line">&#123;</span><br><span class="line">	//m_ContactListData[colum]</span><br><span class="line">	//对字符进行排序//</span><br><span class="line">	CStringArray m_ArrData[20];</span><br><span class="line">	for (int i=0;i&lt;m_List.GetItemCount();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for (int j=0;j&lt;m_List.GetHeaderCtrl()-&gt;GetItemCount();j++)</span><br><span class="line">		&#123;</span><br><span class="line">			m_ArrData[j].Add(m_List.GetItemText(i,j));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	CString m_str1;</span><br><span class="line">	CString m_str2;</span><br><span class="line">	for (int row = 1;row &lt;m_ArrData[0].GetCount();row++)</span><br><span class="line">	&#123;</span><br><span class="line">		for (int i=0;i&lt;m_ArrData[0].GetCount()-1;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			m_str1 = m_ArrData[colum].GetAt(i);</span><br><span class="line">			m_str2 = m_ArrData[colum].GetAt(i+1);</span><br><span class="line">			if (mode == 0) //正序</span><br><span class="line">			&#123;</span><br><span class="line">				if (m_str1 &gt; m_str2)</span><br><span class="line">				&#123;</span><br><span class="line">					for (int j=1;j&lt;m_List.GetHeaderCtrl()-&gt;GetItemCount();j++)</span><br><span class="line">					&#123;</span><br><span class="line">						CString m_str3 = m_ArrData[j].GetAt(i);</span><br><span class="line">						CString m_str4 = m_ArrData[j].GetAt(i+1);</span><br><span class="line">						m_ArrData[j].RemoveAt(i);</span><br><span class="line">						m_ArrData[j].RemoveAt(i);</span><br><span class="line">						m_ArrData[j].InsertAt(i,m_str3);</span><br><span class="line">						m_ArrData[j].InsertAt(i,m_str4);</span><br><span class="line">						m_str3 = m_ArrData[j].GetAt(i);</span><br><span class="line">						m_str4 = m_ArrData[j].GetAt(i+1);</span><br><span class="line"></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			else if (mode == 1)//反序</span><br><span class="line">			&#123;</span><br><span class="line">				if (m_str1 &lt; m_str2)</span><br><span class="line">				&#123;</span><br><span class="line">					for (int j=1;j&lt;m_List.GetHeaderCtrl()-&gt;GetItemCount();j++)</span><br><span class="line">					&#123;</span><br><span class="line">						CString m_str3 = m_ArrData[j].GetAt(i);</span><br><span class="line">						CString m_str4 = m_ArrData[j].GetAt(i+1);</span><br><span class="line">						m_ArrData[j].RemoveAt(i);</span><br><span class="line">						m_ArrData[j].RemoveAt(i);</span><br><span class="line">						m_ArrData[j].InsertAt(i,m_str3);</span><br><span class="line">						m_ArrData[j].InsertAt(i,m_str4);</span><br><span class="line">						m_str3 = m_ArrData[j].GetAt(i);</span><br><span class="line">						m_str4 = m_ArrData[j].GetAt(i+1);</span><br><span class="line"></span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//插入数据//</span><br><span class="line">	m_List.DeleteAllItems();</span><br><span class="line">	for (int i=0;i&lt;m_ArrData[0].GetSize();i++)</span><br><span class="line">	&#123;</span><br><span class="line">		char buf[3];</span><br><span class="line">		itoa(i+1,buf,10);</span><br><span class="line">		m_List.InsertItem(i,buf);</span><br><span class="line">		for (int j =0;j&lt;m_List.GetHeaderCtrl()-&gt;GetItemCount();j++)</span><br><span class="line">		&#123;</span><br><span class="line">			m_List.SetItemText(i,j,m_ArrData[j].GetAt(i)); </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="实现效果"><a href="#实现效果" class="headerlink" title="实现效果"></a>实现效果</h1><p>点击之前：<br><img src="http://ww1.sinaimg.cn/large/690aa174jw1eq732r6f1vj20xv05iwfs.jpg" alt=""></p>
+<p>点击之后：<br><img src="http://ww4.sinaimg.cn/large/690aa174jw1eq73339gpij20xy04u75i.jpg" alt=""></p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/08/02/windows_programming_CListCtrl/" data-id="cjow1or800005lsay6upkqfco" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="post-windows_MFC_parallel_programming" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2013/08/01/windows_MFC_parallel_programming/">windows MFC 多线程编程</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-08-02T05:11:00.000Z" itemprop="datePublished">Aug 01, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>值班系统，需要使用多线程技术，一方面在发送信息失败的时候重复发送，一方面响应用户界面事件。<br>本部分主要参考下面的方法:</p>
+<blockquote>
+<p><a href="http://www.vckbase.com/index.php/wv/1412.html" target="_blank" rel="noopener">多线程编程之一——问题提出</a><br><a href="http://www.vckbase.com/index.php/wv/1414.html" target="_blank" rel="noopener">多线程编程之二——MFC中的多线程开发</a><br><a href="http://www.vckbase.com/index.php/wv/1415.html" target="_blank" rel="noopener">多线程编程之三——线程间通讯</a><br><a href="http://www.vckbase.com/index.php/wv/1416.html" target="_blank" rel="noopener">多线程编程之四——线程的同步</a></p>
+<ul>
+<li>by <a href="http://www.vckbase.com/" target="_blank" rel="noopener">http://www.vckbase.com/</a></li>
+</ul>
+</blockquote>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/08/01/windows_MFC_parallel_programming/" data-id="cjow1or7w0003lsayrhx17zyn" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="post-windows_programming_HzToPy" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2013/08/01/windows_programming_HzToPy/">windows编程_中文转拼音类：CHzToPy</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-08-02T03:43:00.000Z" itemprop="datePublished">Aug 01, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>值班系统，需要做一个联系人拼音首字母快速查询</p>
+<h1 id="HzToPy-h"><a href="#HzToPy-h" class="headerlink" title="HzToPy.h"></a>HzToPy.h</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class CHzToPy</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	CHzToPy(void);</span><br><span class="line">	~CHzToPy(void);</span><br><span class="line">	char convert(wchar_t n);</span><br><span class="line">	bool In(wchar_t start, wchar_t end, wchar_t code);</span><br><span class="line">	CString HzToPinYin(CString str);</span><br><span class="line">	CString PinYin;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="HzToPy-cpp"><a href="#HzToPy-cpp" class="headerlink" title="HzToPy.cpp"></a>HzToPy.cpp</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;StdAfx.h&quot;</span><br><span class="line">#include &quot;HzToPy.h&quot;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CHzToPy::CHzToPy(void)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">CHzToPy::~CHzToPy(void)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line">char CHzToPy::convert(wchar_t n)</span><br><span class="line">&#123;</span><br><span class="line">	if   (In(0xB0A1,0xB0C4,n))   return   &apos;a&apos;;</span><br><span class="line">	if   (In(0XB0C5,0XB2C0,n))   return   &apos;b&apos;;</span><br><span class="line">	if   (In(0xB2C1,0xB4ED,n))   return   &apos;c&apos;;</span><br><span class="line">	if   (In(0xB4EE,0xB6E9,n))   return   &apos;d&apos;;</span><br><span class="line">	if   (In(0xB6EA,0xB7A1,n))   return   &apos;e&apos;;</span><br><span class="line">	if   (In(0xB7A2,0xB8C0,n))   return   &apos;f&apos;;</span><br><span class="line">	if   (In(0xB8C1,0xB9FD,n))   return   &apos;g&apos;;</span><br><span class="line">	if   (In(0xB9FE,0xBBF6,n))   return   &apos;h&apos;;</span><br><span class="line">	if   (In(0xBBF7,0xBFA5,n))   return   &apos;j&apos;;</span><br><span class="line">	if   (In(0xBFA6,0xC0AB,n))   return   &apos;k&apos;;</span><br><span class="line">	if   (In(0xC0AC,0xC2E7,n))   return   &apos;l&apos;;</span><br><span class="line">	if   (In(0xC2E8,0xC4C2,n))   return   &apos;m&apos;;</span><br><span class="line">	if   (In(0xC4C3,0xC5B5,n))   return   &apos;n&apos;;</span><br><span class="line">	if   (In(0xC5B6,0xC5BD,n))   return   &apos;o&apos;;</span><br><span class="line">	if   (In(0xC5BE,0xC6D9,n))   return   &apos;p&apos;;</span><br><span class="line">	if   (In(0xC6DA,0xC8BA,n))   return   &apos;q&apos;;</span><br><span class="line">	if   (In(0xC8BB,0xC8F5,n))   return   &apos;r&apos;;</span><br><span class="line">	if   (In(0xC8F6,0xCBF9,n))   return   &apos;s&apos;;//</span><br><span class="line">	if   (In(0xCBFA,0xCDD9,n))   return   &apos;t&apos;;</span><br><span class="line">	if   (In(0xCDDA,0xCEF3,n))   return   &apos;w&apos;;</span><br><span class="line">	if   (In(0xCEF4,0xD1B8,n))   return   &apos;x&apos;;</span><br><span class="line">	if   (In(0xD1B9,0xD4D0,n))   return   &apos;y&apos;;</span><br><span class="line">	if   (In(0xD4D1,0xD7F9,n))   return   &apos;z&apos;;</span><br><span class="line">	return   &apos;/0&apos;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">bool CHzToPy::In(wchar_t start, wchar_t end, wchar_t code)</span><br><span class="line">&#123;</span><br><span class="line">	if   (code   &gt;=   start   &amp;&amp;   code   &lt;=   end)</span><br><span class="line">	&#123;</span><br><span class="line">		return   true;</span><br><span class="line">	&#125;</span><br><span class="line">	return   false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CString CHzToPy::HzToPinYin(CString str)</span><br><span class="line">&#123;</span><br><span class="line">	//std::string   sChinese   =   “张三丰”;   //   输入的字符串</span><br><span class="line">#ifdef UNICODE</span><br><span class="line">	DWORD dwNum = WideCharToMultiByte(CP_OEMCP, NULL, str.GetBuffer(0), -1, NULL, 0, NULL, FALSE);</span><br><span class="line">	char *psText;</span><br><span class="line">	psText = new char[dwNum];</span><br><span class="line">	if (!psText)</span><br><span class="line">		delete []psText;</span><br><span class="line">	WideCharToMultiByte(CP_OEMCP, NULL, str.GetBuffer(0), -1, psText, dwNum, NULL, FALSE);</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//std::string   sChinese=psText;</span><br><span class="line">	std::string sChinese=str.GetBuffer(0);</span><br><span class="line">	char c;</span><br><span class="line">	char chr[3];</span><br><span class="line">	wchar_t wchr = 0;</span><br><span class="line">	int len=sChinese.length()/2;</span><br><span class="line">	char* buff =new char[len];</span><br><span class="line">	memset(buff,0x00,sizeof(char)*sChinese.length()/2+1);</span><br><span class="line">	for(int i=0,j =0;i&lt;(sChinese.length()/2);++i)</span><br><span class="line">	&#123;</span><br><span class="line">		memset(chr, 0x00,sizeof(chr));</span><br><span class="line">		chr[0] = sChinese[j++];</span><br><span class="line">		chr[1] = sChinese[j++];</span><br><span class="line">		chr[2] = &apos;/0&apos;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		// 单个字符的编码 如：’我’ = 0xced2//</span><br><span class="line">		wchr = 0;</span><br><span class="line">		wchr = (chr[0] &amp; 0xff) &lt;&lt; 8;</span><br><span class="line">		wchr |= (chr[1] &amp; 0xff);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		buff[i] = convert(wchr);</span><br><span class="line">	&#125;</span><br><span class="line">	PinYin=buff;</span><br><span class="line">	return  PinYin;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CHzToPy test;</span><br><span class="line">CString abc=_T(“林雄民”);</span><br><span class="line">CString msg=test.HzToPinYin(abc);</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>内容参考：<a href="http://blog.csdn.net/stilling2006/article/details/5317703" target="_blank" rel="noopener">MFC下的汉字拼音首字母</a> 但有几处bug，这里已修正。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/08/01/windows_programming_HzToPy/" data-id="cjow1or880008lsay3l9qjcib" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="post-windows_programming_model_communication" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2013/07/25/windows_programming_model_communication/">windows编程_父对话框与非模态子对话框的消息通信</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-07-25T18:51:00.000Z" itemprop="datePublished">Jul 25, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>值班系统，需要实现 父对话框类Cwhu_VoiceCardDlg 与 子对话框类Cwhu_FaxDlg 之间的通信</p>
+<h1 id="父对话框向子对话框传递消息"><a href="#父对话框向子对话框传递消息" class="headerlink" title="父对话框向子对话框传递消息"></a>父对话框向子对话框传递消息</h1><h2 id="定义消息"><a href="#定义消息" class="headerlink" title="定义消息"></a>定义消息</h2><p>在 父对话框类的头文件”whu_VoiceCardDlg.h”中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define  WM_UPATEDATA WM_USER+20</span><br></pre></td></tr></table></figure></p>
+<p>父对话框发出WM_UPATEDATA 消息，子对话框接收并相应。</p>
+<h2 id="定义消息响应函数"><a href="#定义消息响应函数" class="headerlink" title="定义消息响应函数"></a>定义消息响应函数</h2><p>在子对话框头文件Cwhu_FaxDlg.h中声明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afx_msg LRESULT OnUpdateData(WPARAM wParam, LPARAM lParam);</span><br></pre></td></tr></table></figure></p>
+<p>在Cwhu_FaxDlg.cpp文件包含whu_VoiceCardDlg.h<br>（注意，是在Cwhu_FaxDlg.cpp中，不是在Cwhu_FaxDlg.h中，不然头文件重复编译，会报错syntax error : missing ‘;’ before ‘*’）</p>
+<p>定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LRESULT Cwhu_FaxDlg::OnUpdateData(WPARAM wParam, LPARAM lParam)</span><br><span class="line">&#123;</span><br><span class="line">int* m_FaxState = (int*)lParam;</span><br><span class="line">whu_ShowFaxState(*m_FaxState);</span><br><span class="line">UpdateData(FALSE);</span><br><span class="line">return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在Cwhu_FaxDlg.cpp文件的BEGIN_MESSAGE_MAP和END_MESSAGE_MAP之间添加<br>ON_MESSAGE(WM_UPATEDATA, OnUpdateData)，效果如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN_MESSAGE_MAP(Cwhu_FaxDlg, CDialogEx)</span><br><span class="line">ON_MESSAGE(WM_UPATEDATA, OnUpdateData)</span><br><span class="line">END_MESSAGE_MAP()</span><br></pre></td></tr></table></figure></p>
+<p>(备注：我发现我的Cwhu_FaxDlg.cpp中有两个BEGIN_MESSAGE_MAP和END_MESSAGE_MAP，只有将ON_MESSAGE(WM_UPATEDATA, OnUpdateData)放在定义很多消息函数的地方才可以，不然报错)</p>
+<h2 id="父对话框发出消息"><a href="#父对话框发出消息" class="headerlink" title="父对话框发出消息"></a>父对话框发出消息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int whu_FaxSendState = FAX_NOANSWER;</span><br><span class="line">m_DlgFax-&gt;PostMessage(WM_UPATEDATA, 0, (LPARAM)&amp;whu_FaxSendState);</span><br></pre></td></tr></table></figure>
+<p>其中，m_DlgFax为在”whu_VoiceCardDlg.h”定义的Cwhu_VoiceCardDlg的成员函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cwhu_FaxDlg *m_DlgFax;</span><br></pre></td></tr></table></figure></p>
+<h1 id="子对话框向父对话框传递信息"><a href="#子对话框向父对话框传递信息" class="headerlink" title="子对话框向父对话框传递信息"></a>子对话框向父对话框传递信息</h1><h2 id="方法一：使用父对话框的指针"><a href="#方法一：使用父对话框的指针" class="headerlink" title="方法一：使用父对话框的指针"></a>方法一：使用父对话框的指针</h2><p>在子对话框类中定义成员变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CDialog * whu_ParentDlg;</span><br></pre></td></tr></table></figure></p>
+<p>父对话框初始化子对话框的时候，对子对话框的whu_ParentDlg赋值，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m_DlgFax = new Cwhu_FaxDlg();</span><br><span class="line">m_DlgFax-&gt;whu_ParentDlg = this;</span><br><span class="line">m_DlgFax-&gt;Create(IDD_FAX,this);</span><br><span class="line">m_DlgFax-&gt;ShowWindow(SW_SHOW);</span><br></pre></td></tr></table></figure></p>
+<p>然后，在子对话框里面，可以通过((Cwhu_VoiceCardDlg*)whu_ParentDlg)-&gt;XXXX的形式调用父对话框的公有变量/函数。</p>
+<h2 id="方法二：使用消息机制"><a href="#方法二：使用消息机制" class="headerlink" title="方法二：使用消息机制"></a>方法二：使用消息机制</h2><p>原理类似上面。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/07/25/windows_programming_model_communication/" data-id="cjow1or860007lsay3598x48g" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

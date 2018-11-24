@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Blog: 2014/10 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xiongmin Lin">
+<meta property="og:url" content="http://yoursite.com/blog/2014/10/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xiongmin Lin">
+<meta name="twitter:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    <div class="container">
+  <div class="row">
+    <div class="col s12">
+
+      
+
+      
+        
+
+      <article id="post-github_start" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2014/10/22/github_start/">How to use github in ubuntu</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2014-10-22T13:13:00.000Z" itemprop="datePublished">Oct 22, 2014</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>假如现在我电脑里有某个工程项目TestProject，里面有很多代码，我想把它传到Github上，方便找工作的时候别人查看。</p>
+<p>#提前准备：Github 帐号</p>
+<p>注册地址：<a href="https://github.com" target="_blank" rel="noopener">https://github.com</a><br>ubuntu下安装:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git：sudo apt-get install git</span><br></pre></td></tr></table></figure></p>
+<h1 id="第一步：安装git和一些简单的配置"><a href="#第一步：安装git和一些简单的配置" class="headerlink" title="第一步：安装git和一些简单的配置"></a>第一步：安装git和一些简单的配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lin@lin-K40IE:~$ sudo apt-get install git</span><br><span class="line">lin@lin-K40IE:~$ git config --global user.name ShelmyLin                  ## ShelmyLin是我的Github用户名。</span><br><span class="line">lin@lin-K40IE:~$ git config --global user.email linxiongmin@gmail.com     ## 这个是我的Gmail邮箱。</span><br></pre></td></tr></table></figure>
+<h1 id="第二步：建立新的Repository"><a href="#第二步：建立新的Repository" class="headerlink" title="第二步：建立新的Repository"></a>第二步：建立新的Repository</h1><p>到Github个人主页，创建新的Repository,如图1，图2和图3所示。<br><img src="http://ww2.sinaimg.cn/large/690aa174jw1eq71eix0qqj20wn05475v.jpg" alt="图1  创建新的Repository"></p>
+<center><em>图1 创建新的Repository</em> </center>
+
+<p><img src="http://ww1.sinaimg.cn/large/690aa174jw1eq71fis0e4j20ou0dsq4r.jpg" alt="图2 配置Repository"></p>
+<center><em>图2 配置Repository</em></center>
+
+<p><img src="http://ww1.sinaimg.cn/large/690aa174jw1eq71fupuoxj20nh0b9q4j.jpg" alt="图3 Repository配置完成"></p>
+<center><em>图3 Repository配置完成</em></center>
+
+<h1 id="第三步：将新建的Repository-clone到本地。"><a href="#第三步：将新建的Repository-clone到本地。" class="headerlink" title="第三步：将新建的Repository clone到本地。"></a>第三步：将新建的Repository clone到本地。</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">lin@lin-K40IE:~$ git clone https://github.com/ShelmyLin/MyProject</span><br><span class="line">``</span><br><span class="line">完成后，当前文件夹下会多出MyProject/。如图4所示。</span><br><span class="line"></span><br><span class="line">![图4  将新建的Repository clone到本地](http://ww3.sinaimg.cn/large/690aa174jw1eq71gev2w2j20k703v0ty.jpg)</span><br><span class="line">&lt;center&gt;*图4 将新建的Repository clone到本地*&lt;/center&gt;</span><br><span class="line"></span><br><span class="line"># 第四步：上传代码。</span><br><span class="line"></span><br><span class="line">用cp命令，将所有的代码拷贝到MyProject/。下面以上传hello.c为例说明。</span><br></pre></td></tr></table></figure>
+<p>lin@lin-K40IE:~/MyProject$ git add hello.c<br>lin@lin-K40IE:~/MyProject$ git commit -m ‘hello github’<br>lin@lin-K40IE:~/MyProject$ git push origin master<br><code>`</code><br>过程如图5所示，其中nano hello.c的意思是创建一个hello.c的文件，这里因为没有文件，所以随意创建一个。git push origin master命令之后会要求输入Github的用户名和密码。我这里是ShelmyLin。</p>
+<p><img src="http://ww2.sinaimg.cn/large/690aa174jw1eq71hayj9lj20gp06dtb2.jpg" alt="图5 上传代码"></p>
+<center><em>图5 上传代码</em></center><br>这时候，到自己的Github网站上，便可看到上传成功的hello.c文件。如图6所示。<br><br><img src="http://ww4.sinaimg.cn/large/690aa174jw1eq71hwm7obj20mm06wq3w.jpg" alt="图6 hello.c上传成功"><br><center><em>图6 hello.c上传成功</em></center>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2014/10/22/github_start/" data-id="cjow1or7u0002lsaybm0zhzhc" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Blog: 2012 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xiongmin Lin">
+<meta property="og:url" content="http://yoursite.com/blog/2012/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xiongmin Lin">
+<meta name="twitter:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    <div class="container">
+  <div class="row">
+    <div class="col s12">
+
+      
+
+      
+        
+
+      <article id="post-projects/atom_hand" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2012/07/28/projects/atom_hand/">凌动的“奇”手 --仿生机械手</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2012-07-29T01:20:00.000Z" itemprop="datePublished">Jul 28, 2012</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><blockquote>
+<p>本系统主要以 EPCM-505C 开发平台为核心,利用虚拟现实与视觉技术,借助 Intel AtomTME645C 处理器,FPGA 及 Intel IPP、OpenMP、OpenNI、OpenCV、RTP 视频传输协议,旨在代替人完成轻量级的危险任务。该系统采用服务器、客户端架构模式。其中,服务器平台负责采集用户的手臂动作信息,客户端平台负责现场视频的采集传输以及仿生机械手臂的控制。客户端平台装于遥控小车上,程序启动,客户端平台开始采集、传回现场视频,并在客户端的屏幕上显示小车周遭场景。位于服务器端的用户根据传回的视频控制小车躲避障碍物进去危险区域后,首先通过安置在终端的体态传感器获取人体的手臂运动姿态并实时传输给客户端平台,然后由平台cpu 通过 PCIE 将捕获的数据传至 FPGA,再由 FPGA 控制仿生机械臂的运动,使得机械臂远程完成与人体手臂相同的动作,从而达到远程遥控机械臂完成轻量级任务的目的。</p>
+</blockquote>
+<blockquote>
+<ul>
+<li>关键词 :仿生机械臂,远程体态控制, RTP 无线视频通信</li>
+</ul>
+</blockquote>
+<h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><h2 id="系统方案"><a href="#系统方案" class="headerlink" title="系统方案"></a>系统方案</h2><p>系统采用 C/S 模式,由服务器端和客户端组成。其中客户端基于以 Intel Atom E645C处理器为核心的嵌入式系统,包括装载在遥控车上的机械臂和电源系统,并外扩了摄像头。服务器端包括采集用户信息的体态传感器及视频显示终端。客户端通过无线网络将视频传输给服务器端,在服务器端接收显示。同时,服务器端远程控制客户端仿生机械手完成轻量级的替代人工作业的任务。</p>
+<p><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufjkp2iymj20ni0dqq43.jpg" alt="系统方案"></p>
+<p>系统工作流程分为如下几个部分:</p>
+<ul>
+<li>远程服务器端启动,客户端 EPCM-505C 启动,安装在小车上的摄像头开始工作。</li>
+<li>服务器开始接受客户端通过无线网络传回的视频并显示在软件窗口。</li>
+<li>用户根据显示的视频,得到路况信息,遥控小车进入工作区域。</li>
+<li>小车进入工作位置完毕,用户站于体态传感器前,通过服务器识别认证,获得机械手臂的控制权。</li>
+<li>用户根据小车传回的视频,控制机械手臂完成任务。</li>
+<li>任务完毕之后,用户停止对机械手臂的控制,小车收起机械手臂,用户遥控小车返回。</li>
+</ul>
+<h2 id="软件流程图"><a href="#软件流程图" class="headerlink" title="软件流程图"></a>软件流程图</h2><p>系统软件流程分作两个部分:仿生机械手臂控制流程和视频采集传输流程<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufjnuuugoj20m20v7afe.jpg" alt="系统软件流程图"></p>
+<h3 id="仿生机械手臂控制流程"><a href="#仿生机械手臂控制流程" class="headerlink" title="仿生机械手臂控制流程"></a>仿生机械手臂控制流程</h3><p>OpenNI,OpenCV 一些常规变量进行了定义与初始化,为后面程序的执行做好基础。当 RTP 初始化完成后,体态传感器开始工作,软件提示框提示用户举起双手做出“校验”姿势,进行用户识别,当用户识别成功之后,体态传感器开始源源不断的更新数据。</p>
+<p>体态传感器捕获到用户骨骼坐标,通过“骨骼坐标采集算法”得到用户右手手腕,肘关节以及肩关节的三维坐标。由于体态传感器采集到的数据存在抖动现象,我们将采集到的骨骼坐标经过“骨骼防抖动算法”滤波,得到平滑变化的骨骼数据。<br>体态传感器成功采集到平滑的骨骼数据之后,“手臂移动角度采集算法”开始对骨骼数据进行处理,将手臂骨骼移动的信息提取为四个角度的变化,同时,“手掌握合检测算法”开始采集手掌握合的信息,然后再将这些信息提取为第五个角度的变化,因为提取到的角度也存在抖动现象,类似“骨骼防抖动算法”一样,我们也加入了“角度防抖动算法”,使最后得到的角度值不会突变过大。</p>
+<p>在服务器端得到了手臂移动的五个角度值后,程序对这五个角度进行打包处理,加入校验信息,然后使用 rtp 协议对其进行传输,客户端 EPCM-505C 同步接收到含有角度信息的数据包并且校验成功后,CPU 会将这些数据发送给 FPGA 处理。FPGA 在得到这些角度信息之后,通过“获取多路 PWM 波算法”,产生五路包含角度信息的 PWM 波,五路舵机在 PWM 波的驱动下,转动相应的角度值,即机械手臂开始工作,在同一时刻完成与用户相同的动作。</p>
+<h3 id="视频采集传输流程"><a href="#视频采集传输流程" class="headerlink" title="视频采集传输流程"></a>视频采集传输流程</h3><p>客户端程序启动,开始对 OpenCV 及 RTP 协议做必要的初始化,然后尝试连接服务器。每个 RPT 服务都需要客户端及服务器端提供 IP 地址及两个传输端口(一个发送,一个接受),程序会根据这些信息,建立连接 RTP 连接。服务器连接成功之后,客户端视频采集程序启动,通过 OpenCV 捕获视频流,然后获取一帧图像,并且打包成数据包供给 RTP 传输,我们“视频采集传输算法”就是完成这些工作的。</p>
+<h2 id="系统核心算法"><a href="#系统核心算法" class="headerlink" title="系统核心算法"></a>系统核心算法</h2><h3 id="骨骼坐标的采集与滤波"><a href="#骨骼坐标的采集与滤波" class="headerlink" title="骨骼坐标的采集与滤波"></a>骨骼坐标的采集与滤波</h3><p>用户骨骼坐标主要是通过我们自己写的whu_MyHand类的成员函数whu_GetSkeleton来获取的,whu_GetSkeleton有三个参数:m_RHand,m_RElbow ,m_RShoulder,分别代表右手手腕,右手肘关节及右肩关节的三维坐标。<br>程序初始化完成之后, OpenNI开始检测当前可视区域是否存在用户,区域内出现用户的时候,用户会被体态传感器一直跟踪,如果有多个用户,OpenNI还会为每个用户添加编号以识别不同的用户。<br>OpenNI检测出用户之后,开始检测用户是否做出“校验”姿势,所谓的“校验”姿势,即用户双手举过头,作投降状。</p>
+<p><img src="http://ww2.sinaimg.cn/large/690aa174gw1eufjucdl2dj20gv09d3zg.jpg" alt=""></p>
+<p>当用户做出“校验”动作并且被OpenNI成功检测出来的时候,生产链路开始工作, OpenNI函数GetSkeletonCap开始捕获用户的骨骼信息。实验发现,通过体态传感器直接采集到的骨骼信息存在抖动现象,因此还需要对这些骨骼信息进行防抖动滤波处理,我们设置了一个骨骼瞬时变化的最大距离圆,新的骨骼坐标与旧的骨骼坐标进行比较,当新的骨骼点落在距离圆里面的时候,说明骨骼数据没有抖动,反之,则说明骨骼存在抖动,我们就将新的骨骼点设置为这两个骨骼点连线的中点值。whu_GetSkeleton函数已经将骨骼坐标采集算法和滤波算法封装了,调用whu_GetSkeleton,函数将返回平滑的骨骼坐标值。</p>
+<h3 id="手臂移动角度的采集与滤波"><a href="#手臂移动角度的采集与滤波" class="headerlink" title="手臂移动角度的采集与滤波"></a>手臂移动角度的采集与滤波</h3><p>通过上面的算法,我们已经得到了所需要的骨骼坐标,用户手臂摆动的时候,其骨骼坐标也会跟着变化,接下来,我们将这些变化的坐标转化成角度。</p>
+<p>角度的获取主要是通过whu_MyHand类的成员函数whu_GetAngles实现的,用户摆动手臂的动作,可以分解为左右,前后,上下 三个方向的运动,手臂的左右摆动,我们是通过右手肩关节与腕关节的三维坐标的变化获取的,胳膊的前后摆动,主要反映到腕关节相对肘关节的坐标的变化,小臂的上下移动,可以视为腕关节与肘关节坐标的变化,手臂在这三个自由度的运动,可以直接对应三自由度舵机的转动。</p>
+<p>手臂左右摆动:具体是由右手肩关节与腕关节的三维坐标获取的,如图所示,当用户正对着体态传感器做出左右移动手臂的动作的时候,腕关节的X与Z坐标的变化度是最大的,而肩关节几乎没有变化。当手腕从位置1变化到位置3时,对应的角度从角度1增到到角度3,由肩关节与腕关节的XZ坐标,很容易得到手臂左右摆动的角度。</p>
+<p><img src="http://ww2.sinaimg.cn/large/690aa174gw1eufjxdikyxj20a5068dfx.jpg" alt="手臂左右摆动"></p>
+<p>胳膊的前后变动:由下图人胳膊前后的变动主要反映到肘关节坐标的变动。根据实际反复的实验结果,当轴关节的 Z 坐标大于肩关节时,角度一律取 60 度,反之,为了保持角度变化的平滑性,在 60 度的基础再加上图中角度。<br><img src="http://ww4.sinaimg.cn/large/690aa174gw1eufjyfnagij208u04r3yi.jpg" alt="胳膊的前后变动"></p>
+<p>小臂的前后摆动:由下图小臂前后摆动的变化主要反映到腕关节相对肘关节的坐标的变化,当腕关节的位置前于肘关节(即腕关节的 Z 值小于肘关节)时,角度 1 和 2 分别为腕关节位于位置 1 和 2 时的转角,而当腕关节的位置后于肘关节时(如位置 3),为了保持角度的平滑变化,需在角度 3 的基础上加上 90 度。</p>
+<p><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufjznpqb7j209604y0ss.jpg" alt="小臂的前后摆动"></p>
+<p>以上考虑的是胳膊不动的时候小臂变化的角度,实际上,用户在完成一个手臂动作的时候,胳膊和小臂是一起移动的,因此,为了得到单纯的小臂移动角度,还得消除胳膊移动带来的影响,经反复实验,我们为小臂的摆动增加了修正值。</p>
+<h3 id="手掌握合检测算法"><a href="#手掌握合检测算法" class="headerlink" title="手掌握合检测算法"></a>手掌握合检测算法</h3><p>由于体态传感器没办法直接捕获到手指的坐标,我们通过上面提到过的whu_MyHand类的<br>成员函数whu_GetFingerAngle来得到手掌张合,具体算法如下:</p>
+<ul>
+<li>通过 OpenNI得到用户的深度资料图,然后将深度图通过平滑算法而后二值化为灰度图,并根据最小的Z值(即指尖的位置)得到手掌区域部分。</li>
+<li>将手掌部分的灰度图转化成一个2D矩阵的点集合,由于手掌张开的时候存在凹凸点会有夹角,因此,我们以3个点一组,判定旁边两个点与中间点的连线的夹角值,当夹角小于某个阈值的时候,便可以判定旁边中间点位于指尖位置,而当手掌张开的时候,会有很多个这样的点(平均每次可检测到32个点),这些点大部分都是位于指尖位置和手掌凹陷位置,排除那些离掌心很近的点(即手掌凹陷点),可以得到手指指尖点,如图4.2.6,红点为检测到的指尖位置, 而当手掌握合的时候,点数很少(平局每次检测到1个点)如图4.2.7示。</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufk3klf36j20tk0b4mxm.jpg" alt=""></p>
+<h3 id="视频的采集传输"><a href="#视频的采集传输" class="headerlink" title="视频的采集传输"></a>视频的采集传输</h3><p>本系统的视频传输功能的实现采用的是实时传输协议(Real-time Transport Protocol,RTP)。RTP 是在 Internet 上处理多媒体数据流的一种网络协议,它是目前解决流媒体实时传输问题的最好办法。利用它能够在一对一(unicas,单播)或者一对多(multicas,多播)的网络环境中实现传流媒体数据的实时传输。</p>
+<h3 id="仿生机械臂的控制"><a href="#仿生机械臂的控制" class="headerlink" title="仿生机械臂的控制"></a>仿生机械臂的控制</h3><p>从服务器端采集到的五路角度信息会通过RTP远程传输至位于客户端平台，并通过PWM波转换，得到五个舵机相应的转角。舵机控制线的输入是一个宽度可调的周期性方波脉冲信号,方波脉冲信号的周期为 20ms (即频率为 50 Hz)。当方波的脉冲宽度改变时,舵机转轴的角度发生改变,角度变化与脉冲宽度的变化成正比,其利用占空比来控制舵机的位置。<br>由舵机的工作原理可知,给舵机输入一个周期在 20ms 左右,脉冲宽度在 0.5ms 至 2.5ms之间的周期性脉冲信号,驱动舵机输出轴达到-90°到 90°之间的转角,呈线性变化。并且无论外界转矩怎样改变,舵机的输出轴都会保持在一个相对应的角度上,直到给它提供一个另外宽度的脉冲信号,才会改变输出角度到新的对应的位置上。因此,我们可以通过编程在FPGA 的输出端口得到需要的周期性脉冲信号。</p>
+<p><img src="http://ww2.sinaimg.cn/large/690aa174gw1eufkdddmdzj20hi083q3k.jpg" alt="FPGA控制机械臂的流程图"></p>
+<h2 id="系统结果"><a href="#系统结果" class="headerlink" title="系统结果"></a>系统结果</h2><p><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufkhajzh7j20lk0omtd7.jpg" alt=""><br>机械手臂在用户控制下完成抓取动作杯子并放下的动作</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] 刘金国,王越超,李斌. 灾难救援机器人研究现状、关键性能及展望.[J].机械工程学报,2012,42(12):1-9.<br>[2] 罗元,谢彧,张毅,等. 基于Kinect传感器的智能轮椅手势控制系统的设计与实现.[J].机器人,2012,34(1):110-119.<br>[3] 姜永成,周正干,任福君,等. 基于OpenCV的移动机器人视频流采集与处理.[J].机床与液压,2010,38(15):40-43.<br>[4] 黎松,平西建,丁益洪,等. 开放源代码的计算机视觉类库OpenCv的应用.[J].计算机应用与软件, 2005,22(8):134-136.<br>[5] 郑晓曦,刘维. 基于DirectShow 的无线音视频采集与传输系统的研究.[J]. 数字技术与应用,2011(12).<br>[6] 陈勇,陈国良,李春生. SMP机群混合编程模型研究.[J].小型微型计算机系统,2004,25(10):1763-1767.<br>[7] 漆旺生,朱锴,李建堂. 如何当好抢险救灾总指挥.[J].1998(05).<br>[8] 李克杰. 危险作业机器人发展战略研究.[J].机器人技术与应用, 2003(05).<br>[9] 李磊,叶涛,谭民. 移动机器人技术研究现状与未来.[J]. 机器人,2002(05).<br>[10] 戴先中. 危险作业机器人–人类的好帮手[J].机器人技术与应用, 2003(03).<br>[11] 张福学. 机器人技术及其应用[J]. 2000.<br>[12] 寒芯. 日本消防机器人.[J]. 1996(03).<br>[13] 李金良,包继华,于岩,等. 救援机器人自适应模糊控制的研究.[J].计算机测量与控制, 2010,5.<br>[14] 李金良,孙友霞,包继华,等. 救援机器人目标跟踪控制的研究.[J].工矿自动化,2009,12.<br>[15] 刘先灿,基于构型选优的多冗余机器人理论及实验的研究.[D].2010.<br>[16] 戴剑文.吴波救灾机器机器机器人人性化的救助装备.[J].工业设计,2011(1).<br>[17] 郭瑞璜,Guo Ruihuang. 日本新一代救援机器人——T-53 援龙.[J].消防技术与产品信息 2011(4).<br>[18] 钱善华,葛世荣. 救灾机器人的研究现状与煤矿救灾的应用.[J].机器人,2006(05).<br>[19] 李斌蛇. 形机器人的研究及在灾难救援中的应用.[J].机器人技术与应用,2003(03).<br>[20] 杨璐. 浅谈视频监控系统的技术特点及其应用.[J]. 安防科技,2008(6).<br>[21] 杨领军. 数字图像传 输中的 比特率 控制.[J].北京广播学院 学报(自然 科学版),2001(4).<br>[22] 宋军,顾冠群. 多媒体通信媒体间同步技术综述.[J]. 电信科学;1996(9).<br>[23] 李国辉,许健,汤大权. 多媒体音频视频对象的同步技术研究.[J].计算机研究与发展,1995(4).<br>[24] 崔莉,王敏,吉逸. 流媒体同步机制的研究.[J]. 计算机应用研究,2005(9).<br>[25] 张文琴, 浅析流媒体数据压缩标准.[J]. 电脑知识与技术,2010(14).<br>[26] 石峻,余松煜. Windows 环境下的实时视频捕获技术.[J]. 计算机工程,1999(8).35凌动的“奇”手<br>[27] S C HUI,F WANG. Remote Video Monitoring Over the WWW.[J].2003.<br>[28] 韩秋凤,肖政宏. 嵌入式远程视频监控系统的设计与实现.[J].湖南文理学院学报(自然科学版),2005,3.<br>[29] 申华. 基于 Windows 环境下视频捕获技术的研究及应用.[D].2005.<br>[30] 徐大诚,邵雷,李培光,等. 基于USB2.0的数字图像视频流的实时捕捉与显示系统的设计与实现.[J]. 计算机应用与软件,2008,25(9).<br>[31] 邓红卫,DENG Hong-wei. DirectShow和WinSock在网络视频系统中的应用.[J].计算机与现代化,2005(3).<br>[32] 郑桦. 机械臂系统的网络远程控制研究与实现[D].合肥,中国科学技术大学,2007.<br>[33] 张君鸿,马玉林. 基于Internet的远程机器人控制时间延迟的研究.[J].黑龙江:哈尔滨铁道科技,2003(3).<br>[34] 刘富强.数字视频信息处理与传输教程.[M]. 第l版.北京:机械工业出版社, 2004(3).<br>[35] 谢洪胜,毛迪林,黄晓霖. RTP和TCP在实时传输中的比较.[J].微型电脑应用, 2000(16).<br>[36] 李尚军.基于机械臂的远程视频监控系统研究[D].西安:西安电子科技大学,2009.<br>[37] 王庆鹏,谈大龙,陈宁.基于Intemet的机器人控制中网络时延测试及分析[J].机器人,2001,23(4).<br>[38] 冯兰胜.基于机械臂的远程控制系统研究[D].西安:西安电子科技大学,2005.<br>[39] 汪地.机器人远程监控系统的研究[D].上海:上海大学,2005.<br>[40] 郑桦,丛爽,魏子翔.基于网络机械臂远程控制系统延时补偿的研究与实现[J].北京:中国科学院研究生院学报,2007(7).<br>[41] 杨克洪,马旭东.移动机器人远程监控系统的实时性改进[J].工业控制计算机, 2007,20(1).<br>[43] 史胜利. 基于Internct的机器人遥操作系统关键技术研究[D].哈尔滨:哈尔滨工程大学,2004.<br>[43] Santosh Iyer. Using Kinect Sensor and OpenNI to teach Human computer Interactionand Natural User Interfaces.[J]. International Journal of Computer Applications2012, icwet(11).</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2012/07/28/projects/atom_hand/" data-id="cjow1ora5001flsayfy7zpu6j" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Embedded-system-programming-Kinect-OpenNI-Network/">Embedded system programming - Kinect & OpenNI - Network</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="post-Windows/kinect_openNI" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2012/01/14/Windows/kinect_openNI/">OpenNI and Kinect programming</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2012-01-14T08:00:00.000Z" itemprop="datePublished">Jan 14, 2012</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>(这篇文章是12年参加intel嵌入式比赛的时候整理的，年幼无知，很不规范，年代久远，仅拷贝过来作纪念,详细代码，参见<a href="https://github.com/ShelmyLin/Powerful_Atom_Hand" target="_blank" rel="noopener">Github</a>)</p>
+<h1 id="OpenNI概念三层视图"><a href="#OpenNI概念三层视图" class="headerlink" title="OpenNI概念三层视图"></a>OpenNI概念三层视图</h1><p>顶层:展示了基于 OpenNI 实现体感的应用程序。<br>中间层:展示了 OpenNI,提供传感器和中间件组件之间交互的接口,中间件分析 传感器数据。<br>底层:展示了捕捉视觉和声音场景元素的硬件设备。<br>Modules 模块</p>
+<h1 id="OpenNI框架"><a href="#OpenNI框架" class="headerlink" title="OpenNI框架"></a>OpenNI框架</h1><p>OpenNI框架是个提供了物理设备和中间件组件的一个抽象层。API能够让众多组件 在OpenNI框架中注册。这些组件被称为模块,被用来生成和处理感官数据。</p>
+<h2 id="传感器模块"><a href="#传感器模块" class="headerlink" title="传感器模块"></a>传感器模块</h2><ul>
+<li>3D sensor 三维传感器</li>
+<li>RGB camera RGB摄像头</li>
+<li>IR camera 红外摄像头</li>
+<li>Audio device 音频设备（麦克风）</li>
+</ul>
+<h2 id="中间件组件"><a href="#中间件组件" class="headerlink" title="中间件组件"></a>中间件组件</h2><ul>
+<li>全肢体分析中间件：十一个处理感官数据，生成肢体相关信息（常见的数据结构如关节,方向,重心等）</li>
+<li>手心分析中间件：是一个处理感官数据和生成手心的位置信息的软件组件。</li>
+<li>手势探测中间件:是一个分辨预定义的手势和提醒应用程序的软件组件。</li>
+<li>场景分析中间件：是一个分析场景图像的软件中间件，产生如下信息：场景的前景和背景的分离；平面图的坐标；场景中独特轮廓的识别。</li>
+</ul>
+<h1 id="Production-Nodes-生产节点"><a href="#Production-Nodes-生产节点" class="headerlink" title="Production Nodes 生产节点"></a>Production Nodes 生产节点</h1><p>OpenNI定义了生产节点 它具有拥有能在生成体感要求的数据过程中充当生产性角 色的一套单元。 每个生产节点都能够使用其他更低级的生产节点 (读数据, 控制配置等) , 也能够被其他高级节点或本应用程序使用。</p>
+<h2 id="生产节点类型"><a href="#生产节点类型" class="headerlink" title="生产节点类型"></a>生产节点类型</h2><ul>
+<li>传感器相关生产节点</li>
+<li>中间件相关生产节点</li>
+</ul>
+<h3 id="传感器相关生产节点Sensor-related-Production-Nodes"><a href="#传感器相关生产节点Sensor-related-Production-Nodes" class="headerlink" title="传感器相关生产节点Sensor-related Production Nodes"></a>传感器相关生产节点Sensor-related Production Nodes</h3><p>设备Device :这种节点是物理的设备(例如:深度传感器,或者RGB摄像头)。这个节点的主要角色是使设备可配置。</p>
+<ul>
+<li>深度生成器Depth Generator::这种节点能够生成深度映射。</li>
+<li>图像生成器Image Generator :这种节点能够生成彩色图像映射。</li>
+<li>红外生成器IR Generator :这种节点能够生成红外图像映射。</li>
+<li>音频生成器Audio Generator :这种节点产生音频流。</li>
+</ul>
+<h3 id="中间件相关生产节点Middleware-Related-Production-Nodes"><a href="#中间件相关生产节点Middleware-Related-Production-Nodes" class="headerlink" title="中间件相关生产节点Middleware Related Production Nodes"></a>中间件相关生产节点Middleware Related Production Nodes</h3><ul>
+<li>手势告警生成器Gestures Alert Generator :当特定手势被识别能够回调应用程序。</li>
+<li>场景分析器Scene Analyzer :分析一个场景,包括前景从背景分开,识别场景中的体型,发现 平面图。场c景分析器的主要输出是标记的深度映射,每一个像素都包含一个标 签,指明是体型还是背景的一部分。</li>
+<li>手心生成器Hand Point Generator :支持手的发现和跟踪。这个节点当发现一个手心(手掌),或者 当手心被跟踪时,位置发生了变化,就产生一个回调事件。</li>
+<li>用户生成器User Generator :生成一个在三维场景中的全部或部分肢体图画。<br>对于记录目的,以下产品节点被支持:</li>
+<li>记录器Recorder :实现数据记录。</li>
+<li>播放器Player: :从记录里读取数据并且播放它。</li>
+<li>编码器Codec :用来压缩和解压缩记录中的数据</li>
+<li>Production Chains 生产链</li>
+</ul>
+<p>节点顺序是相互依赖的,以产生所需的肢体数据,被称为生产链</p>
+<h1 id="Capabilities-能力"><a href="#Capabilities-能力" class="headerlink" title="Capabilities 能力"></a>Capabilities 能力</h1><p>一个生产节点可以被问是否支持某个能力。如果支持,这些功能就可以被特定节点调用。 OpenNI发布包括一套能力,也可以在将来继续增加新的能力。每一个模块能申明它 所支持的能力。此外,当需要生产链的列表,应用程序可以指定能力作为支持的条件。 只有满足需要能力的模块才能被列出来。<br>目前支持的能力有:</p>
+<h2 id="替换视图Alternative-View"><a href="#替换视图Alternative-View" class="headerlink" title="替换视图Alternative View"></a>替换视图Alternative View</h2><p>让任何类型的映射生成器(深度、 图像、 红外) 能够转换它的数据, 显得仿佛传感器被放到了另一个位置(被另一个生产节点显示,通常是另外一 个传感器)。</p>
+<h2 id="裁剪Cropping"><a href="#裁剪Cropping" class="headerlink" title="裁剪Cropping"></a>裁剪Cropping</h2><p>让一个映射生成器(景深、图像、红外)能够输出帧的可选区域而区别 裁剪 于整个帧。 当具备裁剪能力时, 生成的映射的尺寸被减少为适合更低的分辨率。<br>例如, 一个映射生成器工作在VGA分辨率 (640x480) 应用程序要裁剪在300x200, 下一个像素行从300像素后开始。裁剪在性能提升方面非常有用。</p>
+<h2 id="帧同步Frame-Sync"><a href="#帧同步Frame-Sync" class="headerlink" title="帧同步Frame Sync"></a>帧同步Frame Sync</h2><p>让两个传感器产生帧数据(例如:深度、图像)能够同步他们的帧, 以致他们同时到达。</p>
+<h2 id="镜像Mirror"><a href="#镜像Mirror" class="headerlink" title="镜像Mirror"></a>镜像Mirror</h2><p>让生成器能够生成的数据的镜像。如果传感器放在用户面前,传感器捕 捉到的影像被镜像,镜像这时很有用,这样右手就可以以镜像的体型中的左手 出现了。</p>
+<h2 id="姿势检测Pose-Detection-让用户生成器认出用户摆出的特定姿势。"><a href="#姿势检测Pose-Detection-让用户生成器认出用户摆出的特定姿势。" class="headerlink" title="姿势检测Pose Detection :让用户生成器认出用户摆出的特定姿势。"></a>姿势检测Pose Detection :让用户生成器认出用户摆出的特定姿势。</h2><h2 id="骨骼Skeleton"><a href="#骨骼Skeleton" class="headerlink" title="骨骼Skeleton"></a>骨骼Skeleton</h2><p>让用户生成器能够输出用户骨骼数据。这个数据包括骨骼关节的位置, 跟踪骨骼的位置的能力,用户校准的能力。</p>
+<h2 id="用户位置User-Position"><a href="#用户位置User-Position" class="headerlink" title="用户位置User Position"></a>用户位置User Position</h2><p>让深度生成器能够为场景的特定区域而优化输出特定深度映射。</p>
+<h2 id="错误状态Error-State"><a href="#错误状态Error-State" class="headerlink" title="错误状态Error State"></a>错误状态Error State</h2><p>使一个结点在出错的时候能报告它的状态</p>
+<h2 id="锁发现Lock-Aware"><a href="#锁发现Lock-Aware" class="headerlink" title="锁发现Lock Aware"></a>锁发现Lock Aware</h2><p>让节点能够被上下文边界锁定。详细信息,参考在应用和锁节点间共锁发现</p>
+<h1 id="生成和读取数据"><a href="#生成和读取数据" class="headerlink" title="生成和读取数据"></a>生成和读取数据</h1><h2 id="生成数据"><a href="#生成数据" class="headerlink" title="生成数据"></a>生成数据</h2><p>产生数据的生产节点被称为生成器。数据生成器只等到确定指令要求才实际生成数 据。函数xn::Generator::StartGenerating()用来开始生成。应用程序为了保留配置,可以 通过函数xn::Generator::StopGenerating来停止数据生成,而不必释放节点对象。</p>
+<h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><p>数据生成器还有个输出锁存功能，其在内部储存新数据，直到收到刷新指令UpdateData ，再把最新数据传输上去。当然，OpenNI让应用程序能够等到新数据可用再刷新,指令是函数xn::Generator::WaitAndUpdateData()。</p>
+<p>在某些情况下,应用程序操作不止一个节点,想等所有节点一起刷新。OpenNI为此提供了几个函数,根据在UpdateData之前什么应该发生来区分:</p>
+<p>xn::Context::WaitAnyUpdateAll(): 一旦任意一个节点有 新数据,那么刷新所有节点数据。</p>
+<p>xn::Context::WaitOneUpdateAll(): 一旦这个节点有新 数据, 那么刷新所有节点数据。 （在当几个节点都在生成数据但只有一个节点决定了 应用程序进度时,这个函数特别有用。）</p>
+<p>xn::Context::WaitNoneUpdateAll(): 不等待。所有节点都立即刷新。</p>
+<p>xn::Context::WaitAndUpdateAll(): 等到所有节点都有新数据是,再刷新他们。 以上四个函数都是在超时两秒后退出。建议使用其中一个加上函数 UpdateAll(),除非你需要刷新特定节点。</p>
+<h1 id="在应用和锁节点间共享设备"><a href="#在应用和锁节点间共享设备" class="headerlink" title="在应用和锁节点间共享设备"></a>在应用和锁节点间共享设备</h1><p>说白点，不同应用程序对同一设备有不同的配置，不能这个我还没用完，你就来给我改设备的配置，这样就乱了。</p>
+<p>OpenNI有两个模式让多个应用能够共享硬件设备:</p>
+<h2 id="完全共享-缺省"><a href="#完全共享-缺省" class="headerlink" title="完全共享(缺省)"></a>完全共享(缺省)</h2><p>在这种模式中,应用程序申明可以处理这个节点的任何配置。 OpenNI 接口让注册者能够回调任何配置改变的函数,所以,当配置发生改变,应 用就被通知(被同一个应用,或者另一个使用相同硬件设备的应用) 。</p>
+<h2 id="锁配置"><a href="#锁配置" class="headerlink" title="锁配置"></a>锁配置</h2><p>这种模式下,应用程序声明它要锁定节点的当前配置。OpenNI 因此不允 许这个节点的”Set”函数被调用。如果节点是硬件设备(或任何其他可以在进程间共享的模块) ,他应该实现” Lock Aware”能力,这样才能跨进程边界加锁。</p>
+<p>注意:当一个节点被锁,加锁的应用收到一个锁句柄。不同于使用这个句柄解锁,句柄 用来在不解锁的情况下来改变节点配置(为了不让节点配置被其他应用“偷走”)。</p>
+<h1 id="Licensing-授权"><a href="#Licensing-授权" class="headerlink" title="Licensing 授权"></a>Licensing 授权</h1><p>模块使用授权机制来确保它们只被授权过的应用程序使用。特定的厂商的模块能被 安装在特定的设备上,如果使用该模块的应用程序提供授权才能访问该模块。当OpenNI 在列表中查找合适的生产链,模块能够检查授权列表。如果要求的授权没有注册过,模 块能够隐藏自己,也就是说不返回任何结果,因此也不被算到可能的生产链中。</p>
+<h1 id="The-Context-Object-上下文对象"><a href="#The-Context-Object-上下文对象" class="headerlink" title="The Context Object 上下文对象"></a>The Context Object 上下文对象</h1><p>上下文是指拥有适用OpenNI的应用程序的全部状态的 对象,包括应用程序使用的所有生产链。同一个应用可以生成多个上下文对象,但是上 下文对象之间不能共享信息。上下文在使用前必须首先初始化。这个时候,所有的外挂的模块被载入和解 析。应用程序通过调用shutdown函数来释放上下文对象的内存。</p>
+<h1 id="Metadata-Objects-元数据对象"><a href="#Metadata-Objects-元数据对象" class="headerlink" title="Metadata Objects 元数据对象"></a>Metadata Objects 元数据对象</h1><p>OpenNI元数据对象封装一组特定数据相关的属性和该数据绑在一起。例如,深度映射常 见属性是映射的坐标(例如,在 和Y轴的像素点数)。每个产生数据的生成器都有自己 特定的元数据对象。</p>
+<h1 id="主要函数"><a href="#主要函数" class="headerlink" title="主要函数"></a>主要函数</h1><ul>
+<li>Map Generator 映射生成器, 对产生任何映射的数据生成器的基本接口</li>
+<li>Output Mode property: 控制按照哪个配置生成映射。</li>
+<li>Cropping capability</li>
+<li>Alternative Viewpoint capability</li>
+<li>Frame Sync capability</li>
+<li>Depth Generator 深度生成器, 能够产生深度视图的对象。</li>
+<li>Get depth map: 返回深度映射。</li>
+<li>Get Device Max Depth: 深度生成器的最大可用距离。</li>
+<li>Field of View property: 配置传感器的水平和垂直角度值。</li>
+<li>User Position capability</li>
+<li>Image Generator 图像生成器,产生彩色图像映射的生成器。</li>
+<li>Get Image Map: 返回彩色图像映射</li>
+<li>Pixel format property</li>
+<li>IR Generator 红外生成器</li>
+<li>Get IR Map: 返回当前红外映射</li>
+<li>Scene Analyzer 场景分析器</li>
+</ul>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2012/01/14/Windows/kinect_openNI/" data-id="cjow1or99000nlsayblpb3dho" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

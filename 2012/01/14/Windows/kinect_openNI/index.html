@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>OpenNI and Kinect programming | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="(这篇文章是12年参加intel嵌入式比赛的时候整理的，年幼无知，很不规范，年代久远，仅拷贝过来作纪念,详细代码，参见Github) OpenNI概念三层视图顶层:展示了基于 OpenNI 实现体感的应用程序。中间层:展示了 OpenNI,提供传感器和中间件组件之间交互的接口,中间件分析 传感器数据。底层:展示了捕捉视觉和声音场景元素的硬件设备。Modules 模块 OpenNI框架OpenNI框">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenNI and Kinect programming">
+<meta property="og:url" content="http://yoursite.com/2012/01/14/Windows/kinect_openNI/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="(这篇文章是12年参加intel嵌入式比赛的时候整理的，年幼无知，很不规范，年代久远，仅拷贝过来作纪念,详细代码，参见Github) OpenNI概念三层视图顶层:展示了基于 OpenNI 实现体感的应用程序。中间层:展示了 OpenNI,提供传感器和中间件组件之间交互的接口,中间件分析 传感器数据。底层:展示了捕捉视觉和声音场景元素的硬件设备。Modules 模块 OpenNI框架OpenNI框">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2015-03-13T18:32:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenNI and Kinect programming">
+<meta name="twitter:description" content="(这篇文章是12年参加intel嵌入式比赛的时候整理的，年幼无知，很不规范，年代久远，仅拷贝过来作纪念,详细代码，参见Github) OpenNI概念三层视图顶层:展示了基于 OpenNI 实现体感的应用程序。中间层:展示了 OpenNI,提供传感器和中间件组件之间交互的接口,中间件分析 传感器数据。底层:展示了捕捉视觉和声音场景元素的硬件设备。Modules 模块 OpenNI框架OpenNI框">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-Windows/kinect_openNI" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      OpenNI and Kinect programming
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2012-01-14T08:00:00.000Z" itemprop="datePublished">Jan 14, 2012</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>(这篇文章是12年参加intel嵌入式比赛的时候整理的，年幼无知，很不规范，年代久远，仅拷贝过来作纪念,详细代码，参见<a href="https://github.com/ShelmyLin/Powerful_Atom_Hand" target="_blank" rel="noopener">Github</a>)</p>
+<h1 id="OpenNI概念三层视图"><a href="#OpenNI概念三层视图" class="headerlink" title="OpenNI概念三层视图"></a>OpenNI概念三层视图</h1><p>顶层:展示了基于 OpenNI 实现体感的应用程序。<br>中间层:展示了 OpenNI,提供传感器和中间件组件之间交互的接口,中间件分析 传感器数据。<br>底层:展示了捕捉视觉和声音场景元素的硬件设备。<br>Modules 模块</p>
+<h1 id="OpenNI框架"><a href="#OpenNI框架" class="headerlink" title="OpenNI框架"></a>OpenNI框架</h1><p>OpenNI框架是个提供了物理设备和中间件组件的一个抽象层。API能够让众多组件 在OpenNI框架中注册。这些组件被称为模块,被用来生成和处理感官数据。</p>
+<h2 id="传感器模块"><a href="#传感器模块" class="headerlink" title="传感器模块"></a>传感器模块</h2><ul>
+<li>3D sensor 三维传感器</li>
+<li>RGB camera RGB摄像头</li>
+<li>IR camera 红外摄像头</li>
+<li>Audio device 音频设备（麦克风）</li>
+</ul>
+<h2 id="中间件组件"><a href="#中间件组件" class="headerlink" title="中间件组件"></a>中间件组件</h2><ul>
+<li>全肢体分析中间件：十一个处理感官数据，生成肢体相关信息（常见的数据结构如关节,方向,重心等）</li>
+<li>手心分析中间件：是一个处理感官数据和生成手心的位置信息的软件组件。</li>
+<li>手势探测中间件:是一个分辨预定义的手势和提醒应用程序的软件组件。</li>
+<li>场景分析中间件：是一个分析场景图像的软件中间件，产生如下信息：场景的前景和背景的分离；平面图的坐标；场景中独特轮廓的识别。</li>
+</ul>
+<h1 id="Production-Nodes-生产节点"><a href="#Production-Nodes-生产节点" class="headerlink" title="Production Nodes 生产节点"></a>Production Nodes 生产节点</h1><p>OpenNI定义了生产节点 它具有拥有能在生成体感要求的数据过程中充当生产性角 色的一套单元。 每个生产节点都能够使用其他更低级的生产节点 (读数据, 控制配置等) , 也能够被其他高级节点或本应用程序使用。</p>
+<h2 id="生产节点类型"><a href="#生产节点类型" class="headerlink" title="生产节点类型"></a>生产节点类型</h2><ul>
+<li>传感器相关生产节点</li>
+<li>中间件相关生产节点</li>
+</ul>
+<h3 id="传感器相关生产节点Sensor-related-Production-Nodes"><a href="#传感器相关生产节点Sensor-related-Production-Nodes" class="headerlink" title="传感器相关生产节点Sensor-related Production Nodes"></a>传感器相关生产节点Sensor-related Production Nodes</h3><p>设备Device :这种节点是物理的设备(例如:深度传感器,或者RGB摄像头)。这个节点的主要角色是使设备可配置。</p>
+<ul>
+<li>深度生成器Depth Generator::这种节点能够生成深度映射。</li>
+<li>图像生成器Image Generator :这种节点能够生成彩色图像映射。</li>
+<li>红外生成器IR Generator :这种节点能够生成红外图像映射。</li>
+<li>音频生成器Audio Generator :这种节点产生音频流。</li>
+</ul>
+<h3 id="中间件相关生产节点Middleware-Related-Production-Nodes"><a href="#中间件相关生产节点Middleware-Related-Production-Nodes" class="headerlink" title="中间件相关生产节点Middleware Related Production Nodes"></a>中间件相关生产节点Middleware Related Production Nodes</h3><ul>
+<li>手势告警生成器Gestures Alert Generator :当特定手势被识别能够回调应用程序。</li>
+<li>场景分析器Scene Analyzer :分析一个场景,包括前景从背景分开,识别场景中的体型,发现 平面图。场c景分析器的主要输出是标记的深度映射,每一个像素都包含一个标 签,指明是体型还是背景的一部分。</li>
+<li>手心生成器Hand Point Generator :支持手的发现和跟踪。这个节点当发现一个手心(手掌),或者 当手心被跟踪时,位置发生了变化,就产生一个回调事件。</li>
+<li>用户生成器User Generator :生成一个在三维场景中的全部或部分肢体图画。<br>对于记录目的,以下产品节点被支持:</li>
+<li>记录器Recorder :实现数据记录。</li>
+<li>播放器Player: :从记录里读取数据并且播放它。</li>
+<li>编码器Codec :用来压缩和解压缩记录中的数据</li>
+<li>Production Chains 生产链</li>
+</ul>
+<p>节点顺序是相互依赖的,以产生所需的肢体数据,被称为生产链</p>
+<h1 id="Capabilities-能力"><a href="#Capabilities-能力" class="headerlink" title="Capabilities 能力"></a>Capabilities 能力</h1><p>一个生产节点可以被问是否支持某个能力。如果支持,这些功能就可以被特定节点调用。 OpenNI发布包括一套能力,也可以在将来继续增加新的能力。每一个模块能申明它 所支持的能力。此外,当需要生产链的列表,应用程序可以指定能力作为支持的条件。 只有满足需要能力的模块才能被列出来。<br>目前支持的能力有:</p>
+<h2 id="替换视图Alternative-View"><a href="#替换视图Alternative-View" class="headerlink" title="替换视图Alternative View"></a>替换视图Alternative View</h2><p>让任何类型的映射生成器(深度、 图像、 红外) 能够转换它的数据, 显得仿佛传感器被放到了另一个位置(被另一个生产节点显示,通常是另外一 个传感器)。</p>
+<h2 id="裁剪Cropping"><a href="#裁剪Cropping" class="headerlink" title="裁剪Cropping"></a>裁剪Cropping</h2><p>让一个映射生成器(景深、图像、红外)能够输出帧的可选区域而区别 裁剪 于整个帧。 当具备裁剪能力时, 生成的映射的尺寸被减少为适合更低的分辨率。<br>例如, 一个映射生成器工作在VGA分辨率 (640x480) 应用程序要裁剪在300x200, 下一个像素行从300像素后开始。裁剪在性能提升方面非常有用。</p>
+<h2 id="帧同步Frame-Sync"><a href="#帧同步Frame-Sync" class="headerlink" title="帧同步Frame Sync"></a>帧同步Frame Sync</h2><p>让两个传感器产生帧数据(例如:深度、图像)能够同步他们的帧, 以致他们同时到达。</p>
+<h2 id="镜像Mirror"><a href="#镜像Mirror" class="headerlink" title="镜像Mirror"></a>镜像Mirror</h2><p>让生成器能够生成的数据的镜像。如果传感器放在用户面前,传感器捕 捉到的影像被镜像,镜像这时很有用,这样右手就可以以镜像的体型中的左手 出现了。</p>
+<h2 id="姿势检测Pose-Detection-让用户生成器认出用户摆出的特定姿势。"><a href="#姿势检测Pose-Detection-让用户生成器认出用户摆出的特定姿势。" class="headerlink" title="姿势检测Pose Detection :让用户生成器认出用户摆出的特定姿势。"></a>姿势检测Pose Detection :让用户生成器认出用户摆出的特定姿势。</h2><h2 id="骨骼Skeleton"><a href="#骨骼Skeleton" class="headerlink" title="骨骼Skeleton"></a>骨骼Skeleton</h2><p>让用户生成器能够输出用户骨骼数据。这个数据包括骨骼关节的位置, 跟踪骨骼的位置的能力,用户校准的能力。</p>
+<h2 id="用户位置User-Position"><a href="#用户位置User-Position" class="headerlink" title="用户位置User Position"></a>用户位置User Position</h2><p>让深度生成器能够为场景的特定区域而优化输出特定深度映射。</p>
+<h2 id="错误状态Error-State"><a href="#错误状态Error-State" class="headerlink" title="错误状态Error State"></a>错误状态Error State</h2><p>使一个结点在出错的时候能报告它的状态</p>
+<h2 id="锁发现Lock-Aware"><a href="#锁发现Lock-Aware" class="headerlink" title="锁发现Lock Aware"></a>锁发现Lock Aware</h2><p>让节点能够被上下文边界锁定。详细信息,参考在应用和锁节点间共锁发现</p>
+<h1 id="生成和读取数据"><a href="#生成和读取数据" class="headerlink" title="生成和读取数据"></a>生成和读取数据</h1><h2 id="生成数据"><a href="#生成数据" class="headerlink" title="生成数据"></a>生成数据</h2><p>产生数据的生产节点被称为生成器。数据生成器只等到确定指令要求才实际生成数 据。函数xn::Generator::StartGenerating()用来开始生成。应用程序为了保留配置,可以 通过函数xn::Generator::StopGenerating来停止数据生成,而不必释放节点对象。</p>
+<h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><p>数据生成器还有个输出锁存功能，其在内部储存新数据，直到收到刷新指令UpdateData ，再把最新数据传输上去。当然，OpenNI让应用程序能够等到新数据可用再刷新,指令是函数xn::Generator::WaitAndUpdateData()。</p>
+<p>在某些情况下,应用程序操作不止一个节点,想等所有节点一起刷新。OpenNI为此提供了几个函数,根据在UpdateData之前什么应该发生来区分:</p>
+<p>xn::Context::WaitAnyUpdateAll(): 一旦任意一个节点有 新数据,那么刷新所有节点数据。</p>
+<p>xn::Context::WaitOneUpdateAll(): 一旦这个节点有新 数据, 那么刷新所有节点数据。 （在当几个节点都在生成数据但只有一个节点决定了 应用程序进度时,这个函数特别有用。）</p>
+<p>xn::Context::WaitNoneUpdateAll(): 不等待。所有节点都立即刷新。</p>
+<p>xn::Context::WaitAndUpdateAll(): 等到所有节点都有新数据是,再刷新他们。 以上四个函数都是在超时两秒后退出。建议使用其中一个加上函数 UpdateAll(),除非你需要刷新特定节点。</p>
+<h1 id="在应用和锁节点间共享设备"><a href="#在应用和锁节点间共享设备" class="headerlink" title="在应用和锁节点间共享设备"></a>在应用和锁节点间共享设备</h1><p>说白点，不同应用程序对同一设备有不同的配置，不能这个我还没用完，你就来给我改设备的配置，这样就乱了。</p>
+<p>OpenNI有两个模式让多个应用能够共享硬件设备:</p>
+<h2 id="完全共享-缺省"><a href="#完全共享-缺省" class="headerlink" title="完全共享(缺省)"></a>完全共享(缺省)</h2><p>在这种模式中,应用程序申明可以处理这个节点的任何配置。 OpenNI 接口让注册者能够回调任何配置改变的函数,所以,当配置发生改变,应 用就被通知(被同一个应用,或者另一个使用相同硬件设备的应用) 。</p>
+<h2 id="锁配置"><a href="#锁配置" class="headerlink" title="锁配置"></a>锁配置</h2><p>这种模式下,应用程序声明它要锁定节点的当前配置。OpenNI 因此不允 许这个节点的”Set”函数被调用。如果节点是硬件设备(或任何其他可以在进程间共享的模块) ,他应该实现” Lock Aware”能力,这样才能跨进程边界加锁。</p>
+<p>注意:当一个节点被锁,加锁的应用收到一个锁句柄。不同于使用这个句柄解锁,句柄 用来在不解锁的情况下来改变节点配置(为了不让节点配置被其他应用“偷走”)。</p>
+<h1 id="Licensing-授权"><a href="#Licensing-授权" class="headerlink" title="Licensing 授权"></a>Licensing 授权</h1><p>模块使用授权机制来确保它们只被授权过的应用程序使用。特定的厂商的模块能被 安装在特定的设备上,如果使用该模块的应用程序提供授权才能访问该模块。当OpenNI 在列表中查找合适的生产链,模块能够检查授权列表。如果要求的授权没有注册过,模 块能够隐藏自己,也就是说不返回任何结果,因此也不被算到可能的生产链中。</p>
+<h1 id="The-Context-Object-上下文对象"><a href="#The-Context-Object-上下文对象" class="headerlink" title="The Context Object 上下文对象"></a>The Context Object 上下文对象</h1><p>上下文是指拥有适用OpenNI的应用程序的全部状态的 对象,包括应用程序使用的所有生产链。同一个应用可以生成多个上下文对象,但是上 下文对象之间不能共享信息。上下文在使用前必须首先初始化。这个时候,所有的外挂的模块被载入和解 析。应用程序通过调用shutdown函数来释放上下文对象的内存。</p>
+<h1 id="Metadata-Objects-元数据对象"><a href="#Metadata-Objects-元数据对象" class="headerlink" title="Metadata Objects 元数据对象"></a>Metadata Objects 元数据对象</h1><p>OpenNI元数据对象封装一组特定数据相关的属性和该数据绑在一起。例如,深度映射常 见属性是映射的坐标(例如,在 和Y轴的像素点数)。每个产生数据的生成器都有自己 特定的元数据对象。</p>
+<h1 id="主要函数"><a href="#主要函数" class="headerlink" title="主要函数"></a>主要函数</h1><ul>
+<li>Map Generator 映射生成器, 对产生任何映射的数据生成器的基本接口</li>
+<li>Output Mode property: 控制按照哪个配置生成映射。</li>
+<li>Cropping capability</li>
+<li>Alternative Viewpoint capability</li>
+<li>Frame Sync capability</li>
+<li>Depth Generator 深度生成器, 能够产生深度视图的对象。</li>
+<li>Get depth map: 返回深度映射。</li>
+<li>Get Device Max Depth: 深度生成器的最大可用距离。</li>
+<li>Field of View property: 配置传感器的水平和垂直角度值。</li>
+<li>User Position capability</li>
+<li>Image Generator 图像生成器,产生彩色图像映射的生成器。</li>
+<li>Get Image Map: 返回彩色图像映射</li>
+<li>Pixel format property</li>
+<li>IR Generator 红外生成器</li>
+<li>Get IR Map: 返回当前红外映射</li>
+<li>Scene Analyzer 场景分析器</li>
+</ul>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2012/01/14/Windows/kinect_openNI/" data-id="cjow1or99000nlsayblpb3dho" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2012/07/28/projects/atom_hand/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">凌动的“奇”手 --仿生机械手</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2011/02/22/Linux/quick_start_of_linux_programming/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">quick start of linux programming</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

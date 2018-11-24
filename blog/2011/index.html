@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Blog: 2011 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xiongmin Lin">
+<meta property="og:url" content="http://yoursite.com/blog/2011/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xiongmin Lin">
+<meta name="twitter:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    <div class="container">
+  <div class="row">
+    <div class="col s12">
+
+      
+
+      
+        
+
+      <article id="post-Linux/quick_start_of_linux_programming" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2011/02/22/Linux/quick_start_of_linux_programming/">quick start of linux programming</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2011-02-22T08:00:00.000Z" itemprop="datePublished">Feb 22, 2011</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>This article recorded some useful fundamental commands that I came across at the beginning of my linux learning.</p>
+<h1 id="第一章-Linux-文件管理"><a href="#第一章-Linux-文件管理" class="headerlink" title="第一章 Linux 文件管理"></a>第一章 Linux 文件管理</h1><blockquote>
+<ul>
+<li>目录结构</li>
+<li>列表显示 ls</li>
+<li>打开目录 cd</li>
+<li>查看文档 cat</li>
+<li>创建新文件或心目录</li>
+<li>删除命令 rm</li>
+<li>改名与移动 mv</li>
+<li>压缩与解压 tar</li>
+<li>查找文件 find</li>
+<li>查找文件内容 grep</li>
+<li>修改文件权限 chmod</li>
+</ul>
+</blockquote>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td style="text-align:left">根目录</td>
+</tr>
+<tr>
+<td>bin</td>
+<td style="text-align:left">放普通用户的命令</td>
+</tr>
+<tr>
+<td>boot</td>
+<td style="text-align:left">linux的核心文件 如mrb镜像 grub启动</td>
+</tr>
+<tr>
+<td>dev</td>
+<td style="text-align:left">硬件 如串口</td>
+</tr>
+<tr>
+<td>etc</td>
+<td style="text-align:left">系统配置文件 如config</td>
+</tr>
+<tr>
+<td>lib</td>
+<td style="text-align:left">存放动态库</td>
+</tr>
+<tr>
+<td>mnt</td>
+<td style="text-align:left">挂载不同设备</td>
+</tr>
+<tr>
+<td>proc</td>
+<td style="text-align:left">存放cpu 内存 硬件信息</td>
+</tr>
+<tr>
+<td>sbin</td>
+<td style="text-align:left">存放超级用户命令</td>
+</tr>
+<tr>
+<td>tmp</td>
+<td style="text-align:left">临时名录 放置临时信息</td>
+</tr>
+<tr>
+<td>usr</td>
+<td style="text-align:left">类似windows的program file   内有src(source),bin,sbin</td>
+</tr>
+<tr>
+<td>var</td>
+<td style="text-align:left">存放变动性信息 log spool cache</td>
+</tr>
+</tbody>
+</table>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/2011/02/22/Linux/quick_start_of_linux_programming/#more" class="waves-effect waves-light btn red lighten-2">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2011/02/22/Linux/quick_start_of_linux_programming/" data-id="cjow1orac001ilsayb58sh9db" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+        
+
+      <article id="post-Linux/quick_start_of_linux" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2011/02/22/Linux/quick_start_of_linux/">Quick start of Linux</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2011-02-22T08:00:00.000Z" itemprop="datePublished">Feb 22, 2011</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>This article recorded some useful fundamental commands that I came across at the beginning of my linux learning. </p>
+            
+          </div>
+
+          
+            <p class="article-more-link">
+              <a href="/2011/02/22/Linux/quick_start_of_linux/#more" class="waves-effect waves-light btn red lighten-2">
+                Read More
+                &nbsp;
+                <i class="fa fa-plus-circle"></i>
+              </a>
+            </p>
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2011/02/22/Linux/quick_start_of_linux/" data-id="cjow1orag001olsay47ten7p2" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

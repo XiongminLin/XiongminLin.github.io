@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>windows MFC 多线程编程 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="背景值班系统，需要使用多线程技术，一方面在发送信息失败的时候重复发送，一方面响应用户界面事件。本部分主要参考下面的方法:  多线程编程之一——问题提出多线程编程之二——MFC中的多线程开发多线程编程之三——线程间通讯多线程编程之四——线程的同步  by http://www.vckbase.com/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="windows MFC 多线程编程">
+<meta property="og:url" content="http://yoursite.com/2013/08/01/windows_MFC_parallel_programming/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="背景值班系统，需要使用多线程技术，一方面在发送信息失败的时候重复发送，一方面响应用户界面事件。本部分主要参考下面的方法:  多线程编程之一——问题提出多线程编程之二——MFC中的多线程开发多线程编程之三——线程间通讯多线程编程之四——线程的同步  by http://www.vckbase.com/">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2015-03-15T20:51:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="windows MFC 多线程编程">
+<meta name="twitter:description" content="背景值班系统，需要使用多线程技术，一方面在发送信息失败的时候重复发送，一方面响应用户界面事件。本部分主要参考下面的方法:  多线程编程之一——问题提出多线程编程之二——MFC中的多线程开发多线程编程之三——线程间通讯多线程编程之四——线程的同步  by http://www.vckbase.com/">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-windows_MFC_parallel_programming" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      windows MFC 多线程编程
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-08-02T05:11:00.000Z" itemprop="datePublished">Aug 01, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>值班系统，需要使用多线程技术，一方面在发送信息失败的时候重复发送，一方面响应用户界面事件。<br>本部分主要参考下面的方法:</p>
+<blockquote>
+<p><a href="http://www.vckbase.com/index.php/wv/1412.html" target="_blank" rel="noopener">多线程编程之一——问题提出</a><br><a href="http://www.vckbase.com/index.php/wv/1414.html" target="_blank" rel="noopener">多线程编程之二——MFC中的多线程开发</a><br><a href="http://www.vckbase.com/index.php/wv/1415.html" target="_blank" rel="noopener">多线程编程之三——线程间通讯</a><br><a href="http://www.vckbase.com/index.php/wv/1416.html" target="_blank" rel="noopener">多线程编程之四——线程的同步</a></p>
+<ul>
+<li>by <a href="http://www.vckbase.com/" target="_blank" rel="noopener">http://www.vckbase.com/</a></li>
+</ul>
+</blockquote>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/08/01/windows_MFC_parallel_programming/" data-id="cjow1or7w0003lsayrhx17zyn" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2013/08/02/windows_programming_CListCtrl/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">windows编程_CListCtrl的排序算法实现</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2013/08/01/windows_programming_HzToPy/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">windows编程_中文转拼音类：CHzToPy</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

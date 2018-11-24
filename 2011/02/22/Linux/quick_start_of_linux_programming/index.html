@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>quick start of linux programming | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="AbstractThis article recorded some useful fundamental commands that I came across at the beginning of my linux learning. 第一章 Linux 文件管理  目录结构 列表显示 ls 打开目录 cd 查看文档 cat 创建新文件或心目录 删除命令 rm 改名与移动 mv 压缩与解压">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="quick start of linux programming">
+<meta property="og:url" content="http://yoursite.com/2011/02/22/Linux/quick_start_of_linux_programming/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="AbstractThis article recorded some useful fundamental commands that I came across at the beginning of my linux learning. 第一章 Linux 文件管理  目录结构 列表显示 ls 打开目录 cd 查看文档 cat 创建新文件或心目录 删除命令 rm 改名与移动 mv 压缩与解压">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2015-05-04T22:11:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="quick start of linux programming">
+<meta name="twitter:description" content="AbstractThis article recorded some useful fundamental commands that I came across at the beginning of my linux learning. 第一章 Linux 文件管理  目录结构 列表显示 ls 打开目录 cd 查看文档 cat 创建新文件或心目录 删除命令 rm 改名与移动 mv 压缩与解压">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-Linux/quick_start_of_linux_programming" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      quick start of linux programming
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2011-02-22T08:00:00.000Z" itemprop="datePublished">Feb 22, 2011</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>This article recorded some useful fundamental commands that I came across at the beginning of my linux learning.</p>
+<h1 id="第一章-Linux-文件管理"><a href="#第一章-Linux-文件管理" class="headerlink" title="第一章 Linux 文件管理"></a>第一章 Linux 文件管理</h1><blockquote>
+<ul>
+<li>目录结构</li>
+<li>列表显示 ls</li>
+<li>打开目录 cd</li>
+<li>查看文档 cat</li>
+<li>创建新文件或心目录</li>
+<li>删除命令 rm</li>
+<li>改名与移动 mv</li>
+<li>压缩与解压 tar</li>
+<li>查找文件 find</li>
+<li>查找文件内容 grep</li>
+<li>修改文件权限 chmod</li>
+</ul>
+</blockquote>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td style="text-align:left">根目录</td>
+</tr>
+<tr>
+<td>bin</td>
+<td style="text-align:left">放普通用户的命令</td>
+</tr>
+<tr>
+<td>boot</td>
+<td style="text-align:left">linux的核心文件 如mrb镜像 grub启动</td>
+</tr>
+<tr>
+<td>dev</td>
+<td style="text-align:left">硬件 如串口</td>
+</tr>
+<tr>
+<td>etc</td>
+<td style="text-align:left">系统配置文件 如config</td>
+</tr>
+<tr>
+<td>lib</td>
+<td style="text-align:left">存放动态库</td>
+</tr>
+<tr>
+<td>mnt</td>
+<td style="text-align:left">挂载不同设备</td>
+</tr>
+<tr>
+<td>proc</td>
+<td style="text-align:left">存放cpu 内存 硬件信息</td>
+</tr>
+<tr>
+<td>sbin</td>
+<td style="text-align:left">存放超级用户命令</td>
+</tr>
+<tr>
+<td>tmp</td>
+<td style="text-align:left">临时名录 放置临时信息</td>
+</tr>
+<tr>
+<td>usr</td>
+<td style="text-align:left">类似windows的program file   内有src(source),bin,sbin</td>
+</tr>
+<tr>
+<td>var</td>
+<td style="text-align:left">存放变动性信息 log spool cache</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<p>绝对路径: 以/起始 如/home/user1/abc.txt<br>相对路径: user1/abc.txt</p>
+<h2 id="列表显示-ls"><a href="#列表显示-ls" class="headerlink" title="列表显示 ls"></a>列表显示 ls</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ls -l</td>
+<td style="text-align:left">详细列出所有文件, 一般用 ll 也可以</td>
+</tr>
+<tr>
+<td>ls -a</td>
+<td style="text-align:left">显示所有文件 包括隐藏文件</td>
+</tr>
+<tr>
+<td>ll -h</td>
+<td style="text-align:left">-h 表示show in a human-friend way</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>linux中 所有以点开头的文件都是隐藏的文件</li>
+<li>TAB 敲两次 出现所有可能结果</li>
+<li>Linux命令执行机制：翻译+执行 如ls  系统先执行ls=ls –color 然后在执行ls –color   alias ls=ls可设置回来<br>再比如 alias ubuntu=ls 这样执行ubuntu这条命令时 系统会把ubuntu解释成ls</li>
+<li>查找某一命令的详解，使用man，比如 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ man ls</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ll -h</span><br><span class="line">total 228K</span><br><span class="line">drwx------ 10 lin lin 4.0K Mar 22 15:29 ./</span><br><span class="line">drwxrwxr-x  4 lin lin 4.0K Mar  5 14:57 ../</span><br><span class="line">drwx------  2 lin lin 4.0K Mar 21 15:21 android/</span><br><span class="line">-rw-rw-r--  1 lin lin  18K Mar 17 16:17 break_vigenere.md</span><br><span class="line">drwxrwxr-x  2 lin lin 4.0K Mar 19 22:56 computer_system/</span><br><span class="line">-rw-------  1 lin lin  463 Mar  5 14:13 France.md</span><br><span class="line">drwx------  2 lin lin 4.0K Mar  5 14:13 French_Learning/</span><br></pre></td></tr></table></figure>
+<p>第一列：d表示目录 -表示文件<br>第二到第九十列：r读 w写 x执行 -表示对应的rwx无权限   第一个rwx表示文件所有者权限，第二个表示组权限 第三个表示其他用户权限<br>第一个lin表示用户 第二个lin表示用户所在组 后面数字表示文件或是目录大小</p>
+<h2 id="打开目录-cd"><a href="#打开目录-cd" class="headerlink" title="打开目录 cd"></a>打开目录 cd</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cd</td>
+<td style="text-align:left">回到home目录</td>
+</tr>
+<tr>
+<td>cd ..</td>
+<td style="text-align:left">回到上层目录</td>
+</tr>
+<tr>
+<td>cd -</td>
+<td style="text-align:left">回到之前所在目录</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td style="text-align:left">显示当前目录</td>
+</tr>
+</tbody>
+</table>
+<p>./  表示当前目录<br>../ 表示上一级目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ pwd</span><br><span class="line">/home/lin</span><br><span class="line">$ cd /usr/local/MATLAB/</span><br><span class="line">$ pwd</span><br><span class="line">/usr/local/MATLAB/</span><br><span class="line">$ cd -</span><br><span class="line">/home/lin</span><br><span class="line">$ pwd</span><br><span class="line">/home/lin</span><br><span class="line">$ cd ..</span><br><span class="line">$ pwd</span><br><span class="line">/home</span><br><span class="line">$ cd</span><br><span class="line">$ pwd</span><br><span class="line">/home/lin</span><br></pre></td></tr></table></figure>
+<h2 id="查看文档-cat"><a href="#查看文档-cat" class="headerlink" title="查看文档 cat"></a>查看文档 cat</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat filename</td>
+<td style="text-align:left">在终端查看文档</td>
+</tr>
+<tr>
+<td>head filename</td>
+<td style="text-align:left">在终端查看文档，前十行</td>
+</tr>
+<tr>
+<td>head -n filename</td>
+<td style="text-align:left">在终端查看文档，前n行</td>
+</tr>
+<tr>
+<td>tail filename</td>
+<td style="text-align:left">在终端查看文档，后十行</td>
+</tr>
+<tr>
+<td>tail -n filename</td>
+<td style="text-align:left">在终端查看文档，后n行</td>
+</tr>
+<tr>
+<td>cat filename_1 &gt;&gt; filename_2</td>
+<td style="text-align:left">将文档输出至filename_2的末尾</td>
+</tr>
+<tr>
+<td>cat filename_1 &gt; filename_2</td>
+<td style="text-align:left">将文档输出至filename_2(覆盖)</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ head -2 hello.txt </span><br><span class="line">hello, this is line 1</span><br><span class="line">hello, this is line 2</span><br><span class="line"></span><br><span class="line">$ tail -2 hello.txt </span><br><span class="line">hello, this is line 11</span><br><span class="line">hello, this is line 12</span><br></pre></td></tr></table></figure>
+<h2 id="创建新文件或新文件夹"><a href="#创建新文件或新文件夹" class="headerlink" title="创建新文件或新文件夹"></a>创建新文件或新文件夹</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>touch filename</td>
+<td style="text-align:left">创建名为filename的新文档</td>
+</tr>
+<tr>
+<td>mkdir foldername</td>
+<td style="text-align:left">创建名为foldername的新文件夹</td>
+</tr>
+<tr>
+<td>mkdir -p folder/new_folder1/new_folder2</td>
+<td style="text-align:left">创建多级新文件夹</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir hello</span><br><span class="line">$ cd hello/</span><br><span class="line">$ pwd</span><br><span class="line">/home/lin/Dropbox/hello</span><br><span class="line">$ ls</span><br><span class="line">$ mkdir -p hello_01/hello_02</span><br><span class="line">$ ls</span><br><span class="line">hello_01</span><br><span class="line">$ ls hello_01/</span><br><span class="line">hello_02</span><br></pre></td></tr></table></figure>
+<h2 id="删除命令-rm"><a href="#删除命令-rm" class="headerlink" title="删除命令 rm"></a>删除命令 rm</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rm filename</td>
+<td style="text-align:left">删除某一文件</td>
+</tr>
+<tr>
+<td>rm -r foldername  或rmdir</td>
+<td style="text-align:left">删除某一文件夹</td>
+</tr>
+<tr>
+<td>rm *</td>
+<td style="text-align:left">删除当前目录下所有文件</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ ll</span><br><span class="line">total 24</span><br><span class="line">drwxrwxr-x 3 lin lin 4096 Mar 22 15:59 ./</span><br><span class="line">drwxrwxr-x 3 lin lin 4096 Mar 22 15:59 ../</span><br><span class="line">drwxrwxr-x 2 lin lin 4096 Mar 22 15:59 hello_02/</span><br><span class="line">$ rm -r hello_02/</span><br><span class="line">$ ll</span><br><span class="line">total 16</span><br><span class="line">drwxrwxr-x 2 lin lin 4096 Mar 22 16:04 ./</span><br><span class="line">drwxrwxr-x 3 lin lin 4096 Mar 22 15:59 ../</span><br></pre></td></tr></table></figure>
+<h2 id="改名与移动-mv"><a href="#改名与移动-mv" class="headerlink" title="改名与移动 mv"></a>改名与移动 mv</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mv filename_1 filename_2</td>
+<td style="text-align:left">将filename_1文件重命名为filename_2</td>
+</tr>
+<tr>
+<td>mv filename_1 ../filename_2</td>
+<td style="text-align:left">将filename_1文件移动至上层目录并重命名为filename_2</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ touch hello.txt</span><br><span class="line">$ mv hello.txt ../hello_02.txt </span><br><span class="line">$ ls hello.txt</span><br><span class="line">ls: cannot access hello.txt: No such file or directory</span><br><span class="line">$ ls ../hello_02.txt </span><br><span class="line">../hello_02.txt</span><br><span class="line">$ mv ../hello_02.txt ./hello.txt</span><br><span class="line">$ ls ../hello_02.txt </span><br><span class="line">ls: cannot access ../hello_02.txt: No such file or directory</span><br><span class="line">$ ls hello.txt </span><br><span class="line">hello.txt</span><br></pre></td></tr></table></figure>
+<h2 id="压缩与解压-tar"><a href="#压缩与解压-tar" class="headerlink" title="压缩与解压 tar"></a>压缩与解压 tar</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tar -zcvf {.tgz-file} {files}</td>
+<td style="text-align:left">将{file}压缩为{.tgz-file}，c代表compress</td>
+</tr>
+<tr>
+<td>tar -zxvf {.tgz-fiile}</td>
+<td style="text-align:left">将{.tgz-file} 解压到当前文件夹</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ls AITR-720.pdf </span><br><span class="line">AITR-720.pdf</span><br><span class="line">$ tar -zcvf test.tar.gz AITR-720.pdf </span><br><span class="line">$ ls test.tar.gz </span><br><span class="line">test.tar.gz</span><br></pre></td></tr></table></figure>
+<h2 id="查找文件-find"><a href="#查找文件-find" class="headerlink" title="查找文件 find"></a>查找文件 find</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>find {folder} -name “<em>string</em>“</td>
+<td style="text-align:left">在{folder}目录下查找文件名含有string的文件</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ find ./ -name &quot;*android*&quot;</span><br><span class="line">./android</span><br><span class="line">./android/android_forum.md</span><br><span class="line">./android/android_theory.md</span><br></pre></td></tr></table></figure>
+<h2 id="查找文件内容-grep"><a href="#查找文件内容-grep" class="headerlink" title="查找文件内容 grep"></a>查找文件内容 grep</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grep “string” ./*</td>
+<td style="text-align:left">在当前目录下（不含子目录）查找含有string内容的文件</td>
+</tr>
+<tr>
+<td>grep -r “string” ./*</td>
+<td style="text-align:left">在当前目录下（含子目录）查找含有string内容的文件</td>
+</tr>
+<tr>
+<td>grep -rn “string” ./*</td>
+<td style="text-align:left">在当前目录下（含子目录）查找含有string内容的文件,并打印行号</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ grep -rn &quot;hello&quot; test/*</span><br><span class="line">1:this is an example of grep, i want to find &quot;hello&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="修改文件权限-chmod"><a href="#修改文件权限-chmod" class="headerlink" title="修改文件权限 chmod"></a>修改文件权限 chmod</h2><p>这里先复习以下ls命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ ll</span><br><span class="line">total 12</span><br><span class="line">drwxrwxr-x 2 lin lin 4096 Mar 22 22:24 ./</span><br><span class="line">drwxr-xr-x 4 lin lin 4096 Mar 22 22:25 ../</span><br><span class="line">-rw-rw-r-- 1 lin lin   66 Mar 22 22:24 hello.txt</span><br></pre></td></tr></table></figure></p>
+<p>第二到第九十列：r读 w写 x执行 -表示对应的rwx无权限   第一个rwx表示文件所有者权限，第二个表示组权限 第三个表示其他用户权限。若用二进制加以区分不同的权限的话，111（即十进制的7）代表可读可写可执行，110（即十进制的6）代表可读可写但是不可执行，以此类推。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod 权限值 文件名</td>
+<td style="text-align:left">给文件赋以相应的权限，如chmod 666 hello.txt,表示所有用户都可对hello.txt进行读写操作</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 666 hello.txt </span><br><span class="line">$ ll</span><br><span class="line">total 12</span><br><span class="line">drwxrwxr-x 2 lin lin 4096 Mar 22 22:24 ./</span><br><span class="line">drwxr-xr-x 4 lin lin 4096 Mar 22 22:25 ../</span><br><span class="line">-rw-rw-rw- 1 lin lin   66 Mar 22 22:24 hello.txt</span><br></pre></td></tr></table></figure>
+<h1 id="第二章-Linux-信息查询"><a href="#第二章-Linux-信息查询" class="headerlink" title="第二章 Linux 信息查询"></a>第二章 Linux 信息查询</h1><h2 id="查看计算机信息"><a href="#查看计算机信息" class="headerlink" title="查看计算机信息"></a>查看计算机信息</h2><h3 id="查看cpu信息：sudo-cat-proc-cpuinfo"><a href="#查看cpu信息：sudo-cat-proc-cpuinfo" class="headerlink" title="查看cpu信息：sudo cat /proc/cpuinfo"></a>查看cpu信息：sudo cat /proc/cpuinfo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cat /proc/cpuinfo</span><br><span class="line">[sudo] password for lin: </span><br><span class="line">processor	: 0</span><br><span class="line">vendor_id	: GenuineIntel</span><br><span class="line">cpu family	: 6</span><br><span class="line">model		: 23</span><br><span class="line">model name	: Intel(R) Core(TM)2 Duo CPU     T6670  @ 2.20GHz</span><br><span class="line">stepping	: 10</span><br><span class="line">microcode	: 0xa07</span><br><span class="line">cpu MHz		: 2201.000</span><br><span class="line">cache size	: 2048 KB</span><br><span class="line">physical id	: 0</span><br><span class="line">siblings	: 2</span><br><span class="line">core id		: 0</span><br><span class="line">cpu cores	: 2</span><br><span class="line">apicid		: 0</span><br><span class="line">initial apicid	: 0</span><br><span class="line">fdiv_bug	: no</span><br><span class="line">f00f_bug	: no</span><br><span class="line">coma_bug	: no</span><br><span class="line">fpu		: yes</span><br><span class="line">fpu_exception	: yes</span><br><span class="line">cpuid level	: 13</span><br><span class="line">wp		: yes</span><br><span class="line">flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm sse4_1 xsave lahf_lm ida dtherm tpr_shadow vnmi flexpriority</span><br><span class="line">bogomips	: 4400.21</span><br><span class="line">clflush size	: 64</span><br><span class="line">cache_alignment	: 64</span><br><span class="line">address sizes	: 36 bits physical, 48 bits virtual</span><br><span class="line">power management:</span><br><span class="line"></span><br><span class="line">processor	: 1</span><br><span class="line">vendor_id	: GenuineIntel</span><br><span class="line">cpu family	: 6</span><br><span class="line">model		: 23</span><br><span class="line">model name	: Intel(R) Core(TM)2 Duo CPU     T6670  @ 2.20GHz</span><br><span class="line">stepping	: 10</span><br><span class="line">microcode	: 0xa07</span><br><span class="line">cpu MHz		: 1200.000</span><br><span class="line">cache size	: 2048 KB</span><br><span class="line">physical id	: 0</span><br><span class="line">siblings	: 2</span><br><span class="line">core id		: 1</span><br><span class="line">cpu cores	: 2</span><br><span class="line">apicid		: 1</span><br><span class="line">initial apicid	: 1</span><br><span class="line">fdiv_bug	: no</span><br><span class="line">f00f_bug	: no</span><br><span class="line">coma_bug	: no</span><br><span class="line">fpu		: yes</span><br><span class="line">fpu_exception	: yes</span><br><span class="line">cpuid level	: 13</span><br><span class="line">wp		: yes</span><br><span class="line">flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm sse4_1 xsave lahf_lm ida dtherm tpr_shadow vnmi flexpriority</span><br><span class="line">bogomips	: 4400.21</span><br><span class="line">clflush size	: 64</span><br><span class="line">cache_alignment	: 64</span><br><span class="line">address sizes	: 36 bits physical, 48 bits virtual</span><br><span class="line">power management:</span><br></pre></td></tr></table></figure>
+<h3 id="查看内存：sudo-cat-proc-meminfo"><a href="#查看内存：sudo-cat-proc-meminfo" class="headerlink" title="查看内存：sudo cat /proc/meminfo"></a>查看内存：sudo cat /proc/meminfo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">$ sudo cat /proc/meminfo</span><br><span class="line">MemTotal:        4148372 kB</span><br><span class="line">MemFree:         2393300 kB</span><br><span class="line">MemAvailable:    2967936 kB</span><br><span class="line">Buffers:          108336 kB</span><br><span class="line">Cached:           678276 kB</span><br><span class="line">SwapCached:            0 kB</span><br><span class="line">Active:          1135536 kB</span><br><span class="line">Inactive:         434344 kB</span><br><span class="line">Active(anon):     793392 kB</span><br><span class="line">Inactive(anon):    41728 kB</span><br><span class="line">Active(file):     342144 kB</span><br><span class="line">Inactive(file):   392616 kB</span><br><span class="line">Unevictable:         672 kB</span><br><span class="line">Mlocked:             672 kB</span><br><span class="line">HighTotal:       3284648 kB</span><br><span class="line">HighFree:        1934244 kB</span><br><span class="line">LowTotal:         863724 kB</span><br><span class="line">LowFree:          459056 kB</span><br><span class="line">SwapTotal:       4193276 kB</span><br><span class="line">SwapFree:        4193276 kB</span><br><span class="line">Dirty:               108 kB</span><br><span class="line">Writeback:             0 kB</span><br><span class="line">AnonPages:        783936 kB</span><br><span class="line">Mapped:           354852 kB</span><br><span class="line">Shmem:             51856 kB</span><br><span class="line">Slab:              80168 kB</span><br><span class="line">SReclaimable:      59848 kB</span><br><span class="line">SUnreclaim:        20320 kB</span><br><span class="line">KernelStack:        3736 kB</span><br><span class="line">PageTables:        12036 kB</span><br><span class="line">NFS_Unstable:          0 kB</span><br><span class="line">Bounce:                0 kB</span><br><span class="line">WritebackTmp:          0 kB</span><br><span class="line">CommitLimit:     6267460 kB</span><br><span class="line">Committed_AS:    4394972 kB</span><br><span class="line">VmallocTotal:     122880 kB</span><br><span class="line">VmallocUsed:       52848 kB</span><br><span class="line">VmallocChunk:      38164 kB</span><br><span class="line">AnonHugePages:    231424 kB</span><br><span class="line">HugePages_Total:       0</span><br><span class="line">HugePages_Free:        0</span><br><span class="line">HugePages_Rsvd:        0</span><br><span class="line">HugePages_Surp:        0</span><br><span class="line">Hugepagesize:       2048 kB</span><br><span class="line">DirectMap4k:      108536 kB</span><br><span class="line">DirectMap2M:      800768 kB</span><br></pre></td></tr></table></figure>
+<h3 id="查看分区：sudo-fdisk-l"><a href="#查看分区：sudo-fdisk-l" class="headerlink" title="查看分区：sudo fdisk -l"></a>查看分区：sudo fdisk -l</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ sudo fdisk -l</span><br><span class="line"></span><br><span class="line">Disk /dev/sda: 320.1 GB, 320072933376 bytes</span><br><span class="line">255 heads, 63 sectors/track, 38913 cylinders, total 625142448 sectors</span><br><span class="line">Units = sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disk identifier: 0x000bd319</span><br><span class="line"></span><br><span class="line">   Device Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sda1   *        2048   616753151   308375552   83  Linux</span><br><span class="line">/dev/sda2       616755198   625141759     4193281    5  Extended</span><br><span class="line">/dev/sda5       616755200   625141759     4193280   82  Linux swap / Solaris</span><br></pre></td></tr></table></figure>
+<h3 id="查看显卡：lspci"><a href="#查看显卡：lspci" class="headerlink" title="查看显卡：lspci"></a>查看显卡：lspci</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ lspci</span><br><span class="line">00:00.0 Host bridge: NVIDIA Corporation MCP79 Host Bridge (rev b1)</span><br><span class="line">00:00.1 RAM memory: NVIDIA Corporation MCP79 Memory Controller (rev b1)</span><br><span class="line">00:03.0 ISA bridge: NVIDIA Corporation MCP79 LPC Bridge (rev b2)</span><br><span class="line">00:03.1 RAM memory: NVIDIA Corporation MCP79 Memory Controller (rev b1)</span><br><span class="line">00:03.2 SMBus: NVIDIA Corporation MCP79 SMBus (rev b1)</span><br><span class="line">00:03.3 RAM memory: NVIDIA Corporation MCP79 Memory Controller (rev b1)</span><br><span class="line">00:03.5 Co-processor: NVIDIA Corporation MCP79 Co-processor (rev b1)</span><br><span class="line">00:04.0 USB controller: NVIDIA Corporation MCP79 OHCI USB 1.1 Controller (rev b1)</span><br><span class="line">00:04.1 USB controller: NVIDIA Corporation MCP79 EHCI USB 2.0 Controller (rev b1)</span><br><span class="line">00:06.0 USB controller: NVIDIA Corporation MCP79 OHCI USB 1.1 Controller (rev b1)</span><br><span class="line">00:06.1 USB controller: NVIDIA Corporation MCP79 EHCI USB 2.0 Controller (rev b1)</span><br><span class="line">00:08.0 Audio device: NVIDIA Corporation MCP79 High Definition Audio (rev b1)</span><br><span class="line">00:09.0 PCI bridge: NVIDIA Corporation MCP79 PCI Bridge (rev b1)</span><br><span class="line">00:0b.0 SATA controller: NVIDIA Corporation MCP79 AHCI Controller (rev b1)</span><br><span class="line">00:0c.0 PCI bridge: NVIDIA Corporation MCP79 PCI Express Bridge (rev b1)</span><br><span class="line">00:15.0 PCI bridge: NVIDIA Corporation MCP79 PCI Express Bridge (rev b1)</span><br><span class="line">00:16.0 PCI bridge: NVIDIA Corporation MCP79 PCI Express Bridge (rev b1)</span><br><span class="line">02:00.0 VGA compatible controller: NVIDIA Corporation GT218M [GeForce 310M] (rev a2)</span><br><span class="line">02:00.1 Audio device: NVIDIA Corporation High Definition Audio Controller (rev a1)</span><br><span class="line">03:00.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller (rev 03)</span><br><span class="line">04:00.0 Network controller: Qualcomm Atheros AR9285 Wireless Network Adapter (PCI-Express) (rev 01)</span><br></pre></td></tr></table></figure>
+<h3 id="查看USB接口：lsusb"><a href="#查看USB接口：lsusb" class="headerlink" title="查看USB接口：lsusb"></a>查看USB接口：lsusb</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ lsusb</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 004 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line">Bus 001 Device 003: ID 04f2:b071 Chicony Electronics Co., Ltd 2.0M UVC Webcam / CNF7129</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 003 Device 002: ID 046d:c52b Logitech, Inc. Unifying Receiver</span><br><span class="line">Bus 003 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br></pre></td></tr></table></figure>
+<h3 id="查看驱动：lsmod"><a href="#查看驱动：lsmod" class="headerlink" title="查看驱动：lsmod"></a>查看驱动：lsmod</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">$ lsmod</span><br><span class="line">Module                  Size  Used by</span><br><span class="line">psmouse                91236  0 </span><br><span class="line">pci_stub               12550  1 </span><br><span class="line">vboxpci                22896  0 </span><br><span class="line">vboxnetadp             25636  0 </span><br><span class="line">vboxnetflt             27291  0 </span><br><span class="line">vboxdrv               300552  3 vboxnetadp,vboxnetflt,vboxpci</span><br><span class="line">bnep                   18895  2 </span><br><span class="line">rfcomm                 58045  0 </span><br><span class="line">bluetooth             391253  10 bnep,rfcomm</span><br><span class="line">6lowpan_iphc           18262  1 bluetooth</span><br><span class="line">nvidia               9704627  55 </span><br><span class="line">uvcvideo               71465  0 </span><br><span class="line">videobuf2_vmalloc      13048  1 uvcvideo</span><br><span class="line">videobuf2_memops       13170  1 videobuf2_vmalloc</span><br><span class="line">videobuf2_core         48344  1 uvcvideo</span><br><span class="line">v4l2_common            15132  1 videobuf2_core</span><br><span class="line">videodev              131265  3 uvcvideo,v4l2_common,videobuf2_core</span><br><span class="line">media                  20899  2 uvcvideo,videodev</span><br><span class="line">mxm_wmi                12893  0 </span><br><span class="line">snd_hda_codec_realtek    70241  1 </span><br><span class="line">snd_hda_codec_generic    62873  1 snd_hda_codec_realtek</span><br><span class="line">snd_hda_codec_hdmi     46396  4 </span><br><span class="line">arc4                   12536  2 </span><br><span class="line">ath9k                 122222  0 </span><br><span class="line">ath9k_common           24878  1 ath9k</span><br><span class="line">ath9k_hw              430710  2 ath9k_common,ath9k</span><br><span class="line">ath                    24182  3 ath9k_common,ath9k,ath9k_hw</span><br><span class="line">mac80211              559049  1 ath9k</span><br><span class="line">coretemp               13201  0 </span><br><span class="line">kvm_intel             137114  0 </span><br><span class="line">snd_hda_intel          29285  5 </span><br><span class="line">kvm                   388518  1 kvm_intel</span><br><span class="line">snd_hda_controller     29944  1 snd_hda_intel</span><br><span class="line">snd_hda_codec         120371  5 snd_hda_codec_realtek,snd_hda_codec_hdmi,snd_hda_codec_generic,snd_hda_intel,snd_hda_controller</span><br><span class="line">snd_hwdep              13272  1 snd_hda_codec</span><br><span class="line">snd_pcm                87194  4 snd_hda_codec_hdmi,snd_hda_codec,snd_hda_intel,snd_hda_controller</span><br><span class="line">snd_seq_midi           13324  0 </span><br><span class="line">joydev                 17113  0 </span><br><span class="line">snd_seq_midi_event     14475  1 snd_seq_midi</span><br><span class="line">snd_rawmidi            25722  1 snd_seq_midi</span><br><span class="line">cfg80211              418839  4 ath,ath9k_common,ath9k,mac80211</span><br><span class="line">snd_seq                56592  2 snd_seq_midi_event,snd_seq_midi</span><br><span class="line">snd_seq_device         14137  3 snd_seq,snd_rawmidi,snd_seq_midi</span><br><span class="line">serio_raw              13251  0 </span><br><span class="line">snd_timer              28648  2 snd_pcm,snd_seq</span><br><span class="line">snd                    66670  21 snd_hda_codec_realtek,snd_hwdep,snd_timer,snd_hda_codec_hdmi,snd_pcm,snd_seq,snd_rawmidi,snd_hda_codec_generic,snd_hda_codec,snd_hda_intel,snd_seq_device</span><br><span class="line">shpchp                 32143  0 </span><br><span class="line">soundcore              14599  2 snd,snd_hda_codec</span><br><span class="line">video                  19475  0 </span><br><span class="line">i2c_nforce2            13050  0 </span><br><span class="line">wmi                    18689  1 mxm_wmi</span><br><span class="line">asus_laptop            23914  0 </span><br><span class="line">sparse_keymap          13708  1 asus_laptop</span><br><span class="line">mac_hid                13059  0 </span><br><span class="line">input_polldev          14247  1 asus_laptop</span><br><span class="line">drm                   255469  3 nvidia</span><br><span class="line">parport_pc             32021  0 </span><br><span class="line">ppdev                  17391  0 </span><br><span class="line">lp                     13299  0 </span><br><span class="line">parport                40836  3 lp,ppdev,parport_pc</span><br><span class="line">hid_logitech_dj        18077  0 </span><br><span class="line">usbhid                 47035  0 </span><br><span class="line">hid                    95946  3 usbhid,hid_logitech_dj</span><br><span class="line">r8169                  61579  0 </span><br><span class="line">mii                    13654  1 r8169</span><br><span class="line">ahci                   25622  2 </span><br><span class="line">libahci                26970  1 ahci</span><br></pre></td></tr></table></figure>
+<h3 id="查看kernel版本：uname-r"><a href="#查看kernel版本：uname-r" class="headerlink" title="查看kernel版本：uname -r"></a>查看kernel版本：uname -r</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ uname -r</span><br><span class="line">3.16.0-31-generic</span><br><span class="line"></span><br><span class="line">$ cat /proc/version</span><br><span class="line">Linux version 3.16.0-31-generic (buildd@lamiak) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #41~14.04.1-Ubuntu SMP Wed Feb 11 19:30:43 UTC 2015</span><br><span class="line"></span><br><span class="line">$ uname -a</span><br><span class="line">Linux lin-K40IE 3.16.0-31-generic #41~14.04.1-Ubuntu SMP Wed Feb 11 19:30:43 UTC 2015 i686 i686 i686 GNU/Linux</span><br></pre></td></tr></table></figure>
+<h3 id="查看ubuntu版本：sudo-cat-etc-issue"><a href="#查看ubuntu版本：sudo-cat-etc-issue" class="headerlink" title="查看ubuntu版本：sudo cat /etc/issue"></a>查看ubuntu版本：sudo cat /etc/issue</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat /etc/issue</span><br><span class="line">Ubuntu 14.04.2 LTS \n \l</span><br></pre></td></tr></table></figure>
+<h3 id="查看目录容量-du-h-如du-home-h"><a href="#查看目录容量-du-h-如du-home-h" class="headerlink" title="查看目录容量 du -h 如du /home -h"></a>查看目录容量 du -h 如du /home -h</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>du -h</td>
+<td style="text-align:left">查看当前目录大小</td>
+</tr>
+<tr>
+<td>du {folder} -h</td>
+<td style="text-align:left">查看{foulder}文件夹的大小</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ du -h</span><br><span class="line">64K	./android</span><br><span class="line">36K	./Image_Processing</span><br><span class="line">24K	./Windows</span><br><span class="line">24K	./French_Learning</span><br><span class="line">68K	./Linux</span><br><span class="line">52K	./computer_system</span><br><span class="line">16K	./Programming</span><br><span class="line">16K	./matlab</span><br><span class="line">472K	.</span><br><span class="line"></span><br><span class="line">$ du ./Linux/ -h</span><br><span class="line">68K	./Linux/</span><br></pre></td></tr></table></figure>
+<h3 id="查看硬盘详细信息-hdparm"><a href="#查看硬盘详细信息-hdparm" class="headerlink" title="查看硬盘详细信息 hdparm"></a>查看硬盘详细信息 hdparm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ sudo fdisk -l</span><br><span class="line"></span><br><span class="line">Disk /dev/sda: 320.1 GB, 320072933376 bytes</span><br><span class="line">255 heads, 63 sectors/track, 38913 cylinders, total 625142448 sectors</span><br><span class="line">Units = sectors of 1 * 512 = 512 bytes</span><br><span class="line">Sector size (logical/physical): 512 bytes / 512 bytes</span><br><span class="line">I/O size (minimum/optimal): 512 bytes / 512 bytes</span><br><span class="line">Disk identifier: 0x000bd319</span><br><span class="line"></span><br><span class="line">   Device Boot      Start         End      Blocks   Id  System</span><br><span class="line">/dev/sda1   *        2048   616753151   308375552   83  Linux</span><br><span class="line">/dev/sda2       616755198   625141759     4193281    5  Extended</span><br><span class="line">/dev/sda5       616755200   625141759     4193280   82  Linux swap / Solaris</span><br><span class="line"></span><br><span class="line">$ sudo hdparm -tT /dev/sda1</span><br><span class="line"></span><br><span class="line">/dev/sda1:</span><br><span class="line"> Timing cached reads:   1970 MB in  2.00 seconds = 985.40 MB/sec</span><br></pre></td></tr></table></figure>
+<h3 id="查看系统信息：dmesg"><a href="#查看系统信息：dmesg" class="headerlink" title="查看系统信息：dmesg"></a>查看系统信息：dmesg</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ dmesg | more   ## | more 是分小段显示</span><br><span class="line">[    0.000000] Initializing cgroup subsys cpuset</span><br><span class="line">[    0.000000] Initializing cgroup subsys cpu</span><br><span class="line">[    0.000000] Initializing cgroup subsys cpuacct</span><br><span class="line">[    0.000000] Linux version 3.16.0-31-generic (buildd@lamiak) (gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ) #41~14.04.1-Ubuntu SMP Wed Feb 11 </span><br><span class="line">19:30:43 UTC 2015 (Ubuntu 3.16.0-31.41~14.04.1-generic 3.16.7-ckt5)</span><br><span class="line">[    0.000000] KERNEL supported cpus:</span><br><span class="line">[    0.000000]   Intel GenuineIntel</span><br></pre></td></tr></table></figure>
+<h3 id="查看本次开机运行时间：uptime"><a href="#查看本次开机运行时间：uptime" class="headerlink" title="查看本次开机运行时间：uptime"></a>查看本次开机运行时间：uptime</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ uptime</span><br><span class="line"> 22:34:02 up  1:00,  3 users,  load average: 0.63, 0.60, 0.52</span><br></pre></td></tr></table></figure>
+<h3 id="查看登录信息-last"><a href="#查看登录信息-last" class="headerlink" title="查看登录信息 last"></a>查看登录信息 last</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ last | more</span><br><span class="line">lin      pts/11       :0               Mon Mar 23 22:16   still logged in   </span><br><span class="line">lin      pts/0        :0               Mon Mar 23 22:15   still logged in   </span><br><span class="line">lin      :0           :0               Mon Mar 23 21:34   still logged in   </span><br><span class="line">reboot   system boot  3.16.0-31-generi Mon Mar 23 21:33 - 22:34  (01:01)    </span><br><span class="line">lin      pts/8        :0               Mon Mar 23 20:01 - down   (00:00)    </span><br><span class="line">lin      pts/8        :0               Mon Mar 23 19:51 - 20:01  (00:10)</span><br></pre></td></tr></table></figure>
+<h2 id="查看进程"><a href="#查看进程" class="headerlink" title="查看进程"></a>查看进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ ps aux | more</span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         1  0.0  0.0   4600  3752 ?        Ss   21:33   0:01 /sbin/init</span><br><span class="line">root         2  0.0  0.0      0     0 ?        S    21:33   0:00 [kthreadd]</span><br><span class="line">root         3  0.1  0.0      0     0 ?        S    21:33   0:07 [ksoftirqd/0]</span><br><span class="line">root         5  0.0  0.0      0     0 ?        S&lt;   21:33   0:00 [kworker/0:0H]</span><br><span class="line">root         7  0.4  0.0      0     0 ?        S    21:33   0:17 [rcu_sched]</span><br><span class="line">root         8  0.0  0.0      0     0 ?        S    21:33   0:00 [rcu_bh]</span><br><span class="line">lin       1766  0.0  0.0   4240   268 ?        Ss   21:34   0:00 //bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session</span><br><span class="line">lin       1778  0.1  0.0   5048  3276 ?        Ss   21:34   0:06 dbus-daemon --fork --session --address=unix:abstract=/tmp/dbus-C1wqkhxGdv</span><br><span class="line">lin       1789  0.0  0.0   4920  2076 ?        Ss   21:34   0:00 upstart-event-bridge</span><br></pre></td></tr></table></figure>
+<p>root and lin 都是用户， pid代表进程ID号，可以通过kill PID 来强制结束某个进程。<br>也可以用top命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$ top</span><br><span class="line"></span><br><span class="line">top - 22:39:00 up  1:05,  3 users,  load average: 0.82, 0.65, 0.55</span><br><span class="line">Tasks: 199 total,   2 running, 197 sleeping,   0 stopped,   0 zombie</span><br><span class="line">%Cpu(s):  2.9 us,  0.7 sy,  0.0 ni, 96.0 id,  0.2 wa,  0.0 hi,  0.3 si,  0.0 st</span><br><span class="line">KiB Mem:   4148372 total,  1954148 used,  2194224 free,    49900 buffers</span><br><span class="line">KiB Swap:  4193276 total,        0 used,  4193276 free.   692576 cached Mem</span><br><span class="line"></span><br><span class="line">  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND                                                                    </span><br><span class="line"> 2105 lin       20   0  448600 136012  75324 S   2.3  3.3   2:27.26 compiz                                                                     </span><br><span class="line"> 1122 root      20   0  350200 146452  47920 S   2.0  3.5   1:12.27 Xorg                                                                       </span><br><span class="line"> 2839 lin       20   0  145148  33336  27404 S   2.0  0.8   0:28.74 gnome-terminal                                                             </span><br><span class="line">   13 root      20   0       0      0      0 S   1.3  0.0   0:49.85 ksoftirqd/1                                                                </span><br><span class="line"> 2252 lin       20   0  454396 102052  41972 S   1.3  2.5   2:30.96 dropbox</span><br></pre></td></tr></table></figure></p>
+<h2 id="查看历史命令-history"><a href="#查看历史命令-history" class="headerlink" title="查看历史命令 history"></a>查看历史命令 history</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ history        #show history commands</span><br><span class="line">$ history -c    #clear history commands in terminal (就是没办法通过向上键得到上一条命令)</span><br></pre></td></tr></table></figure>
+<p>如果想history命令也输出时间戳，执行下面的命令，再执行history<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HISTTIMEFORMAT=&quot;%F %T &quot;</span><br></pre></td></tr></table></figure></p>
+<p>可以在终端用Ctrl＋R搜索历史命令，快速！<br>注:看到你想要的命令后按下左键或者右键,就可以在执行这条命令之前编辑它了］</p>
+<p>默认情况下，命令历史被储存在.bash_history文件中，即使$ history -c ，历史也还在。</p>
+<h1 id="Linux-用户管理"><a href="#Linux-用户管理" class="headerlink" title="Linux 用户管理"></a>Linux 用户管理</h1><h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><h2 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h2><h2 id="用户权限管理"><a href="#用户权限管理" class="headerlink" title="用户权限管理"></a>用户权限管理</h2><h2 id="用户组"><a href="#用户组" class="headerlink" title="用户组"></a>用户组</h2><h1 id="Linux-网络管理"><a href="#Linux-网络管理" class="headerlink" title="Linux 网络管理"></a>Linux 网络管理</h1><h2 id="ping命令"><a href="#ping命令" class="headerlink" title="ping命令"></a>ping命令</h2><h2 id="ifconfig-相关命令"><a href="#ifconfig-相关命令" class="headerlink" title="ifconfig 相关命令"></a>ifconfig 相关命令</h2><h3 id="配置网卡的IP地址"><a href="#配置网卡的IP地址" class="headerlink" title="配置网卡的IP地址"></a>配置网卡的IP地址</h3><h3 id="配置网卡的硬件地址"><a href="#配置网卡的硬件地址" class="headerlink" title="配置网卡的硬件地址"></a>配置网卡的硬件地址</h3><h3 id="将网卡禁用-ifconfig-eth0-down"><a href="#将网卡禁用-ifconfig-eth0-down" class="headerlink" title="将网卡禁用 　　ifconfig eth0 down"></a>将网卡禁用 　　ifconfig eth0 down</h3><h3 id="将网卡启用-ifconfig-eth0-up"><a href="#将网卡启用-ifconfig-eth0-up" class="headerlink" title="将网卡启用 　　ifconfig eth0 up"></a>将网卡启用 　　ifconfig eth0 up</h3><h3 id="不带参数的ifconfig-命令可以显示当前启动的网络接口"><a href="#不带参数的ifconfig-命令可以显示当前启动的网络接口" class="headerlink" title="不带参数的ifconfig 命令可以显示当前启动的网络接口"></a>不带参数的ifconfig 命令可以显示当前启动的网络接口</h3><h3 id="重启网卡"><a href="#重启网卡" class="headerlink" title="重启网卡"></a>重启网卡</h3><h2 id="route-命令"><a href="#route-命令" class="headerlink" title="route 命令"></a>route 命令</h2><h2 id="使用ssh"><a href="#使用ssh" class="headerlink" title="使用ssh"></a>使用ssh</h2><h1 id="Linux-编程基础"><a href="#Linux-编程基础" class="headerlink" title="Linux 编程基础"></a>Linux 编程基础</h1><h2 id="环境变量env的查看与修改"><a href="#环境变量env的查看与修改" class="headerlink" title="环境变量env的查看与修改"></a>环境变量env的查看与修改</h2><p>环境变量是一个具有特定名字的对象，它包含了一个或者多个应用程序所将使用到的信息。例如PATH，当要求系统运行一个程序而没有告诉它程序所在的完整路径时，系统除了在当前目录下面寻找此程序外，还应到PATH中指定的路径去找。用户通过设置环境变量，来更好的运行进程。<br>终端输入env查看所有的环境变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ env</span><br><span class="line">ORBIT_SOCKETDIR=/tmp/orbit-bearthur</span><br><span class="line">SSH_AGENT_PID=1486</span><br><span class="line">TERM=xterm</span><br><span class="line">SHELL=/bin/bash</span><br><span class="line">XDG_SESSION_COOKIE=c7856cbb97b9b99b583752ea00000007-1298359229.627829-1075292124</span><br><span class="line">GST_ID3V2_TAG_ENCODING=GBK:UTF-8:GB18030</span><br><span class="line">WINDOWID=81788933</span><br><span class="line">GNOME_KEYRING_CONTROL</span><br><span class="line">...(这里省略很多行)</span><br></pre></td></tr></table></figure>
+<p>有时候编译程序需要设置新的环境变量：export 环境变量=新值    //<br>比如： export DISPLAY =”localhost:0.0” 要加” “， 赋值时=两边不要加空格</p>
+<p>需求例子： 我按装好了matlab，但是每次想启动matlab的时候都要跑到/usr/local/MATLAB/R2010b/bin目录下去执行” ./matlab”,我想直接就敲matlab启动。<br>解决方法： 把matlab的路径添加到修改环境变量PATH。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ echo $PATH</span><br><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games</span><br><span class="line">$ matlab</span><br><span class="line">matlab: command not found</span><br><span class="line">$ export PATH=$PATH:&quot;/usr/local/MATLAB/R2010b/bin&quot;</span><br><span class="line">$ echo $PATH</span><br><span class="line">/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/MATLAB/R2010b/bin</span><br><span class="line">$ matlab</span><br></pre></td></tr></table></figure></p>
+<p>重启电脑，发现再执行matlab还是command not found，查看PATH发现PATH已经恢复为原来的值了。这是因为上面的修改只是临时修改，如果想永久修改环境变量的值。需要修改~/.bashrc文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ vi .bashrc      // 往最后一行添加export PATH=$PATH:&quot;/usr/local/MATLAB/R2010b/bin&quot;</span><br><span class="line">$ source .bashrc  //使生效</span><br></pre></td></tr></table></figure></p>
+<p>参考：<a href="http://qing.blog.sina.com.cn/1601285443/5f71ad43330008ae.html?sudaref=www.google.fr" target="_blank" rel="noopener">ubuntu 环境变量修改和恢复总结</a></p>
+<h2 id="使用Ctags快速查看代码"><a href="#使用Ctags快速查看代码" class="headerlink" title="使用Ctags快速查看代码"></a>使用Ctags快速查看代码</h2><h2 id="nano编辑器"><a href="#nano编辑器" class="headerlink" title="nano编辑器"></a>nano编辑器</h2><h2 id="vi编辑器"><a href="#vi编辑器" class="headerlink" title="vi编辑器"></a>vi编辑器</h2><p>编辑模式；命令模式；ex模式。<br>按esc键可以转到命令模式，按很多键可以转到编辑模式（比如i），按”：”可以进入ex模式, 前面带”:”的都是ex命令。</p>
+<h3 id="常见命令"><a href="#常见命令" class="headerlink" title="常见命令"></a>常见命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>vi hello.cpp</td>
+<td style="text-align:left">进入vi编辑器，编辑hello.cpp文件</td>
+</tr>
+<tr>
+<td>光标的移动</td>
+<td style="text-align:left">上下左右，enter键。或是：左（h）；右（l，空格键）；上（k）；下（j）</td>
+</tr>
+<tr>
+<td>:w</td>
+<td style="text-align:left">保存</td>
+</tr>
+<tr>
+<td>:q</td>
+<td style="text-align:left">退出</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td style="text-align:left">保存并退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td style="text-align:left">退出（不保存）</td>
+</tr>
+<tr>
+<td>i</td>
+<td style="text-align:left">在当前光标前插入字符</td>
+</tr>
+<tr>
+<td>a</td>
+<td style="text-align:left">在当前光标后插入字符</td>
+</tr>
+<tr>
+<td>A</td>
+<td style="text-align:left">跳到行末尾进行编辑</td>
+</tr>
+<tr>
+<td>o(小写字母o)</td>
+<td style="text-align:left">在当前行下面插入一行</td>
+</tr>
+<tr>
+<td>O(大写字母O)</td>
+<td style="text-align:left">在当前行上面插入一行</td>
+</tr>
+<tr>
+<td>x或nx（n代表数字）</td>
+<td style="text-align:left">从当前光标处往右删除（剪切）一个或n个字符</td>
+</tr>
+<tr>
+<td>D或dd</td>
+<td style="text-align:left">剪切整行</td>
+</tr>
+<tr>
+<td>Y或y</td>
+<td style="text-align:left">复制整行</td>
+</tr>
+<tr>
+<td>nyy (n代表数字)</td>
+<td style="text-align:left">向下复制n行，同理，向下剪切n行为ndd</td>
+</tr>
+<tr>
+<td>/hello 或?hello</td>
+<td style="text-align:left">搜索hello这个词，再按”n”向后查找，”N”向前查找</td>
+</tr>
+<tr>
+<td>u,U(大写：回退到进入本行后的所有操作)</td>
+<td style="text-align:left">撤销命令</td>
+</tr>
+<tr>
+<td>:se nu</td>
+<td style="text-align:left">查看行号（debug的时候经常用到，用来定位出错行）</td>
+</tr>
+<tr>
+<td>:se nonu</td>
+<td style="text-align:left">隐藏行号</td>
+</tr>
+<tr>
+<td>:%s/hello/bye/g</td>
+<td style="text-align:left">把所有的”hello”都变成”bye”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="gcc编译器"><a href="#gcc编译器" class="headerlink" title="gcc编译器"></a>gcc编译器</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vi max.c</span><br><span class="line">$ gcc -c max.c</span><br><span class="line">$ ls max.o</span><br><span class="line">max.o</span><br></pre></td></tr></table></figure>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ gcc max.o -o run</span><br><span class="line">$ ll run</span><br><span class="line">-rwxrwxr-x 1 lin lin 7394 May  5 00:02 run*</span><br></pre></td></tr></table></figure>
+<h3 id="静态链接库的编译链接"><a href="#静态链接库的编译链接" class="headerlink" title="静态链接库的编译链接"></a>静态链接库的编译链接</h3><p>静态链接库在链接后，被引用的代码讲被复制到最终的可执行文件中，可脱离函数库直接运行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">bear@bear-K40IE:~/program/sec$ ls</span><br><span class="line">add.c add.o first1.c lib src</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ar rv libtools.a add.o</span><br><span class="line">ar: creating libtools.a</span><br><span class="line">a – add.o</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ls</span><br><span class="line">add.c add.o first1.c lib libtools.a src</span><br><span class="line">bear@bear-K40IE:~/program/sec$ vi sub.c</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ls</span><br><span class="line">add.c add.o first1.c lib libtools.a src sub.c</span><br><span class="line">bear@bear-K40IE:~/program/sec$ gcc -c -O sub.c</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ls</span><br><span class="line">add.c add.o first1.c lib libtools.a src sub.c sub.o</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ar rv libtools.a sub.o</span><br><span class="line">a - sub.o</span><br><span class="line">bear@bear-K40IE:~/program/sec$ mv libtools.a ./lib</span><br><span class="line"></span><br><span class="line">bear@bear-K40IE:~/program/sec/lib$ vi my.h</span><br><span class="line">bear@bear-K40IE:~/program/sec/lib$ ls</span><br><span class="line">libtools.a my.h</span><br><span class="line">bear@bear-K40IE:~/program/sec$ vi first1.c</span><br><span class="line">bear@bear-K40IE:~/program/sec$ gcc -c -I./ first1.c</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ls</span><br><span class="line">add.c add.o first1.c first1.o lib my.h src sub.c sub.o</span><br><span class="line">bear@bear-K40IE:~/program/sec$ gcc -c first1.c</span><br><span class="line">ear@bear-K40IE:~/program/sec$ gcc first1.o -L./lib -ltools -o first1</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ls</span><br><span class="line">add.c add.o first1 first1.c first1.o lib my.h src sub.c sub.o</span><br><span class="line">bear@bear-K40IE:~/program/sec$ ./first1</span><br><span class="line">VALUE+10=110</span><br><span class="line">VALUE-10=90</span><br><span class="line">bear@bear-K40IE:~/program/sec$ gcc first1.o -o first1</span><br><span class="line">first1.o: In function `main&apos;:</span><br><span class="line">first1.c:(.text+0x19): undefined reference to `add&apos;</span><br><span class="line">first1.c:(.text+0x48): undefined reference to `sub&apos;</span><br><span class="line">collect2: ld returned 1 exit status</span><br></pre></td></tr></table></figure>
+<p>这是add.c文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int add(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">  return a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是sub.c文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int sub(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">  return a-b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是first1.c文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&quot;my.h&quot;</span><br><span class="line">main ()</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">  fprintf(stderr,&quot;VALUE+10=%d\n&quot;,add(VALUE ,10));</span><br><span class="line">  fprintf(stderr,&quot;VALUE-10=%d\n&quot;,sub(VALUE ,10));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="动态链接库的编译链接"><a href="#动态链接库的编译链接" class="headerlink" title="动态链接库的编译链接"></a>动态链接库的编译链接</h3><p>动态链接库在内存中只包含一份可执行的映像，所有链接到动态链接库的程序都共享这份映像！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">bear@bear-K40IE:~/program/third$ vi first.c</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc -fPIC -c first.c</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o</span><br><span class="line">bear@bear-K40IE:~/program/third$ file first.o</span><br><span class="line">first.o: ELF 32-bit LSB relocatable, Intel 80386, version 1 (SYSV), not stripped</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc -shared -o libabc.so first.o</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o libabc.so</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o libabc.so</span><br><span class="line">bear@bear-K40IE:~/program/third$ vi hello.c</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o libabc.so hello.c</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc -c hello.c -O</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o libabc.so hello.c hello.o</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc hello.o -L./ -labc -s hello</span><br><span class="line">gcc: hello: No such file or directory</span><br><span class="line">bear@bear-K40IE:~/program/third$ echo LD_LIBRARY_PATH</span><br><span class="line">LD_LIBRARY_PATH</span><br><span class="line">bear@bear-K40IE:~/program/third$ export LD_LIBRATY_PATH=./</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc hello.o -L./ -labc -s hello</span><br><span class="line">gcc: hello: No such file or directory</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc hello.o -labc -s hello #少了个-o</span><br><span class="line">gcc: hello: No such file or directory</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o libabc.so hello.c hello.o</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc hello.o -labc -s -o hello</span><br><span class="line">/usr/bin/ld: cannot find -labc</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o libabc.so hello.c hello.o</span><br><span class="line">bear@bear-K40IE:~/program/third$ echo LD_LIBRARY_PATH #少了个$</span><br><span class="line">LD_LIBRARY_PATH</span><br><span class="line">bear@bear-K40IE:~/program/third$ export LD_LIBRATY_PATH=&quot;./&quot;</span><br><span class="line">bear@bear-K40IE:~/program/third$ echo LD_LIBRARY_PATH</span><br><span class="line">LD_LIBRARY_PATH</span><br><span class="line">bear@bear-K40IE:~/program/third$ echo $LD_LIBRARY_PATH</span><br><span class="line"></span><br><span class="line">bear@bear-K40IE:~/program/third$ export LD_LIBRATY_PATH=./ #注意拼写啊！</span><br><span class="line">bear@bear-K40IE:~/program/third$ echo $LD_LIBRARY_PATH</span><br><span class="line"></span><br><span class="line">bear@bear-K40IE:~/program/third$ echo $LD_LIBRARY_PATH</span><br><span class="line"></span><br><span class="line">bear@bear-K40IE:~/program/third$ export LD_LIBRARY_PATH=./</span><br><span class="line">bear@bear-K40IE:~/program/third$ echo $LD_LIBRARY_PATH</span><br><span class="line">./</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc hello.o -L./ labc -s -o hello</span><br><span class="line">gcc: labc: No such file or directory</span><br><span class="line">bear@bear-K40IE:~/program/third$ gcc hello.o -L./ -labc -s -o hello</span><br><span class="line">bear@bear-K40IE:~/program/third$ ls</span><br><span class="line">first.c first.o libabc.so hello hello.c hello.o</span><br><span class="line">bear@bear-K40IE:~/program/third$ ./hello</span><br><span class="line">240 is the result</span><br></pre></td></tr></table></figure></p>
+<p>这是first.c文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int fx(int a,int b)</span><br><span class="line">&#123;</span><br><span class="line">  return a*b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这是hello.c文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">  fprintf(stderr,&quot;%d is the result \n&quot;,fx(10,24));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="如何写makefile文件"><a href="#如何写makefile文件" class="headerlink" title="如何写makefile文件"></a>如何写makefile文件</h2><h3 id="demo-1-有多个C-类与一个main函数，普通写法-直观"><a href="#demo-1-有多个C-类与一个main函数，普通写法-直观" class="headerlink" title="demo_1: 有多个C++类与一个main函数，普通写法(直观)"></a>demo_1: 有多个C++类与一个main函数，普通写法(直观)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">all: human.o point.o beast.o nature.o fight.o log.o random.o</span><br><span class="line">        g++ random.o beast.o nature.o point.o fight.o human.o log.o -Wall -g -o run -lstdc++ -lm</span><br><span class="line">human.o: human.cc human.h point.h global.h</span><br><span class="line">        g++ -c human.cc -lstdc++ -lm</span><br><span class="line">fight.o: fight.cc</span><br><span class="line">        g++ -c fight.cc -lstdc++ -lm</span><br><span class="line">point.o: point.cc point.h</span><br><span class="line">        g++ -c point.cc -lstdc++ -lm</span><br><span class="line">beast.o: beast.cc beast.h point.h</span><br><span class="line">        g++ -c beast.cc -lstdc++ -lm</span><br><span class="line">nature.o: nature.cc nature.h</span><br><span class="line">        g++ -c nature.cc -lstdc++ -lm</span><br><span class="line">log.o: log.h log.cc</span><br><span class="line">        g++ -c log.cc -lstdc++ -lm</span><br><span class="line">random.o: random.h random.cc</span><br><span class="line">        g++ -c random.cc -lstdc++ -lm </span><br><span class="line">clean:</span><br><span class="line">        rm *.o</span><br></pre></td></tr></table></figure>
+<h3 id="demo-2-有多个依赖于OpenCV的C-类与一个main函数，-高级写法"><a href="#demo-2-有多个依赖于OpenCV的C-类与一个main函数，-高级写法" class="headerlink" title="demo_2: 有多个依赖于OpenCV的C++类与一个main函数， 高级写法"></a>demo_2: 有多个依赖于OpenCV的C++类与一个main函数， 高级写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">CC      = g++</span><br><span class="line">CFLAGS  = -Wall -g</span><br><span class="line">INFLAGS = -I/usr/local/include/opencv -I/usr/include/opencv2</span><br><span class="line">LFLAGS  = -L/usr/local/lib/</span><br><span class="line">SRC     = Main.cpp ObjDet.cpp</span><br><span class="line">OBJ     = $(SRC:.cpp=.o)</span><br><span class="line">TARGET  = run</span><br><span class="line">DEPEND  = -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_ml -lopencv_video -lopencv_features2d -lopencv_calib3d -lopencv_objdetect -lopencv_contrib -lopencv_legacy -lopencv_stitching -std=c++11</span><br><span class="line">.cpp.o:</span><br><span class="line">        $(CC) -c $(INFLAGS) $(CFLAGS) $(SRC) </span><br><span class="line">$(TARGET): $(OBJ)</span><br><span class="line">        $(CC) $(LFLAGS) $(OBJ) -o $(TARGET) $(DEPEND)</span><br><span class="line">clean:</span><br><span class="line">        rm *.o</span><br></pre></td></tr></table></figure>
+<h2 id="使用gdb调试程序"><a href="#使用gdb调试程序" class="headerlink" title="使用gdb调试程序"></a>使用gdb调试程序</h2><h2 id="shell基础"><a href="#shell基础" class="headerlink" title="shell基础"></a>shell基础</h2><h1 id="Github的使用"><a href="#Github的使用" class="headerlink" title="Github的使用"></a>Github的使用</h1><h1 id="使用Markdown写技术博客"><a href="#使用Markdown写技术博客" class="headerlink" title="使用Markdown写技术博客"></a>使用Markdown写技术博客</h1><h1 id="Linux下MySQL的使用"><a href="#Linux下MySQL的使用" class="headerlink" title="Linux下MySQL的使用"></a>Linux下MySQL的使用</h1><h1 id="常用的Linux快捷键"><a href="#常用的Linux快捷键" class="headerlink" title="常用的Linux快捷键"></a>常用的Linux快捷键</h1><h1 id="常见linux问题及解决办法"><a href="#常见linux问题及解决办法" class="headerlink" title="常见linux问题及解决办法"></a>常见linux问题及解决办法</h1>
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2011/02/22/Linux/quick_start_of_linux_programming/" data-id="cjow1orac001ilsayb58sh9db" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/linux/">linux</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2012/01/14/Windows/kinect_openNI/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">OpenNI and Kinect programming</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2011/02/22/Linux/quick_start_of_linux/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">Quick start of Linux</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

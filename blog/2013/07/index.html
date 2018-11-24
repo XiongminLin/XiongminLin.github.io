@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Blog: 2013/7 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xiongmin Lin">
+<meta property="og:url" content="http://yoursite.com/blog/2013/07/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xiongmin Lin">
+<meta name="twitter:description" content="Hi, welcome to Xiongmin Lin&apos;s website">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    <div class="container">
+  <div class="row">
+    <div class="col s12">
+
+      
+
+      
+        
+
+      <article id="post-windows_programming_model_communication" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 itemprop="name" class="header">
+      <a class="article-title " href="/2013/07/25/windows_programming_model_communication/">windows编程_父对话框与非模态子对话框的消息通信</a>
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-07-25T18:51:00.000Z" itemprop="datePublished">Jul 25, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>值班系统，需要实现 父对话框类Cwhu_VoiceCardDlg 与 子对话框类Cwhu_FaxDlg 之间的通信</p>
+<h1 id="父对话框向子对话框传递消息"><a href="#父对话框向子对话框传递消息" class="headerlink" title="父对话框向子对话框传递消息"></a>父对话框向子对话框传递消息</h1><h2 id="定义消息"><a href="#定义消息" class="headerlink" title="定义消息"></a>定义消息</h2><p>在 父对话框类的头文件”whu_VoiceCardDlg.h”中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define  WM_UPATEDATA WM_USER+20</span><br></pre></td></tr></table></figure></p>
+<p>父对话框发出WM_UPATEDATA 消息，子对话框接收并相应。</p>
+<h2 id="定义消息响应函数"><a href="#定义消息响应函数" class="headerlink" title="定义消息响应函数"></a>定义消息响应函数</h2><p>在子对话框头文件Cwhu_FaxDlg.h中声明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">afx_msg LRESULT OnUpdateData(WPARAM wParam, LPARAM lParam);</span><br></pre></td></tr></table></figure></p>
+<p>在Cwhu_FaxDlg.cpp文件包含whu_VoiceCardDlg.h<br>（注意，是在Cwhu_FaxDlg.cpp中，不是在Cwhu_FaxDlg.h中，不然头文件重复编译，会报错syntax error : missing ‘;’ before ‘*’）</p>
+<p>定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">LRESULT Cwhu_FaxDlg::OnUpdateData(WPARAM wParam, LPARAM lParam)</span><br><span class="line">&#123;</span><br><span class="line">int* m_FaxState = (int*)lParam;</span><br><span class="line">whu_ShowFaxState(*m_FaxState);</span><br><span class="line">UpdateData(FALSE);</span><br><span class="line">return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在Cwhu_FaxDlg.cpp文件的BEGIN_MESSAGE_MAP和END_MESSAGE_MAP之间添加<br>ON_MESSAGE(WM_UPATEDATA, OnUpdateData)，效果如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN_MESSAGE_MAP(Cwhu_FaxDlg, CDialogEx)</span><br><span class="line">ON_MESSAGE(WM_UPATEDATA, OnUpdateData)</span><br><span class="line">END_MESSAGE_MAP()</span><br></pre></td></tr></table></figure></p>
+<p>(备注：我发现我的Cwhu_FaxDlg.cpp中有两个BEGIN_MESSAGE_MAP和END_MESSAGE_MAP，只有将ON_MESSAGE(WM_UPATEDATA, OnUpdateData)放在定义很多消息函数的地方才可以，不然报错)</p>
+<h2 id="父对话框发出消息"><a href="#父对话框发出消息" class="headerlink" title="父对话框发出消息"></a>父对话框发出消息</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int whu_FaxSendState = FAX_NOANSWER;</span><br><span class="line">m_DlgFax-&gt;PostMessage(WM_UPATEDATA, 0, (LPARAM)&amp;whu_FaxSendState);</span><br></pre></td></tr></table></figure>
+<p>其中，m_DlgFax为在”whu_VoiceCardDlg.h”定义的Cwhu_VoiceCardDlg的成员函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cwhu_FaxDlg *m_DlgFax;</span><br></pre></td></tr></table></figure></p>
+<h1 id="子对话框向父对话框传递信息"><a href="#子对话框向父对话框传递信息" class="headerlink" title="子对话框向父对话框传递信息"></a>子对话框向父对话框传递信息</h1><h2 id="方法一：使用父对话框的指针"><a href="#方法一：使用父对话框的指针" class="headerlink" title="方法一：使用父对话框的指针"></a>方法一：使用父对话框的指针</h2><p>在子对话框类中定义成员变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CDialog * whu_ParentDlg;</span><br></pre></td></tr></table></figure></p>
+<p>父对话框初始化子对话框的时候，对子对话框的whu_ParentDlg赋值，具体如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m_DlgFax = new Cwhu_FaxDlg();</span><br><span class="line">m_DlgFax-&gt;whu_ParentDlg = this;</span><br><span class="line">m_DlgFax-&gt;Create(IDD_FAX,this);</span><br><span class="line">m_DlgFax-&gt;ShowWindow(SW_SHOW);</span><br></pre></td></tr></table></figure></p>
+<p>然后，在子对话框里面，可以通过((Cwhu_VoiceCardDlg*)whu_ParentDlg)-&gt;XXXX的形式调用父对话框的公有变量/函数。</p>
+<h2 id="方法二：使用消息机制"><a href="#方法二：使用消息机制" class="headerlink" title="方法二：使用消息机制"></a>方法二：使用消息机制</h2><p>原理类似上面。</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://yoursite.com/2013/07/25/windows_programming_model_communication/" data-id="cjow1or860007lsay3598x48g" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+      </article>
+
+
+      
+
+
+
+
+      
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>
