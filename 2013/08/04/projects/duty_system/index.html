@@ -7,13 +7,13 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="摘要 本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给">
+  <meta name="description" content="摘要本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给出">
 <meta name="keywords" content="embedded system programming">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于CTI技术的防汛办公室值班系统的研究与设计">
 <meta property="og:url" content="http://linxiongmin.com/2013/08/04/projects/duty_system/index.html">
 <meta property="og:site_name" content="Xiongmin Lin">
-<meta property="og:description" content="摘要 本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给">
+<meta property="og:description" content="摘要本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给出">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/690aa174gw1eufq483je3j20ff0743yw.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/690aa174gw1eufq7woey5j20ct0ijwfi.jpg">
@@ -21,10 +21,10 @@
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/690aa174gw1eufqb4hif7j20qt0kjn24.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/690aa174gw1eufqdca7f9j207w0hgjrz.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/690aa174gw1eufqe57lkvj20uw0midm2.jpg">
-<meta property="og:updated_time" content="2015-07-25T21:50:00.000Z">
+<meta property="og:updated_time" content="2018-12-13T20:23:05.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于CTI技术的防汛办公室值班系统的研究与设计">
-<meta name="twitter:description" content="摘要 本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给">
+<meta name="twitter:description" content="摘要本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给出">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/690aa174gw1eufq483je3j20ff0743yw.jpg">
 
   
@@ -86,14 +86,6 @@
             <a class="main-nav-link" href="/blog">Blog</a>
           </li>
         
-          <li>
-            <a class="main-nav-link" href="https://www.linkedin.com/in/shelmylin">Linkedin</a>
-          </li>
-        
-          <li>
-            <a class="main-nav-link" href="https://github.com/XiongminLin">Github</a>
-          </li>
-        
       </ul>
 
       <a href="#" data-activates="nav-mobile" class="button-collapse">
@@ -111,14 +103,6 @@
   
   <li>
     <a class="main-nav-link" href="/blog">Blog</a>
-  </li>
-  
-  <li>
-    <a class="main-nav-link" href="https://www.linkedin.com/in/shelmylin">Linkedin</a>
-  </li>
-  
-  <li>
-    <a class="main-nav-link" href="https://github.com/XiongminLin">Github</a>
   </li>
   
 </ul>
@@ -157,15 +141,9 @@
 
           <div class="article-entry " itemprop="articleBody">
             
-              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><blockquote>
-<p>本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给出了功能实现的部分代码和系统界面构成。最后，对本系统各个功能模块进行了运行测试，测试结果表明该系统运行良好，完全符合武汉水务局防汛办公室值班的各项要求。     </p>
-</blockquote>
-<blockquote>
-<ul>
-<li>关键词：CTI，语音卡，值班系统，MFC，多线程</li>
-</ul>
-</blockquote>
-<h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><h2 id="系统功能模块"><a href="#系统功能模块" class="headerlink" title="系统功能模块"></a>系统功能模块</h2><ul>
+              <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本文以武汉水务局防汛办公室的日常值班工作为背景，首先详细介绍了CTI技术以及相关应用，其次针对防汛值班办公的特点，结合水务局防汛办公室的具体需求，在选用工控机加语音板卡的系统实现方案的基础上，给出了系统硬件和软件的总体设计，重点阐述了传真服务器、电话、录音、语音通知四大系统重要功能模块的实现和设计流程，应用面向对象的设计方法，采用VC++编程语言和语音板卡提供的API函数，运用多线程技术，给出了功能实现的部分代码和系统界面构成。最后，对本系统各个功能模块进行了运行测试，测试结果表明该系统运行良好，完全符合武汉水务局防汛办公室值班的各项要求。<br>关键词：CTI，语音卡，值班系统，MFC，多线程</p>
+<a id="more"></a>
+<h3 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h3><h4 id="系统功能模块"><a href="#系统功能模块" class="headerlink" title="系统功能模块"></a>系统功能模块</h4><ul>
 <li>用户管理：本系统可以对用户账号及其相关的信息进行管理。</li>
 <li>通信录管理：本系统可以在通信录界面增添、删除、编辑联系人信息，并且可以直接在联系人上点击右键进行打电话和发传真的操作。</li>
 <li>文件管理：系统产生的所有日志消息，包括电话、传真记录，值班人信息，时间等等，都会以日志文件的形式储存起来，方便日后查询。</li>
@@ -174,11 +152,11 @@
 <li>语音通知：本系统支持通过电话话筒录制一段语音通知，然后通过系统群发给所有值班室人员，并支持通知回执功能。</li>
 <li>值守排班：本系统可实现根据输入条件对汛期值守人员的自动安排。</li>
 </ul>
-<h2 id="系统硬件与结构设计"><a href="#系统硬件与结构设计" class="headerlink" title="系统硬件与结构设计"></a>系统硬件与结构设计</h2><p><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufq483je3j20ff0743yw.jpg" alt=""><br>图中方框中的部分即为值班系统，其中系统服务器对外通过电话线接到程控电话交换机上，从而实现与外部PSTN（公用电话交换网）的连接，对内连接打印机、扫描仪、显示器和电话机等设备。打印机通过RS232串行接口与服务器相连，扫描仪通过USB2.0接口与服务器相连，一部值班电话机通过电话线与服务器相连，另外还配备一个UPS后备支持电源，作为应急备用，以保证断电时系统的正常运行，通过RS232接口与服务器相连。此外还有鼠标键盘等外设，通过相应的接口连接在服务器上。</p>
-<h2 id="传真收发"><a href="#传真收发" class="headerlink" title="传真收发"></a>传真收发</h2><p>系统可以当做一个传真服务器来收发传真。本系统可发送经扫描仪扫描进工控机中的电子文档，支持传真群发，自动接收传真并保存，实现无纸化办公。并且可以自动转发传真，支持传真回执，对收发传真数据进行统计。<br>发送传真时，首先选择要发的文件，若文件已在服务器中，选择即可，若要发送的文件为纸质文件，则用扫描仪扫描到服务器当中。然后点击进入传真界面，找到要发送的文件，勾选要发送的联系人，若联系人不在系统通信录当中，则在发送传真地址栏中输入对方传真号码，不同号码之间用空格隔开，可以一次性给多个不同号码发送传真。通常，传真机能够发送和接收的文件格式为tiff格式，因为经扫描仪扫描进电脑里的文件格式是tiff格式，所以可以不经格式转换直接发送，若要发送的文件不是tiff格式，而是txt、pdf、word等格式，文档将会自动被系统转化成能被传真机发送的tiff格式，然后再发送。若对方成功收到传真，系统生成日志文件，记录下发送时间等信息，否则传真发送失败，在传真发送端会有发送失败提示，系统也会产生发送失败的日志文件，这样就间接实现了传真回执和传真数据统计功能。具体流程图如下：<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufq7woey5j20ct0ijwfi.jpg" alt="传真收发流程图"></p>
+<h4 id="系统硬件与结构设计"><a href="#系统硬件与结构设计" class="headerlink" title="系统硬件与结构设计"></a>系统硬件与结构设计</h4><p><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufq483je3j20ff0743yw.jpg" alt=""><br>图中方框中的部分即为值班系统，其中系统服务器对外通过电话线接到程控电话交换机上，从而实现与外部PSTN（公用电话交换网）的连接，对内连接打印机、扫描仪、显示器和电话机等设备。打印机通过RS232串行接口与服务器相连，扫描仪通过USB2.0接口与服务器相连，一部值班电话机通过电话线与服务器相连，另外还配备一个UPS后备支持电源，作为应急备用，以保证断电时系统的正常运行，通过RS232接口与服务器相连。此外还有鼠标键盘等外设，通过相应的接口连接在服务器上。</p>
+<h4 id="传真收发"><a href="#传真收发" class="headerlink" title="传真收发"></a>传真收发</h4><p>系统可以当做一个传真服务器来收发传真。本系统可发送经扫描仪扫描进工控机中的电子文档，支持传真群发，自动接收传真并保存，实现无纸化办公。并且可以自动转发传真，支持传真回执，对收发传真数据进行统计。<br>发送传真时，首先选择要发的文件，若文件已在服务器中，选择即可，若要发送的文件为纸质文件，则用扫描仪扫描到服务器当中。然后点击进入传真界面，找到要发送的文件，勾选要发送的联系人，若联系人不在系统通信录当中，则在发送传真地址栏中输入对方传真号码，不同号码之间用空格隔开，可以一次性给多个不同号码发送传真。通常，传真机能够发送和接收的文件格式为tiff格式，因为经扫描仪扫描进电脑里的文件格式是tiff格式，所以可以不经格式转换直接发送，若要发送的文件不是tiff格式，而是txt、pdf、word等格式，文档将会自动被系统转化成能被传真机发送的tiff格式，然后再发送。若对方成功收到传真，系统生成日志文件，记录下发送时间等信息，否则传真发送失败，在传真发送端会有发送失败提示，系统也会产生发送失败的日志文件，这样就间接实现了传真回执和传真数据统计功能。具体流程图如下：<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufq7woey5j20ct0ijwfi.jpg" alt="传真收发流程图"></p>
 <p>传真收发界面:<br><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufq96lg3ij20xc0kugry.jpg" alt="传真收发界面"><br>若部分联系人由于占线而导致传真发送失败，日志文件会记录下这些发送失败的号码，若想再次发送传真，只需进入日志界面，勾选这些联系人继续发送。<br>收传真时，首先由外线电话进行拨号，传真接收界面若勾选了“自动接收传真”，系统会自动向对方播放一段录音：“拨打电话请按一，发送传真请按二”，待对方选择发传真后，传真服务器可以自动进行传真的接收。若是手动接收传真，及没有勾选自动接收按钮，值班室内线电话先响铃，待手动摘机后，系统会自动播放一段录音：“拨打电话请按一，发送传真请按二”，对方选择发送传真后自动接收。接收完成后系统生成日志文件。此外，传真服务器可以实现自动转发功能，在传真界面点击转发设置，在界面上部选择一个曾联系传真人，在界面下部分编辑传真转发目的地的联系人信息，可以将一份传真同时转发给多个对象，实现方式就是在转发设计界面下部添加多个对象的信息，勾选出需要转发的对象后点击“确定”按钮即可。设置完成后，以后收到需要转发的传真便可自动转发而不需要人工操作。</p>
 <p><img src="http://ww4.sinaimg.cn/large/690aa174gw1eufqb4hif7j20qt0kjn24.jpg" alt="传真自动转发"></p>
-<h2 id="语音通知"><a href="#语音通知" class="headerlink" title="语音通知"></a>语音通知</h2><p>语音通知功能的实现就是先通过电话机话筒录制一段语音通知，然后通过系统群发给所有值班人员。<br>发送语音通知时，首先在系统主界面下点击“通知”按钮进入发布通知界面，界面下部分为联系人列表，联系人列表是与通信录共享的，若联系人不在列表内，可在右下角在手动添加联系人电话号码，不同号码间以空格键隔开。点击左上角录音按键，随后右边方框有一段文字提示“请拿起话筒录制通知，完成请挂机”，此时就可录制语音通知，录制完毕后挂机，系统会自动为这段录音加上一段话：“确认请按#号键，不参加请按0号键，重新收听请按*号键”，然后点击“发送”便可。还可试听已录语音，点击“试听”键即可。发送原理就是利用系统逐个拨打联系人手机，对方接通后自动播发语音通知，系统将对方反馈按键信息记录为日志文件。若某些联系人电话无法接通，系统则跳过此号码，继续拨打下一联系人号码。通知发送成功与否的信息都会被系统记录为日志文件，这样就可以很清楚的知道哪些人收到通知，哪些人没有收到。具体流程如下：<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufqdca7f9j207w0hgjrz.jpg" alt="语音通知程序流程图"></p>
+<h4 id="语音通知"><a href="#语音通知" class="headerlink" title="语音通知"></a>语音通知</h4><p>语音通知功能的实现就是先通过电话机话筒录制一段语音通知，然后通过系统群发给所有值班人员。<br>发送语音通知时，首先在系统主界面下点击“通知”按钮进入发布通知界面，界面下部分为联系人列表，联系人列表是与通信录共享的，若联系人不在列表内，可在右下角在手动添加联系人电话号码，不同号码间以空格键隔开。点击左上角录音按键，随后右边方框有一段文字提示“请拿起话筒录制通知，完成请挂机”，此时就可录制语音通知，录制完毕后挂机，系统会自动为这段录音加上一段话：“确认请按#号键，不参加请按0号键，重新收听请按*号键”，然后点击“发送”便可。还可试听已录语音，点击“试听”键即可。发送原理就是利用系统逐个拨打联系人手机，对方接通后自动播发语音通知，系统将对方反馈按键信息记录为日志文件。若某些联系人电话无法接通，系统则跳过此号码，继续拨打下一联系人号码。通知发送成功与否的信息都会被系统记录为日志文件，这样就可以很清楚的知道哪些人收到通知，哪些人没有收到。具体流程如下：<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufqdca7f9j207w0hgjrz.jpg" alt="语音通知程序流程图"></p>
 <p>语音通知程序界面</p>
 <p><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufqe57lkvj20uw0midm2.jpg" alt="语音通知程序界面"></p>
 
@@ -188,7 +166,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="http://linxiongmin.com/2013/08/04/projects/duty_system/" data-id="cjpgfhhvv0011ta4zhi06pijo" class="article-share-link">Share</a>
+            <a data-url="http://linxiongmin.com/2013/08/04/projects/duty_system/" data-id="cjpmzfw9g000l3faypkdv4bw2" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/embedded-system-programming/">embedded system programming</a></li></ul>
@@ -204,17 +182,17 @@
     <ul class="row">
     
       <li class="col s6">
-        <a href="/2013/08/09/computer_system/computer_system_deep_understanding_01/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+        <a href="/2014/07/20/projects/fpga/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">深入理解计算机系统_数据储存之大小端法与补码</span>
+          <span class="article-nav-title">基于FPGA的体感控制</span>
         </a>
       </li>
     
 
     
       <li class="col s6">
-        <a href="/2013/08/02/windows_programming_CListCtrl/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">windows编程_CListCtrl的排序算法实现</span>
+        <a href="/2012/07/28/projects/atom_hand/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">凌动的“奇”手 --仿生机械手</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>

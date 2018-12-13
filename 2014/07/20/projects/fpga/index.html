@@ -7,13 +7,13 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="摘要 本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SD">
+  <meta name="description" content="摘要本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SDR">
 <meta name="keywords" content="Embedded system programming - FPGA - Network">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于FPGA的体感控制">
 <meta property="og:url" content="http://linxiongmin.com/2014/07/20/projects/fpga/index.html">
 <meta property="og:site_name" content="Xiongmin Lin">
-<meta property="og:description" content="摘要 本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SD">
+<meta property="og:description" content="摘要本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SDR">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/690aa174gw1eufrcn6vncj20da07twet.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/690aa174gw1eufrgnis9gj208q02474a.jpg">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/690aa174gw1eufrjt2vcuj208q023aa2.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/690aa174gw1eufrkch7hfj208q026aa1.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/690aa174gw1eufrkydf8kj208q02a74a.jpg">
-<meta property="og:updated_time" content="2015-08-11T20:32:16.000Z">
+<meta property="og:updated_time" content="2018-12-13T20:23:23.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于FPGA的体感控制">
-<meta name="twitter:description" content="摘要 本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SD">
+<meta name="twitter:description" content="摘要本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SDR">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/690aa174gw1eufrcn6vncj20da07twet.jpg">
 
   
@@ -87,14 +87,6 @@
             <a class="main-nav-link" href="/blog">Blog</a>
           </li>
         
-          <li>
-            <a class="main-nav-link" href="https://www.linkedin.com/in/shelmylin">Linkedin</a>
-          </li>
-        
-          <li>
-            <a class="main-nav-link" href="https://github.com/XiongminLin">Github</a>
-          </li>
-        
       </ul>
 
       <a href="#" data-activates="nav-mobile" class="button-collapse">
@@ -112,14 +104,6 @@
   
   <li>
     <a class="main-nav-link" href="/blog">Blog</a>
-  </li>
-  
-  <li>
-    <a class="main-nav-link" href="https://www.linkedin.com/in/shelmylin">Linkedin</a>
-  </li>
-  
-  <li>
-    <a class="main-nav-link" href="https://github.com/XiongminLin">Github</a>
   </li>
   
 </ul>
@@ -158,18 +142,14 @@
 
           <div class="article-entry " itemprop="articleBody">
             
-              <h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><blockquote>
-<p>本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SDRAM中的信息，将视频信息显示在VGA屏上。<br>本设计利用皮肤检测不断对视频信息中的皮肤进行追踪，从而实现手势追踪，并在左右屏中算出皮肤的中心点作为手部信息的坐标点，以此作为手势信息。根据上述手势信息，产生对小车的控制命令，通过Nrf24L01无线模块发送至小车。小车接受信息后，作出相应行走动作。<br>本系统提供按键便于用户进进行功能选择，如显示真实视频信息、皮肤信息、虚拟小人等。皮肤信息用于不同背景环境下手势动作的调整，减少了系统的误判。</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>关键词: PGA，体感识别，皮肤检测</li>
-</ul>
-</blockquote>
-<h1 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h1><h2 id="系统方案"><a href="#系统方案" class="headerlink" title="系统方案"></a>系统方案</h2><p>该系统主要由FPGA体感识别系统和MSP430小车系统两个部分组成。<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufrcn6vncj20da07twet.jpg" alt="系统方案"><br>在FPGA体感识别系统中，首先通过D5M采集视频信息，因为该摄像头采集到的图像是RAW类型的图像，不便于VGA显示，所以必须把RAW图像转化为RGB模式的图像，存入SDRAM中，以便VGA显示时使用。在SDRAM控制时使用了FIFO的形式，实现了SDRAM的多接口写入和读出。从SDRAM中读出的RGB信息，一方面可以送至VGA控制模块中，当（SW[17]&amp;&amp;~SW[16]）==1时，显示视频信息；另一方面送至皮肤检测模块，将检测为皮肤的区域颜色设为白色，中心点为红色，非皮肤区域为黑色，当（~SW[17]&amp;&amp;~SW[16]）==1时，显示皮肤信息。皮肤检测获得的手势信息一方面送至虚拟小人显示模块，该模块利用Bresenham算法画出虚拟小人，存于SRAM中，当SW[16]==1时，显示虚拟小人；另外一方面送至小车控制模块，根据手势信息在屏幕上的位置信息，利用无线传感器给小车发送行走命令。</p>
+              <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本设计选用FPGA硬件处理信号，对图像信号的采集、存储数据同时进行,可以达到高速的并行采集、实时分析和同步存储的目的。我们采用Altera公司的Cyclone II EP2C35F672C6，为保证FPGA的稳定工作，选用 25M的时钟对TRDB-D5M   CMOS摄像头的图像信号进行并行采集。将采集到的图像调整到640×480的大小并将数据暂时存入SDRAM中。同时VGA控制模块读取SDRAM中的信息，将视频信息显示在VGA屏上。</p>
+<p>本设计利用皮肤检测不断对视频信息中的皮肤进行追踪，从而实现手势追踪，并在左右屏中算出皮肤的中心点作为手部信息的坐标点，以此作为手势信息。根据上述手势信息，产生对小车的控制命令，通过Nrf24L01无线模块发送至小车。小车接受信息后，作出相应行走动作。</p>
+<p>本系统提供按键便于用户进进行功能选择，如显示真实视频信息、皮肤信息、虚拟小人等。皮肤信息用于不同背景环境下手势动作的调整，减少了系统的误判。</p>
+<p>关键词: PGA，体感识别，皮肤检测<br><a id="more"></a></p>
+<h3 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h3><h4 id="系统方案"><a href="#系统方案" class="headerlink" title="系统方案"></a>系统方案</h4><p>该系统主要由FPGA体感识别系统和MSP430小车系统两个部分组成。<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufrcn6vncj20da07twet.jpg" alt="系统方案"><br>在FPGA体感识别系统中，首先通过D5M采集视频信息，因为该摄像头采集到的图像是RAW类型的图像，不便于VGA显示，所以必须把RAW图像转化为RGB模式的图像，存入SDRAM中，以便VGA显示时使用。在SDRAM控制时使用了FIFO的形式，实现了SDRAM的多接口写入和读出。从SDRAM中读出的RGB信息，一方面可以送至VGA控制模块中，当（SW[17]&amp;&amp;~SW[16]）==1时，显示视频信息；另一方面送至皮肤检测模块，将检测为皮肤的区域颜色设为白色，中心点为红色，非皮肤区域为黑色，当（~SW[17]&amp;&amp;~SW[16]）==1时，显示皮肤信息。皮肤检测获得的手势信息一方面送至虚拟小人显示模块，该模块利用Bresenham算法画出虚拟小人，存于SRAM中，当SW[16]==1时，显示虚拟小人；另外一方面送至小车控制模块，根据手势信息在屏幕上的位置信息，利用无线传感器给小车发送行走命令。</p>
 <p>MSP430小车系统由MSP430F499控制器，NRF24L01无线模块、L297+L298组合为小车驱动器和二项四拍步进电机组成。MCU不断读取NRf24L01接收端的信息，根据受到的指令，分别给驱动器不同频率的方波和方向信息。驱动器将不同频率的方波转换成不同频率的PWM波，从而实现了小车的前进、后退、加速、减速、转弯等动作。</p>
-<h2 id="皮肤检测模块"><a href="#皮肤检测模块" class="headerlink" title="皮肤检测模块"></a>皮肤检测模块</h2><p>在视频信息中，每帧中图像的像素点都有R、G和B三个分量的值，将R、G和B转换成YUV格式，公式如下：<br>           Y=（R+2G+B）/4，U=R-G，V=B-G<br>经过多次实验得出，当像素点符合100 &lt; U &lt; 500 时属于皮肤的颜色范围。当像素点符合100 &lt; U &lt; 500且R &gt; B时，我们则认为该像素点为皮肤。<br>利用上述思想，对视频信息处理后，可得出皮肤信息，算出左右区域皮肤像素点位置的平均值，视为左臂和右臂的位置信息。根据左臂和右臂在屏幕上的位置信息，产生小车控制信息，然后对小车进行无线控制。同时根据左臂和右臂的位置信息，利用Bresenham算法从设定好的图表中划出简化的人形。</p>
-<h1 id="系统测试与结果图示"><a href="#系统测试与结果图示" class="headerlink" title="系统测试与结果图示"></a>系统测试与结果图示</h1><p>当控制者双手摊开，水平朝外时，位于FPGA上的皮肤检测模块检测出双手的位置，绘制皮肤点集，如图4.1中图所示，图中白色标注点为皮肤点，红色标注点为皮肤中心点。同时，系统还会绘制模拟小人以显示控制者的动作，如图1右图所示，控制者并拢双手，动画小人也并拢双手，此外，系统还提供了硬件按键，使得控制者可以在皮肤点集图和模拟小人图之间流畅切换。经过反复测试，系统能成功快速识别出启动动作，识别率达90%，位于小车上的无线模块接收到FPGA发送过来的前进信息后，小车开始启动，实验表明，小车反映速度极快，能迅速对FPGA的控制指令做出反映。<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufrgnis9gj208q02474a.jpg" alt="图 1"></p>
+<h4 id="皮肤检测模块"><a href="#皮肤检测模块" class="headerlink" title="皮肤检测模块"></a>皮肤检测模块</h4><p>在视频信息中，每帧中图像的像素点都有R、G和B三个分量的值，将R、G和B转换成YUV格式，公式如下：<br>           Y=（R+2G+B）/4，U=R-G，V=B-G<br>经过多次实验得出，当像素点符合100 &lt; U &lt; 500 时属于皮肤的颜色范围。当像素点符合100 &lt; U &lt; 500且R &gt; B时，我们则认为该像素点为皮肤。<br>利用上述思想，对视频信息处理后，可得出皮肤信息，算出左右区域皮肤像素点位置的平均值，视为左臂和右臂的位置信息。根据左臂和右臂在屏幕上的位置信息，产生小车控制信息，然后对小车进行无线控制。同时根据左臂和右臂的位置信息，利用Bresenham算法从设定好的图表中划出简化的人形。</p>
+<h3 id="系统测试与结果图示"><a href="#系统测试与结果图示" class="headerlink" title="系统测试与结果图示"></a>系统测试与结果图示</h3><p>当控制者双手摊开，水平朝外时，位于FPGA上的皮肤检测模块检测出双手的位置，绘制皮肤点集，如图4.1中图所示，图中白色标注点为皮肤点，红色标注点为皮肤中心点。同时，系统还会绘制模拟小人以显示控制者的动作，如图1右图所示，控制者并拢双手，动画小人也并拢双手，此外，系统还提供了硬件按键，使得控制者可以在皮肤点集图和模拟小人图之间流畅切换。经过反复测试，系统能成功快速识别出启动动作，识别率达90%，位于小车上的无线模块接收到FPGA发送过来的前进信息后，小车开始启动，实验表明，小车反映速度极快，能迅速对FPGA的控制指令做出反映。<br><img src="http://ww1.sinaimg.cn/large/690aa174gw1eufrgnis9gj208q02474a.jpg" alt="图 1"></p>
 <p>小车前进动作的检测如图2所示，当控制者双手平放并保持向上托举的状态时，位于FPGA上的皮肤检测模块检测出双手的位置，绘制皮肤点集，如图4.2中图所示，图中白色标注点为皮肤点，聚集在屏幕上部分，系统成功检测出托举动作，经反复实验，该动作识别率达98%，无线模块接收到FPGA发送过来的前进信息后，做出前进动作命令，小车前进。<br>除了控制前进动作以外，系统还创新性的添加进了速度控制机制，控制者双手托举得越高，皮肤检测模块最终计算出的小车行进速度就越快，同时，为了防止小车速度过快带来的前进不稳定的问题，系统设置了最高运行速度阈值1m/s，当计算出的速度值高于阈值时，将按阈值替代处理。</p>
 <p><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufrimy44ej208q0270sq.jpg" alt="图 2"></p>
 <p>小车的后退动作检测原理类似前进动作，控制者双手摊开，向下平放，如图3所示，FPGA皮肤检测模块检测出皮肤点集，并绘制于屏幕下方，动画小人模拟相应的动作。经反复实验，该动作识别率达92%。<br><img src="http://ww3.sinaimg.cn/large/690aa174gw1eufrjdx4w2j208q020jrd.jpg" alt="图 3"></p>
@@ -184,7 +164,7 @@
           
 
           <footer class="article-footer">
-            <a data-url="http://linxiongmin.com/2014/07/20/projects/fpga/" data-id="cjpgfhhvr000xta4zvu9f4pox" class="article-share-link">Share</a>
+            <a data-url="http://linxiongmin.com/2014/07/20/projects/fpga/" data-id="cjpmzfw9h000m3fayy66th21p" class="article-share-link">Share</a>
             
             
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Embedded-system-programming-FPGA-Network/">Embedded system programming - FPGA - Network</a></li></ul>
@@ -200,17 +180,17 @@
     <ul class="row">
     
       <li class="col s6">
-        <a href="/2014/08/27/computer_system/computer_system_deep_understanding_04/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+        <a href="/2014/08/28/projects/Temperature_Detecting_of_Industry_Coal_Yard/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
           <i class="fa fa-arrow-left"></i>
-          <span class="article-nav-title">深入理解计算机系统_信息的表示与处理</span>
+          <span class="article-nav-title">基于红外的圆形煤仓表面温度监测系统的研究与实现</span>
         </a>
       </li>
     
 
     
       <li class="col s6">
-        <a href="/2014/04/09/computer_system/computer_system_deep_understanding_02/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
-          <span class="article-nav-title">深入理解计算机系统_C语言中的位运算</span>
+        <a href="/2013/08/04/projects/duty_system/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">基于CTI技术的防汛办公室值班系统的研究与设计</span>
           <i class="fa fa-arrow-right"></i>
         </a>
       </li>
