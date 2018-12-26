@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>深入理解计算机系统_信息的表示与处理 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="1.对于无符号与有符号之间的强制类型转化，低层的位表示不变。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解计算机系统_信息的表示与处理">
+<meta property="og:url" content="http://linxiongmin.com/2014/08/27/computer_system/computer_system_deep_understanding_04/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="1.对于无符号与有符号之间的强制类型转化，低层的位表示不变。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-13T19:32:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解计算机系统_信息的表示与处理">
+<meta name="twitter:description" content="1.对于无符号与有符号之间的强制类型转化，低层的位表示不变。">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-computer_system/computer_system_deep_understanding_04" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      深入理解计算机系统_信息的表示与处理
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2014-08-27T17:34:00.000Z" itemprop="datePublished">Aug 27, 2014</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <p>1.对于无符号与有符号之间的强制类型转化，低层的位表示不变。</p>
+<a id="more"></a>
+<p>2.C语言在执行运算的时候，如果他的一个运算数是有符号的而另一个是无符号的，那么C语言会隐式的将有符号参数强制转化为无符号参数，然后再执行运算。<br>例如2147483647 &gt; -2147483647-1<br>但是，2147483647U &lt; -2147483647-1       (注意，2^31=2147483648）<br>因为，第二个运算涉及有符号与无符号的运算，C语言会隐式的将有符号参数强制转化为无符号参数，故-2147483647-1=-2147483648，位表示为10000…..0000，在无符号数里面，即为2147483648，所以才会有2147483647U &lt; -2147483647-1 这样的错误产生。</p>
+<p>3.将一个较小的数据类型转化为一个较大的数据类型。<br>对于无符号数，只需开头补零。<br>对于有符号数，只需开头补最高位。<br>例如，原始值为11001000，转化到最高位就是1111111111001000，即在前面补最高位（这里原始值的最高位为1）。<br>解释：补出的位数与原始值的最高位合计起来，其值刚好不影响结果。<br>再比如，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">short sx = -12345;</span><br><span class="line">unsigned int sy = sx;</span><br></pre></td></tr></table></figure></p>
+<p>那么sy的结果是多少呢？<br>分析：short型的是2位,unsigned int 是4位。<br>12345 = ox3039 = 0011000000111001,取反加一得-12345的存储值：1100111111000111 = oxcfc7<br>按最高位补开头，<br>sy = 1111111111111111 1100111111000111 = 4294954951</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://linxiongmin.com/2014/08/27/computer_system/computer_system_deep_understanding_04/" data-id="cjq5nsmxn000d6daysxzug6wh" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2014/08/28/projects/Temperature_Detecting_of_Industry_Coal_Yard/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">基于红外的圆形煤仓表面温度监测系统的研究与实现</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2014/07/20/projects/fpga/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">基于FPGA的体感控制</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

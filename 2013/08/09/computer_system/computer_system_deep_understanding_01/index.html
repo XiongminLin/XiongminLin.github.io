@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>深入理解计算机系统_数据储存之大小端法与补码 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解计算机系统_数据储存之大小端法与补码">
+<meta property="og:url" content="http://linxiongmin.com/2013/08/09/computer_system/computer_system_deep_understanding_01/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="代码">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/690aa174jw1eq72l4fftrj20jv02ydg9.jpg">
+<meta property="og:updated_time" content="2018-12-13T19:32:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解计算机系统_数据储存之大小端法与补码">
+<meta name="twitter:description" content="代码">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/690aa174jw1eq72l4fftrj20jv02ydg9.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-computer_system/computer_system_deep_understanding_01" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      深入理解计算机系统_数据储存之大小端法与补码
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2013-08-09T23:08:00.000Z" itemprop="datePublished">Aug 09, 2013</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">typedef unsigned char *byte_pointer;</span><br><span class="line"></span><br><span class="line">void show_byte(byte_pointer start,int len)</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	for(i=0;i&lt;len;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%.2x&quot;,start[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void show_int(int x)</span><br><span class="line">&#123;</span><br><span class="line">	show_byte((byte_pointer)&amp;x,sizeof(int));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void show_float(float x)&#123;</span><br><span class="line">	show_byte((byte_pointer)&amp;x,sizeof(float));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void show_pointer(void *x)&#123;</span><br><span class="line">	show_byte((byte_pointer)&amp;x,sizeof(void *));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	/*show_type(byte_pointer start,int len);*/</span><br><span class="line">	short value = -0x12;</span><br><span class="line">	short value2 = 0x12;</span><br><span class="line">	byte_pointer valp = (byte_pointer)&amp;value;</span><br><span class="line">	byte_pointer valp2 = (byte_pointer)&amp;value2;</span><br><span class="line">	show_byte(valp,sizeof(short));</span><br><span class="line">	show_byte(valp2,sizeof(short));</span><br><span class="line">	/*show_int(value);</span><br><span class="line">	show_float(value2);*/</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="结果与分析"><a href="#结果与分析" class="headerlink" title="结果与分析"></a>结果与分析</h4><p>0x12储存为1200，是因为Intel的机器大部分使用小端法储存数据（如果是大端法，该是0012）<br>-0x12储存为eeff，是因为负数在机器中以补码的形式储存，0x12取反再加一，再按照小端法，即为eeff。</p>
+<p>如果将案例中的short改成int型，数据分别改为-12345和12345。如下代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int main()&#123;</span><br><span class="line">	/*show_type(byte_pointer start,int len);*/</span><br><span class="line">	int value = -12345;</span><br><span class="line">	int value2 = 12345;</span><br><span class="line">	byte_pointer valp = (byte_pointer)&amp;value;</span><br><span class="line">	byte_pointer valp2 = (byte_pointer)&amp;value2;</span><br><span class="line">	show_byte(valp,sizeof(int));</span><br><span class="line">	show_byte(valp2,sizeof(int));</span><br><span class="line">	/*show_int(value);</span><br><span class="line">	show_float(value2);*/</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果为：<br><img src="http://ww3.sinaimg.cn/large/690aa174jw1eq72l4fftrj20jv02ydg9.jpg" alt=""><br>备注：12345的二进制表示为00000000000000000011000000111001，八进制为00003039。故按照小端法，储存为3930000</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://linxiongmin.com/2013/08/09/computer_system/computer_system_deep_understanding_01/" data-id="cjq5nsmwt00096daya9h1vyun" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2014/04/09/computer_system/computer_system_deep_understanding_03/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">深入理解计算机系统_Hello World的一生</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2013/08/04/projects/duty_system/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">基于CTI技术的防汛办公室值班系统的研究与设计</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

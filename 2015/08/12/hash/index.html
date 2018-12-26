@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>哈希表的创建和检索（C++） | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="简介本文主要介绍哈希算法，哈希表的创建与检索，如何解决哈希冲突。">
+<meta name="keywords" content="hash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="哈希表的创建和检索（C++）">
+<meta property="og:url" content="http://linxiongmin.com/2015/08/12/hash/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="简介本文主要介绍哈希算法，哈希表的创建与检索，如何解决哈希冲突。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2015-08-12T14:44:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="哈希表的创建和检索（C++）">
+<meta name="twitter:description" content="简介本文主要介绍哈希算法，哈希表的创建与检索，如何解决哈希冲突。">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-hash" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      哈希表的创建和检索（C++）
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2015-08-12T23:25:00.000Z" itemprop="datePublished">Aug 12, 2015</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>本文主要介绍哈希算法，哈希表的创建与检索，如何解决哈希冲突。</p>
+<a id="more"></a>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define NULLKEY -1</span><br><span class="line">#define DELKEY -2</span><br><span class="line">#define N 100</span><br><span class="line">#define M 110</span><br><span class="line"></span><br><span class="line">//定义哈希表结构</span><br><span class="line">typedef struct _Node&#123;</span><br><span class="line">  int key;</span><br><span class="line">  int num;</span><br><span class="line">  _Node()</span><br><span class="line">  &#123;</span><br><span class="line">    num = 0;</span><br><span class="line">    key = NULLKEY;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Node; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//创建哈希表，先将数据对M求余得到一个哈希下标，如果有冲突，则使用开放定址法，将下标移到下一个哈希单元。</span><br><span class="line">void createHash(unsigned int *data, Node *hash)</span><br><span class="line">&#123;</span><br><span class="line">  </span><br><span class="line">  for(int i = 0; i &lt; N; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    int k = data[i] % M;</span><br><span class="line">    int num = 0;</span><br><span class="line">    while(true)</span><br><span class="line">    &#123;</span><br><span class="line">      if(hash[k].key == NULLKEY || hash[k].key == DELKEY)</span><br><span class="line">      &#123;</span><br><span class="line">        hash[k].key = data[i];</span><br><span class="line">        hash[k].num = num; </span><br><span class="line">        cout &lt;&lt; &quot;hash[&quot; &lt;&lt; k &lt;&lt; &quot;] = &quot; &lt;&lt; data[i] &lt;&lt;endl;</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      else</span><br><span class="line">      &#123;</span><br><span class="line">        cout &lt;&lt; &quot;hash cash, data = &quot; &lt;&lt; data[i] &lt;&lt; &quot;, key = &quot; &lt;&lt; k &lt;&lt; endl;</span><br><span class="line">        k = (k + 1) % M;</span><br><span class="line">        num++;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//查找数据，如果检索到的数据跟源数据不符，说明之前这里存在哈希冲突，坐标往下加一，继续找。</span><br><span class="line">int searchHash(unsigned int data, Node *hash)</span><br><span class="line">&#123;</span><br><span class="line">  int p = data % M;</span><br><span class="line">  while(hash[p].key != NULLKEY &amp;&amp; hash[p].key != DELKEY &amp;&amp; hash[p].key != data)</span><br><span class="line">  &#123;</span><br><span class="line">    p = (p + 1) % M;</span><br><span class="line">  &#125;</span><br><span class="line">  if(hash[p].key == data)</span><br><span class="line">  &#123;</span><br><span class="line">    return p;</span><br><span class="line">  &#125;</span><br><span class="line">  else</span><br><span class="line">  &#123;</span><br><span class="line">    return -1;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//测试函数</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">  Node hash[M];</span><br><span class="line">  unsigned int  data[N];</span><br><span class="line">  for(int i = 0; i &lt; N; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    data[i] = rand() % (M * N);</span><br><span class="line">    //data[i] = rand() % M;</span><br><span class="line">    //data[i] = i;</span><br><span class="line">  &#125;</span><br><span class="line">  createHash(data, hash);</span><br><span class="line">  for(int i = 0; i &lt; N; i++)</span><br><span class="line">  &#123; </span><br><span class="line">    //unsigned int temp = data[rand() % N];</span><br><span class="line">    unsigned int temp = data[i];</span><br><span class="line">    int p = searchHash(temp, hash);</span><br><span class="line">    if(p != -1)</span><br><span class="line">    &#123;</span><br><span class="line">      cout &lt;&lt; &quot;find data: &quot; &lt;&lt; temp &lt;&lt; &quot; in hash table: &quot; &lt;&lt; p &lt;&lt; &quot;, hash[&quot; &lt;&lt; p &lt;&lt; &quot;] = &quot; &lt;&lt; hash[p].key &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">      cout &lt;&lt; &quot;can&apos;t find &quot;&lt;&lt; temp &lt;&lt; &quot; in hash table&quot; &lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">lin@lin-K40IE:~/Dropbox/recruit/C_C++基础知识/hash$ g++ hash_table.cpp -o hash_table -std=c++11</span><br><span class="line">lin@lin-K40IE:~/Dropbox/recruit/C_C++基础知识/hash$ ./hash_table </span><br><span class="line">hash[83] = 3383</span><br><span class="line">hash[76] = 7886</span><br><span class="line">hash[17] = 1777</span><br><span class="line">hash[35] = 915</span><br><span class="line">hash[23] = 793</span><br><span class="line">hash[15] = 1335</span><br><span class="line">hash[66] = 1386</span><br><span class="line">hash[72] = 2492</span><br><span class="line">hash[69] = 8649</span><br><span class="line">hash[1] = 2421</span><br><span class="line">hash[52] = 2362</span><br><span class="line">hash[7] = 9027</span><br><span class="line">hash[60] = 3690</span><br><span class="line">hash cash, data = 1059, key = 69</span><br><span class="line">hash[70] = 1059</span><br><span class="line">hash[73] = 8763</span><br><span class="line">hash[26] = 9926</span><br><span class="line">hash[20] = 3540</span><br><span class="line">hash cash, data = 9426, key = 76</span><br><span class="line">hash[77] = 9426</span><br><span class="line">hash[2] = 5172</span><br><span class="line">hash cash, data = 10736, key = 66</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">hash cash, data = 2539, key = 39</span><br><span class="line">hash[40] = 2539</span><br><span class="line">find data: 3383 in hash table: 83, hash[83] = 3383</span><br><span class="line">find data: 7886 in hash table: 76, hash[76] = 7886</span><br><span class="line">find data: 1777 in hash table: 17, hash[17] = 1777</span><br><span class="line">find data: 915 in hash table: 35, hash[35] = 915</span><br><span class="line">find data: 793 in hash table: 23, hash[23] = 793</span><br><span class="line">find data: 1335 in hash table: 15, hash[15] = 1335</span><br></pre></td></tr></table></figure>
+<p>请参考：<br><a href="http://longpo.iteye.com/blog/2197687" target="_blank" rel="noopener">查找算法–哈希表查找</a><br><a href="http://www.vcgood.com/archives/771" target="_blank" rel="noopener">打造最快的Hash表</a><br><a href="http://blog.csdn.net/jkay_wong/article/details/6703450" target="_blank" rel="noopener">Hash表（C++实现）</a><br><a href="http://www.algolist.net/Data_structures/Hash_table/Simple_example" target="_blank" rel="noopener">The very simple hash table example</a></p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://linxiongmin.com/2015/08/12/hash/" data-id="cjq5nsmti00036day8p89kk75" class="article-share-link">Share</a>
+            
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hash/">hash</a></li></ul>
+
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2018/12/13/network_security/Top_Four_Common_Cyber_Attacks/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">Top 4 Common Cyber Attacks and Their Countermeasures in Web Application</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2015/07/24/projects/sees/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">SEES Project with demo</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

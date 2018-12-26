@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>深入理解计算机系统_Hello World的一生 | Xiongmin Lin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="背景一个Hello.c程序如表所示。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解计算机系统_Hello World的一生">
+<meta property="og:url" content="http://linxiongmin.com/2014/04/09/computer_system/computer_system_deep_understanding_03/index.html">
+<meta property="og:site_name" content="Xiongmin Lin">
+<meta property="og:description" content="背景一个Hello.c程序如表所示。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/690aa174jw1eq720moecvj20lo0as752.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/690aa174jw1eq728wa8vcj20l20ha0uz.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/690aa174jw1eq721snsszj20l00ha75v.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/690aa174jw1eq72219hxkj20l10h3dha.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/690aa174jw1eq722ggluej20l60h0abi.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/690aa174jw1eq722oty28j20lk0gzta9.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/690aa174jw1eq722vqwtrj20l00gqwg1.jpg">
+<meta property="og:updated_time" content="2018-12-13T19:30:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解计算机系统_Hello World的一生">
+<meta name="twitter:description" content="背景一个Hello.c程序如表所示。">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/690aa174jw1eq720moecvj20lo0as752.jpg">
+
+  
+    <link rel="alternate" href="/atom.xml" title="Xiongmin Lin" type="application/atom+xml">
+  
+
+  
+  <!--[if lte IE 10 ]><link rel="shortcut icon" href="/images/favicon.ico"><![endif]-->
+  <!--[if !IE]><!-->
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <meta name="msapplication-TileImage" content="/images/favicon.png">
+  <meta name="msapplication-TileColor" content="#000000">
+
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+
+  <link rel="icon" sizes="256x256" href="/images/favicon.png">
+  <!--<![endif]-->
+  
+
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro|Material+Icons|Raleway:400,300,700" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="/css/vendors.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+
+  <script src="/js/vendors.js"></script>
+
+  <script>
+    define('jquery', function () {
+      return window.jQuery;
+    });
+  </script>
+
+
+</head>
+<body>
+
+  <div class="navbar-fixed">
+  <nav id="main-navbar" class="grey lighten-5 z-depth-0" role="navigation">
+    <div class="nav-wrapper container">
+
+      <a id="logo-container" href="/" class="brand-logo center-align">
+        <span>Xiongmin Lin</span>
+        <sub></sub>
+      </a>
+
+      <ul class="right hide-on-med-and-down">
+        
+          <li>
+            <a class="main-nav-link" href="/">Home</a>
+          </li>
+        
+          <li>
+            <a class="main-nav-link" href="/blog">Blog</a>
+          </li>
+        
+      </ul>
+
+      <a href="#" data-activates="nav-mobile" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
+    </div>
+  </nav>
+</div>
+
+<ul id="nav-mobile" class="side-nav">
+  
+  <li>
+    <a class="main-nav-link" href="/">Home</a>
+  </li>
+  
+  <li>
+    <a class="main-nav-link" href="/blog">Blog</a>
+  </li>
+  
+</ul>
+
+
+  <div id="main-container">
+    
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+
+
+      <article id="post-computer_system/computer_system_deep_understanding_03" class="article article-type-post" itemscope="" itemprop="blogPost">
+
+        <div class="article-inner">
+          
+
+          <header class="article-header">
+          
+              
+  
+    <h1 class="article-title header" itemprop="name">
+      深入理解计算机系统_Hello World的一生
+    </h1>
+  
+
+
+          
+
+            <div class="article-meta">
+              <i class="fa fa-calendar"></i>
+              <time datetime="2014-04-10T04:31:00.000Z" itemprop="datePublished">Apr 09, 2014</time>
+            </div>
+          </header>
+
+
+          <div class="article-entry " itemprop="articleBody">
+            
+              <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>一个Hello.c程序如表所示。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	printf(“Hello World\n”);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个Hello World程序，看似简单，可是为了让它完成运行，需要系统的各个组成部分协调工作，本文将通过跟踪Hello World短暂的一生，来揭秘程序运行的奥义。</p>
+<h1 id="Hello-程序生成过程"><a href="#Hello-程序生成过程" class="headerlink" title="Hello 程序生成过程"></a>Hello 程序生成过程</h1><p>首先，为了将Hello.c变成可执行的二进制目标文件，需要将其推入加工车间—编译系统中进行加工，加工过程如图1.1所示。<br><img src="http://ww2.sinaimg.cn/large/690aa174jw1eq720moecvj20lo0as752.jpg" alt=""></p>
+<center> <em>图1.1编译系统</em> </center>
+
+<h2 id="预处理阶段"><a href="#预处理阶段" class="headerlink" title="预处理阶段"></a>预处理阶段</h2><p>预编译器（cpp）根据以字符#开头的命令，将头文件stdio.h的内容直接插入到Hello.c文件中，最终的得到一个以i为扩展名的C文件—Hello.i文件。</p>
+<h2 id="编译阶段"><a href="#编译阶段" class="headerlink" title="编译阶段"></a>编译阶段</h2><p>编译器（ccl）将Hello.i文件翻译成文本文件Hello.s，这是个汇编语言程序。注意，汇编语言是计算机底层世界通用通用的语言，不同的高级语言、不同的编译器，最终得到的还是一样的汇编语言。</p>
+<h2 id="汇编阶段"><a href="#汇编阶段" class="headerlink" title="汇编阶段"></a>汇编阶段</h2><p>汇编器（as）将Hello.s文件翻译成机器语言指令，并将结果保存到二进制文件Hello.o，后者的字节编码是机器语言指令而不是字符。</p>
+<h2 id="链接阶段"><a href="#链接阶段" class="headerlink" title="链接阶段"></a>链接阶段</h2><p>这里的Hello World程序调用了printf函数，它是每个C编译器都会提供的标准C库中的一个函数。printf函数存在于一个名为printf.o的单独的预编译好了的目标文件中，而这个文件必须通过链接合并到我们的Hello.o文件中，链接器（ld）就是做这个工作的，它最终会输出一个可执行目标文件Hello，这个可执行目标文件可以被加载到内存中，由系统执行。</p>
+<p>以上就是Hello World的生成过程，现在讲讲当系统开始执行这个程序到屏幕完整的输出这句激动人性的“Hello World”的时候，计算机内部系统都干了些什么？<br> 首先，我们先看看一个典型的计算机系统的硬件组成图，如图1.2所示。<br><img src="http://ww4.sinaimg.cn/large/690aa174jw1eq728wa8vcj20l20ha0uz.jpg" alt=""></p>
+<center> <em>图1.2 一个典型的计算机系统的硬件组成</em> </center>
+
+<h1 id="Hello-程序执行过程"><a href="#Hello-程序执行过程" class="headerlink" title="Hello 程序执行过程"></a>Hello 程序执行过程</h1><p>然后，我们开始观赏Hello程序的执行过程，主要分为三个步骤：</p>
+<h2 id="从键盘读取Hello命令"><a href="#从键盘读取Hello命令" class="headerlink" title="从键盘读取Hello命令"></a>从键盘读取Hello命令</h2><p>打开终端，在Hello的目录下，通过键盘输入“./Hello”后，系统会将这些字符读入到寄存器中，如图1.3所示，然后再存放到主存储器中，如图1.4所示。<br><img src="http://ww3.sinaimg.cn/large/690aa174jw1eq721snsszj20l00ha75v.jpg" alt=""></p>
+<center> <em>图1.3 系统读入“./Hello”到寄存器中</em> </center>
+
+<p><img src="http://ww3.sinaimg.cn/large/690aa174jw1eq72219hxkj20l10h3dha.jpg" alt=""> </p>
+<center><em>图1.4 系统将“./Hello”从寄存器搬到主存储器中</em></center>
+
+<h2 id="从磁盘加载可执行文件到主存储器中。"><a href="#从磁盘加载可执行文件到主存储器中。" class="headerlink" title="从磁盘加载可执行文件到主存储器中。"></a>从磁盘加载可执行文件到主存储器中。</h2><p>当系统接收完“./Hello”命令以后，将开始执行一系列指令来加载可执行的Hello文件，将Hello目标文件中的代码和数据从磁盘复制到主存储器中，当然，这些数据包含那句“Hello World\n”。<br><img src="http://ww1.sinaimg.cn/large/690aa174jw1eq722ggluej20l60h0abi.jpg" alt=""></p>
+<center><em>图1.5 系统从磁盘加载可执行文件到主存储器中</em></center>
+
+<h2 id="将输出字符串从内存写到显示器"><a href="#将输出字符串从内存写到显示器" class="headerlink" title="将输出字符串从内存写到显示器"></a>将输出字符串从内存写到显示器</h2><p>一旦目标文件Hello中的代码和数据被加载到内存中，处理器就开始执行Hello程序的main程序中的机器语言指令，这些指令将“Hello World\n”字符节中的字节从主存复制到寄存器文件，如图1.6所示。<br><img src="http://ww3.sinaimg.cn/large/690aa174jw1eq722oty28j20lk0gzta9.jpg" alt=""></p>
+<center><em>图1.6 系统将“Hello World\n”从主存复制到寄存器文件</em></center>
+
+<p>接着，指令会继续将这次字符从寄存器文件中复制到显示设备，最终显示到屏幕上，如图1.7所示。<br><img src="http://ww4.sinaimg.cn/large/690aa174jw1eq722vqwtrj20l00gqwg1.jpg" alt=""></p>
+<center><em>图1.7 系统将“Hello World\n”从寄存器文件复制到显示设备</em></center>
+
+<p>自此，Hello World完成了它伟大的使命！</p>
+
+            
+          </div>
+
+          
+
+          <footer class="article-footer">
+            <a data-url="http://linxiongmin.com/2014/04/09/computer_system/computer_system_deep_understanding_03/" data-id="cjq5nsmxe000c6daysmzyiqfj" class="article-share-link">Share</a>
+            
+            
+          </footer>
+
+        </div>
+
+        
+          
+<nav id="article-nav" class="white">
+  <div class="nav-wrapper">
+    <ul class="row">
+    
+      <li class="col s6">
+        <a href="/2014/04/09/computer_system/computer_system_deep_understanding_02/" id="article-nav-newer" class="article-nav-link-wrap grey-text text-darken-1 truncate">
+          <i class="fa fa-arrow-left"></i>
+          <span class="article-nav-title">深入理解计算机系统_C语言中的位运算</span>
+        </a>
+      </li>
+    
+
+    
+      <li class="col s6">
+        <a href="/2013/08/09/computer_system/computer_system_deep_understanding_01/" id="article-nav-older" class="article-nav-link-wrap grey-text text-darken-1 right-align truncate">
+          <span class="article-nav-title">深入理解计算机系统_数据储存之大小端法与补码</span>
+          <i class="fa fa-arrow-right"></i>
+        </a>
+      </li>
+    
+
+    </ul>
+  </div>
+</nav>
+
+
+        
+      </article>
+
+
+      
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  
+
+
+
+  </div>
+
+  <footer class="page-footer grey darken-2">
+    <div class="footer-copyright">
+      <div class="container">
+        &copy; 2018 Xiongmin Lin
+
+        <div class="right">
+          Powered by <a href="http://hexo.io/" rel="nofollow" class="white-text" target="_blank">Hexo</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+
+</body>
+</html>
